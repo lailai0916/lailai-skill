@@ -1,0 +1,2 @@
+# lailai-skill
+lailai 的个人 AI 工作流 Skill，用于统一写作、文档、代码、设计与项目维护方式
