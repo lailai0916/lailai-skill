@@ -1,0 +1,5 @@
+timestamp	commit	skill	old_score	new_score	status	dimension	note	eval_mode
+2026-06-04T00:00	(uncommitted)	lailai-skill	-	57.6	baseline	-	独立 judge 盲评基线	dry_run
+2026-06-04T00:01	(uncommitted)	lailai-skill	57.6	57.6	keep	P0-runtime	README 安装章节改 runtime 中立，清除红灯	dry_run
+2026-06-04T00:02	(uncommitted)	lailai-skill	57.6	81.8	keep	dim2/3/4	加失败模式兜底表 + 🔴 检查点 + 工作流输入输出	dry_run
+2026-06-04T00:03	(uncommitted)	lailai-skill	81.8	81.8	keep	dim7	去除安全边界与检查点的逐字重复（去重收尾）	dry_run
