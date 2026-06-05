@@ -78,31 +78,47 @@ lailai-skill/
 
 ## 安装与使用
 
-本仓库是一个标准 Agent Skill，遵循 `SKILL.md` + frontmatter（`name: lailai-skill`）约定，可在任何兼容 skills 的 runtime 中使用（Claude Code、Codex、Cursor、OpenClaw、Gemini CLI 等）。把整个仓库放进该 runtime 读取 skill 的目录即可。
+本仓库是一个标准 Agent Skill（`SKILL.md` + frontmatter `name: lailai-skill`），可用于 Claude Code、Codex、Cursor、OpenClaw、Gemini CLI 等兼容 skills 的 runtime。
 
-各 runtime 的 skill 目录：
+### 放哪里（位置是硬要求）
 
-| Runtime | 放置路径 |
-| :-- | :-- |
-| Claude Code | `.claude/skills/lailai-skill/` |
-| Codex / Cursor / OpenClaw 等 | 各自的 skills 目录，或 `.agents/lailai-skill/` |
+skill **必须**放在 runtime 的 skills 目录,放仓库根目录无效（Claude Code 不会发现它）。
 
-安装（以通用路径为例，按你的 runtime 替换目录）：
+| 安装方式 | 路径 | 适用 |
+| :-- | :-- | :-- |
+| **用户级**（推荐，个人自用） | `~/.claude/skills/lailai-skill/` | 一处安装，**所有项目**自动可用、单一源、零漂移 |
+| **项目级**（仓库自带、锁版本） | `<项目>/.claude/skills/lailai-skill/` | 需要 CI / 云端 agent / 别的机器 `clone 即自带` 时 |
+
+> 选法：纯自己跨项目用 → 用户级一次搞定；某仓库要在 CI / 云端跑 agent 自带 skill → 项目级 submodule。**不要同名同时装两级**——用户级会盖掉项目级。
+
+### 用户级（clone 一次）
 
 ```bash
-# 作为 submodule（便于持续更新）
-git submodule add https://github.com/lailai0916/lailai-skill <skills-dir>/lailai-skill
-git submodule update --init --recursive
-
-# 或直接克隆
-git clone https://github.com/lailai0916/lailai-skill <skills-dir>/lailai-skill
+git clone https://github.com/lailai0916/lailai-skill ~/.claude/skills/lailai-skill
+# 更新：cd ~/.claude/skills/lailai-skill && git pull
 ```
 
-之后：
+### 项目级（git submodule）
+
+```bash
+cd <项目>
+git submodule add https://github.com/lailai0916/lailai-skill .claude/skills/lailai-skill
+git commit -m "chore(claude): add lailai-skill submodule"   # gitlink 必须一起提交，见下
+```
+
+⚠️ **两个必须做对的点：**
+
+1. **clone 要带上 submodule**，否则 `.claude/skills/lailai-skill/` 是空壳：
+   - 新 clone：`git clone --recurse-submodules <项目>`
+   - 已 clone：`git submodule update --init --recursive`
+   - CI（GitHub Actions）：`actions/checkout` 设 `with: { submodules: recursive }`（GitLab：`GIT_SUBMODULE_STRATEGY: recursive`）。
+2. **提交时别漏掉 gitlink**。`git submodule add` 会同时暂存 `.gitmodules` 和 gitlink，二者要一起提交。提交后用 `git submodule status` 确认能看到一行 `<sha> .claude/skills/lailai-skill`；只提交了 `.gitmodules` 没提交 gitlink，别的机器 clone 就拉不到内容。
+3. **更新版本（bump pin）**：`git submodule update --remote .claude/skills/lailai-skill && git add .claude/skills/lailai-skill && git commit -m "chore: bump lailai-skill"`。
+
+### 装好之后
 
 1. 入口是其中的 `SKILL.md`；Agent 先读它，再按任务类型读对应 `profile/` 与 `references/`（链接都是相对路径，整体搬动后仍有效）。
 2. 触发：描述聊天 / 写作 / 代码 / 设计 / 决策类任务时自动匹配 description，或明确说"用 lailai 的风格""按我的习惯来""像我一点"。
-3. 更新（submodule）：`git submodule update --remote <skills-dir>/lailai-skill`。
 
 ## 如何记录新习惯
 
