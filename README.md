@@ -82,7 +82,14 @@ lailai-skill/
 
 ### 放哪里（位置是硬要求）
 
+<<<<<<< Updated upstream
 skill **必须**放在 runtime 的 skills 目录,放仓库根目录无效（Claude Code 不会发现它）。
+=======
+| Runtime                      | 放置路径                                       |
+| :--------------------------- | :--------------------------------------------- |
+| Claude Code                  | `.claude/skills/lailai-skill/`                 |
+| Codex / Cursor / OpenClaw 等 | 各自的 skills 目录，或 `.agents/lailai-skill/` |
+>>>>>>> Stashed changes
 
 | 安装方式 | 路径 | 适用 |
 | :-- | :-- | :-- |
