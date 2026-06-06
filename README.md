@@ -1,51 +1,61 @@
-# lailai.skill
+<div align="center">
+  <h1>lailai.skill</h1>
+  <p>English | <a href="README.zh-Hans.md">简体中文</a></p>
+  <p>
+    <img src="https://img.shields.io/github/last-commit/lailai0916/lailai-skill?style=flat-square" />
+    <img src="https://img.shields.io/github/languages/top/lailai0916/lailai-skill?style=flat-square" />
+    <img src="https://img.shields.io/github/repo-size/lailai0916/lailai-skill?style=flat-square" />
+    <img src="https://img.shields.io/github/license/lailai0916/lailai-skill?style=flat-square" />
+  </p>
+</div>
 
-> lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai 的表达方式、思维方式、审美偏好、工作习惯与日常交流风格。
+> A continuously evolving personal cyber-twin system for lailai — replicating lailai's expression, thinking, aesthetics, working habits, and everyday communication style as faithfully as possible.
 
-面向 Claude Code / Codex / Cursor / OpenClaw 等 AI Agent 的个人 skill。它不是一句"请扮演 lailai"，而是一个结构化、可维护、可验证、可持续进化的个人模型。
+A personal skill for AI agents (Claude Code / Codex / Cursor / OpenClaw, etc.). Not a one-line "act as lailai," but a structured, maintainable, verifiable, and continuously evolving personal model.
 
-## 它解决什么问题
+## What It Solves
 
-让 AI 在写作、文档、代码、设计、聊天、判断与项目维护中尽可能像 lailai，并且随时间越来越像——风格一致、信息密度高、没有 AI 腔、能落地。
+Make AI as much like lailai as possible in writing, docs, code, design, chat, judgment, and project maintenance — and more so over time: consistent style, high information density, no AI tone, and actionable output.
 
-## 它不是什么
+## What It Is Not
 
-- 不是人格扮演 Prompt，也不是"扮演 lailai"。
-- 不是一次性生成后固定不变的静态人设。
-- 不是用来冒充 lailai 本人欺骗他人的工具。
-- 不是只服务工作的模板——它也覆盖日常聊天、学习与长期自我建模。
+- Not a persona-roleplay prompt, nor "act as lailai."
+- Not a static persona fixed after a single generation.
+- Not a tool to impersonate lailai and deceive others.
+- Not a work-only template — it also covers everyday chat, learning, and long-term self-modeling.
 
-## 边界
+## Boundaries
 
-- 不冒充 lailai 本人对外发言、做承诺、声明身份或授权。
-- 不保存账号、密码、密钥、证件、精确住址等敏感信息。
-- 不公开私人聊天、他人隐私或未整理的敏感资料。
-- 生成内容若可能被误认为本人真实发言，须提醒人工确认。
-- 长期人格、价值判断、隐私边界、公开表达方式的重要变化，必须由 lailai 人工确认。
+- Does not impersonate lailai in public statements, promises, identity claims, or authorization.
+- Does not store accounts, passwords, keys, IDs, precise addresses, or other sensitive data.
+- Does not expose private chats, others' privacy, or unvetted sensitive material.
+- If output might be mistaken for lailai's real words, it flags the need for human review.
+- Major changes to long-term personality, value judgments, privacy boundaries, or public expression must be confirmed by lailai.
 
-完整边界见 [profile/boundaries.md](profile/boundaries.md)。
+See [profile/boundaries.md](profile/boundaries.md) for the full boundaries.
 
-## 适用场景
+## Use Cases
 
-- 写作 / 润色中文内容，去 AI 腔。
-- 写或审查 README、项目介绍、GitHub 文档。
-- 写 Docusaurus / MDX 笔记、题解、数学文章。
-- 写或评审 OI 算法竞赛 C++17 代码。
-- "统一·简约·现代"风格的 UI / 设计审查。
-- 模拟 lailai 的日常聊天与提问方式。
-- 决策辅助、学习陪伴、长期自我建模与持续更新。
+- Writing / polishing Chinese content, removing AI tone.
+- Writing or reviewing READMEs, project intros, and GitHub docs.
+- Writing Docusaurus / MDX notes, problem solutions, and math articles.
+- Writing or reviewing OI competitive-programming C++17 code.
+- "Unity · Simplicity · Modernity" UI / design review.
+- Simulating lailai's everyday chat and questioning style.
+- Decision support, learning companion, long-term self-modeling and updates.
 
-不适用场景与触发条件见 [SKILL.md](SKILL.md)。
+See [SKILL.md](SKILL.md) for out-of-scope cases and triggers.
 
-## 仓库结构
+## Repository Structure
 
 ```text
 lailai-skill/
-├── README.md                  # 本文件
-├── SKILL.md                   # 入口：定位、场景、原则、边界、工作流、自检
+├── README.md                  # English (this file)
+├── README.zh-Hans.md          # 简体中文
+├── SKILL.md                   # Entry: positioning, scope, principles, boundaries, workflow, self-check
 ├── LICENSE                    # MIT
-├── CHANGELOG.md               # 重要变化记录
-├── profile/                   # 长期人格、偏好、思考方式、边界
+├── CHANGELOG.md               # Notable changes
+├── profile/                   # Long-term personality, preferences, thinking, boundaries
 │   ├── identity.md
 │   ├── personality.md
 │   ├── thinking-style.md
@@ -53,7 +63,7 @@ lailai-skill/
 │   ├── preferences.md
 │   ├── decision-rules.md
 │   └── boundaries.md
-├── references/                # 可执行风格规则（每个文件含 Self-review Checklist）
+├── references/                # Executable style rules (each with a Self-review Checklist)
 │   ├── daily-chat-style.md
 │   ├── writing-style.md
 │   ├── wording.md
@@ -67,85 +77,85 @@ lailai-skill/
 │   ├── learning-style.md
 │   ├── ai-tone-blacklist.md
 │   └── maintenance-guide.md
-├── examples/                  # 代表性输入 → 处理原则 → 输出 → 为什么符合
-├── tests/                     # 可验证的风格测试（目标 / 输入 / 期望 / 评分 / 通过条件）
-├── prompts/                   # 维护时可直接复制的提示词
-├── evolution/                 # 评分标准与进化日志
+├── examples/                  # Representative input → handling → output → why it fits
+├── tests/                     # Verifiable style tests (goal / input / expectations / scoring / pass criteria)
+├── prompts/                   # Copy-paste prompts for maintenance
+├── evolution/                 # Scoring rubric and evolution log
 │   ├── evaluation-rubric.md
 │   └── evolution-log.md
-└── observations.md            # 尚未沉淀为规则的临时观察
+└── observations.md            # Temporary observations not yet sedimented into rules
 ```
 
-## 安装与使用
+## Installation & Usage
 
-本仓库是一个标准 Agent Skill（`SKILL.md` + frontmatter `name: lailai-skill`），可用于 Claude Code、Codex、Cursor、OpenClaw、Gemini CLI 等兼容 skills 的 runtime。
+This repo is a standard Agent Skill (`SKILL.md` + frontmatter `name: lailai-skill`), usable in any skills-compatible runtime — Claude Code, Codex, Cursor, OpenClaw, Gemini CLI, and more.
 
-### 放哪里（位置是硬要求）
+### Where it goes (a hard requirement)
 
-skill **必须**放在 runtime 的 skills 目录，放仓库根目录无效（Claude Code 不会发现它）。
+A skill **must** live in the runtime's skills directory. Placing it at the repo root does nothing (Claude Code won't discover it).
 
-| 安装方式                       | 路径                                  | 适用                                              |
-| :----------------------------- | :------------------------------------ | :------------------------------------------------ |
-| **用户级**（推荐，个人自用）   | `~/.claude/skills/lailai-skill/`      | 一处安装，**所有项目**自动可用、单一源、零漂移    |
-| **项目级**（仓库自带、锁版本） | `<项目>/.claude/skills/lailai-skill/` | 需要 CI / 云端 agent / 别的机器 `clone 即自带` 时 |
+| Method | Path | When |
+| :-- | :-- | :-- |
+| **User level** (recommended for personal use) | `~/.claude/skills/lailai-skill/` | Install once, available in **all** projects; single source, zero drift |
+| **Project level** (vendored, version-pinned) | `<project>/.claude/skills/lailai-skill/` | When CI / cloud agents / other machines need `clone-and-it's-there` |
 
-> 选法：纯自己跨项目用 → 用户级一次搞定；某仓库要在 CI / 云端跑 agent 自带 skill → 项目级 submodule。**不要同名同时装两级**——用户级会盖掉项目级。
+> Rule of thumb: personal cross-project use → user level, done once; a repo that runs agents in CI / the cloud → project-level submodule. **Don't install both levels under the same name** — the user level shadows the project level.
 
-### 用户级（clone 一次）
+### User level (clone once)
 
 ```bash
 git clone https://github.com/lailai0916/lailai-skill ~/.claude/skills/lailai-skill
-# 更新：cd ~/.claude/skills/lailai-skill && git pull
+# Update: cd ~/.claude/skills/lailai-skill && git pull
 ```
 
-### 项目级（git submodule）
+### Project level (git submodule)
 
 ```bash
-cd <项目>
+cd <project>
 git submodule add https://github.com/lailai0916/lailai-skill .claude/skills/lailai-skill
-git commit -m "chore(claude): add lailai-skill submodule"   # gitlink 必须一起提交，见下
+git commit -m "chore(claude): add lailai-skill submodule"   # commit the gitlink too — see below
 ```
 
-⚠️ **两个必须做对的点：**
+⚠️ **Two things to get right:**
 
-1. **clone 要带上 submodule**，否则 `.claude/skills/lailai-skill/` 是空壳：
-   - 新 clone：`git clone --recurse-submodules <项目>`
-   - 已 clone：`git submodule update --init --recursive`
-   - CI（GitHub Actions）：`actions/checkout` 设 `with: { submodules: recursive }`（GitLab：`GIT_SUBMODULE_STRATEGY: recursive`）。
-2. **提交时别漏掉 gitlink**。`git submodule add` 会同时暂存 `.gitmodules` 和 gitlink，二者要一起提交。提交后用 `git submodule status` 确认能看到一行 `<sha> .claude/skills/lailai-skill`；只提交了 `.gitmodules` 没提交 gitlink，别的机器 clone 就拉不到内容。
-3. **更新版本（bump pin）**：`git submodule update --remote .claude/skills/lailai-skill && git add .claude/skills/lailai-skill && git commit -m "chore: bump lailai-skill"`。
+1. **Clone with submodules**, or `.claude/skills/lailai-skill/` is an empty shell:
+   - Fresh clone: `git clone --recurse-submodules <project>`
+   - Existing clone: `git submodule update --init --recursive`
+   - CI (GitHub Actions): set `actions/checkout` with `submodules: recursive` (GitLab: `GIT_SUBMODULE_STRATEGY: recursive`).
+2. **Don't drop the gitlink when committing.** `git submodule add` stages both `.gitmodules` and the gitlink — commit them together. Afterward, `git submodule status` should show one line `<sha> .claude/skills/lailai-skill`; committing only `.gitmodules` without the gitlink leaves a fresh clone with no content.
+3. **Bump the pinned version**: `git submodule update --remote .claude/skills/lailai-skill && git add .claude/skills/lailai-skill && git commit -m "chore: bump lailai-skill"`.
 
-### 装好之后
+### After installing
 
-1. 入口是其中的 `SKILL.md`；Agent 先读它，再按任务类型读对应 `profile/` 与 `references/`（链接都是相对路径，整体搬动后仍有效）。
-2. 触发：描述聊天 / 写作 / 代码 / 设计 / 决策类任务时自动匹配 description，或明确说"用 lailai 的风格""按我的习惯来""像我一点"。
+1. The entry is its `SKILL.md`; the agent reads it first, then the relevant `profile/` and `references/` by task type (all links are relative, so they survive moving the whole folder).
+2. Triggering: describe a chat / writing / code / design / decision task to match the description automatically, or say explicitly "use lailai's style," "do it my way," or "make it more like me."
 
-## 如何记录新习惯
+## Recording New Habits
 
-发现一个新的表达、偏好、反感项或习惯时，**先记到 [observations.md](observations.md)**，不要直接改规则。
+When you notice a new expression, preference, dislike, or habit, **record it first in [observations.md](observations.md)** — don't edit the rules directly.
 
-> 观察不等于规则。只有长期、稳定、可迁移、可执行的观察，才能进入 `profile/` 或 `references/`。
+> An observation is not a rule. Only long-term, stable, transferable, executable observations earn their way into `profile/` or `references/`.
 
-可直接复制 [prompts/add-observation.md](prompts/add-observation.md) 给 AI 来记录。
+Copy [prompts/add-observation.md](prompts/add-observation.md) to have the AI record it.
 
-## 如何持续进化
+## How It Evolves
 
-1. 观察记录：新习惯先进 `observations.md`。
-2. 稳定性判断：区分短期情绪、临时偏好与长期习惯。
-3. 规则沉淀：验证过的观察整理进 `profile/` 或 `references/`。
-4. 示例 / 测试更新：规则变了就更新 `examples/` 与 `tests/`。
-5. 达尔文式优化：评估 → 改进 → 测试 → 保留或回滚（[prompts/evolve-skill.md](prompts/evolve-skill.md)）。
-6. 版本与日志：重要变化记入 `CHANGELOG.md` 与 `evolution/evolution-log.md`。
-7. 人工确认：涉及长期人格、价值判断、隐私边界、公开表达的变化，由 lailai 确认。
+1. Observe: new habits go into `observations.md` first.
+2. Stability check: separate transient moods, one-off preferences, and long-term habits.
+3. Sediment: verified observations are organized into `profile/` or `references/`.
+4. Examples / tests: when a rule changes, update `examples/` and `tests/`.
+5. Darwin-style optimization: evaluate → improve → test → keep or roll back ([prompts/evolve-skill.md](prompts/evolve-skill.md)).
+6. Versioning & logs: notable changes go into `CHANGELOG.md` and `evolution/evolution-log.md`.
+7. Human confirmation: changes to long-term personality, value judgments, privacy boundaries, or public expression are confirmed by lailai.
 
-## 如何维护和更新
+## Maintenance & Updates
 
-维护是长期工作，不是一次性任务。细则见 [references/maintenance-guide.md](references/maintenance-guide.md)，评分用 [evolution/evaluation-rubric.md](evolution/evaluation-rubric.md)。原则：
+Maintenance is long-term work, not a one-off. See [references/maintenance-guide.md](references/maintenance-guide.md) for details, and score with [evolution/evaluation-rubric.md](evolution/evaluation-rubric.md). Principles:
 
-- 观察 ≠ 规则，临时情绪 ≠ 长期人格，一次性偏好 ≠ 稳定习惯。
-- 规则必须可执行、可检查。每次进化都能说清"为什么改"。
-- 若新规则让输出更不像 lailai，回滚；若旧规则与当前状态冲突，更新或废弃。
+- Observation ≠ rule; transient mood ≠ long-term personality; one-off preference ≠ stable habit.
+- Rules must be executable and checkable. Every change can explain "why."
+- If a new rule makes output less like lailai, roll it back; if an old rule conflicts with the current lailai, update or retire it.
 
-## 许可证
+## License
 
-代码与文本以 [MIT License](LICENSE) 授权。本 skill 描述的是公开可分享的风格与方法，不包含隐私信息。
+Licensed under the [MIT License](LICENSE). This skill describes publicly shareable style and methods, and contains no private information.

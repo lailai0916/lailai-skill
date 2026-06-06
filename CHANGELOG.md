@@ -6,6 +6,16 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.5.5] - 2026-06-06
+
+让 lailai-skill 自身 README 符合自己定的项目规范（以身作则，解决 v0.5.4 记下的不一致）。
+
+### Changed
+
+- `README.md`：改为英文默认，加居中头部（`English | 简体中文` 切换 + last-commit / top-language / repo-size / license 四个 shields 徽章）；正文全英化。
+- `README.zh-Hans.md`：新增简体中文版（原中文内容 + 头部切换指向英文）。
+- 两版结构镜像对等，末尾均有 License 段（MIT）。
+
 ## [0.5.4] - 2026-06-06
 
 按 lailai 第一方补充 GitHub 项目 README 规范。

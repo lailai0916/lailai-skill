@@ -6,6 +6,12 @@
 
 ---
 
+## 2026-06-06 · v0.5.5 · README 双语化（以身作则）
+
+- **触发原因**：v0.5.4 记下的不一致——skill 自身 README 违反刚定的规范（中文默认、无徽章、无 `README.zh-Hans.md`）。
+- **处理**：`README.md` 改英文默认 + 居中头部 + 4 徽章；新增 `README.zh-Hans.md` 中文版；两版镜像对等、末尾 License（MIT）。已解决该不一致。
+- **是否保留**：保留（v0.5.5）。
+
 ## 2026-06-06 · v0.5.4 · GitHub 项目 README 规范
 
 - **触发原因**：lailai 给出项目规范——README 跨项目统一、英文默认 + `README.zh-Hans.md`、每个开源项目加协议默认 MIT、末尾 License 段，并附头部模板。
