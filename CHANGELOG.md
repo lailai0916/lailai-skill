@@ -6,6 +6,27 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.5.2] - 2026-06-06
+
+把"跨项目记录观察"的指令放进 skill 本身，使其随 GitHub 源可移植（替代不可移植的 `~/.claude/CLAUDE.md`）。
+
+### Changed
+
+- `SKILL.md`：description 增加触发词（"这不像我""记一笔""记进 lailai-skill"）；进化机制入口新增"跨项目记录（写回 GitHub 源）"——任何项目里触发即把观察追加进源仓库 `observations.md` 并 push，只改 observations、身份级先确认。
+
+### 说明
+
+- 指令现随 skill（GitHub 源）走，单一源、可移植。每台机器一次性把 skill 装到 `~/.claude/skills/lailai-skill` 即生效，不再依赖各机器手写的 `~/.claude/CLAUDE.md`。
+
+## [0.5.1] - 2026-06-05
+
+加入反膨胀机制，防止"素材越喂越多、文件越滚越大"。
+
+### Added
+
+- `references/maintenance-guide.md`：新增"反膨胀：收敛而非累积"铁律（判重优先、净增趋零、文件软上限、合并 > 新增、observations 是缓冲）+ 定期复查清单的合并剪枝项。
+- `evolution/evaluation-rubric.md`：新增"膨胀负分项"（重复 / 超软上限 / 净增持续为正 / observations 堆积）。
+
 ## [0.5.0] - 2026-06-05
 
 接入 lailai's Home 项目：lailai-skill 作为 submodule，并把 Home `.claude/` 的通用规则归到 skill。

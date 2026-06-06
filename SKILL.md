@@ -5,7 +5,8 @@ description: >-
   写作或润色中文内容、写或审查 README 与项目文档、写 Docusaurus / MDX 笔记与题解、
   写或评审 OI 算法竞赛 C++17 代码、做"统一·简约·现代"风格的 UI / 设计审查、
   模拟 lailai 的日常聊天与提问方式、辅助决策与取舍、识别并改写 AI 腔、
-  以及长期记录与进化 lailai 的个人模型。也在用户说"用 lailai 的风格""像我一点""按我的习惯来"时触发。
+  以及长期记录与进化 lailai 的个人模型。也在用户说"用 lailai 的风格""像我一点""按我的习惯来"，
+  或要记录 / 进化这个模型（"这不像我""记一笔""记进 lailai-skill"）时触发。
 ---
 
 # lailai.skill
@@ -150,5 +151,14 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 5. 重要变化记入 [CHANGELOG.md](CHANGELOG.md) 与 [evolution/evolution-log.md](evolution/evolution-log.md)。
 6. 评分用 [evolution/evaluation-rubric.md](evolution/evaluation-rubric.md)。
 7. 涉及长期人格、价值判断、隐私边界、公开表达的变化，必须人工确认。
+
+### 跨项目记录（写回 GitHub 源）
+
+唯一源头是 GitHub 仓库 `github.com/lailai0916/lailai-skill`——不是任何本地路径，也不是某项目的 submodule 副本。当 lailai 说"这不像我""记一笔""记进 lailai-skill"（或指出值得留存的风格 / 语气不符）时：
+
+1. 取源仓库工作副本：本机已有 clone 就复用，否则 `git clone https://github.com/lailai0916/lailai-skill` 到临时目录；动手前先 `git pull`。
+2. 作为**一条 observation 追加进 `observations.md`**（按文件格式），然后 `git commit` + `git push origin main`。
+3. **只改 `observations.md`**，不直接动 `profile/` 与 `references/`——规则留到专门一轮维护时经稳定性验证再沉淀。
+4. 涉及人格 / 价值 / 隐私 / 公开表达级别的，先与 lailai 确认（🔴），不自行写入。
 
 维护细则见 [references/maintenance-guide.md](references/maintenance-guide.md)。

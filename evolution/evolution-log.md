@@ -6,6 +6,24 @@
 
 ---
 
+## 2026-06-06 · v0.5.2 · 自维护指令随 skill 可移植（方案 A）
+
+- **触发原因**：lailai 指出"记一笔"指令放 `~/.claude/CLAUDE.md` 不可移植（换机器失效），违背"GitHub 为唯一源"。
+- **决策**：方案 A——把指令放进 skill 本身（随 GitHub 源走），而非每机器手写全局配置。
+- **修改文件**：`SKILL.md`（触发词 + 跨项目记录小节）、`CHANGELOG.md`。
+- **配套动作**：commit + push 源仓库；本机 `git clone` 装 skill 到 `~/.claude/skills/lailai-skill`；删除 `~/.claude/CLAUDE.md`。
+- **每机器一次性成本**：把 skill 装到用户级一次即生效（本来用 skill 就要做）。
+- **是否保留**：保留（v0.5.2）。
+
+## 2026-06-05 · v0.5.1 · 反膨胀机制
+
+- **触发原因**：lailai 担心"每天喂素材 → 不断追加 → 文件越滚越大"。这是这类累积系统的头号失败模式。
+- **修改文件**：`references/maintenance-guide.md`（反膨胀铁律 + 合并剪枝复查项）、`evolution/evaluation-rubric.md`（膨胀负分项）。
+- **核心约束**：判重优先、净增趋零、文件软上限（reference ≤150 行 / profile ≤80 行）、合并 > 新增、observations 是缓冲。素材越多规则应**收敛**而非线性增长。
+- **自我节制**：本次为防膨胀而加的内容也刻意从简（约 20 行），不破坏自身约束。
+- **是否保留**：保留（v0.5.1）。
+- **后续行动**：下次大维护跑一轮合并剪枝，核净增行数。
+
 ## 2026-06-05 · v0.5.0 · 接入 lailai's Home（submodule + 去重）
 
 - **触发原因**：lailai 要求整理两仓库的 Claude 配置——skill 作为 submodule 接入 Home，通用规则归 skill，Home 只留项目专属 + 调用入口。
