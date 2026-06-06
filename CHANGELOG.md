@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.5.4] - 2026-06-06
+
+按 lailai 第一方补充 GitHub 项目 README 规范。
+
+### Changed
+
+- `references/project-docs-style.md`：明确每个开源项目必有 `LICENSE`、**默认 MIT**、README 末尾必有 License 段；所有项目 README 跨项目统一同一套结构；新增可复制的居中头部骨架（`English | 简体中文` 切换 + 6 个 shields 徽章，preview 图可选）与 License 段示例。
+
 ## [0.5.3] - 2026-06-06
 
 按 lailai 第一方澄清，精修竞赛 C++ 的 vector / auto 风格（纠正第三方记忆的不准确说法）。

@@ -6,6 +6,14 @@
 
 ---
 
+## 2026-06-06 · v0.5.4 · GitHub 项目 README 规范
+
+- **触发原因**：lailai 给出项目规范——README 跨项目统一、英文默认 + `README.zh-Hans.md`、每个开源项目加协议默认 MIT、末尾 License 段，并附头部模板。
+- **处理**：大部分已在 `project-docs-style.md` 覆盖（徽章 / 双语 / 特性区 / 结构树）→ 只补真正新的（默认 MIT、末尾 License、跨项目统一）+ 一段可复制头部骨架。第一方稳定 → 直接进规则。
+- **反膨胀**：自检清单 7→8 项（未超 8）；净增约 22 行（含骨架代码块，高价值可复制）。
+- **已知不一致**：lailai-skill 自身 README 仍为中文默认、无徽章、无 `README.zh-Hans.md`，违反本条规范——待 lailai 决定是否补做（英文默认 + 中文版 + 徽章）。
+- **是否保留**：保留（v0.5.4）。
+
 ## 2026-06-06 · v0.5.3 · C++ vector/auto 第一方澄清
 
 - **触发原因**：lailai 直接澄清——竞赛里整段全是 vector = AI-tell；普通数组 `int a[N]` 优先；vector 仅用于存图（`for(auto v:G[u])`）；auto 喜欢（省冗长类型）。纠正 ChatGPT 记忆里"不喜欢 vector / auto"的错误。
