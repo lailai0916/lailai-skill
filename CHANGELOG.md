@@ -6,6 +6,15 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.5.3] - 2026-06-06
+
+按 lailai 第一方澄清，精修竞赛 C++ 的 vector / auto 风格（纠正第三方记忆的不准确说法）。
+
+### Changed
+
+- `references/cpp-oi-style.md`：普通静态数组 `int a[N]` 优先；`vector` 仅用于确实优雅处（邻接表存图 `vector<int> G[N]`、`for(auto v:G[u])dfs(v);`）；**整段全是 `vector` 是 AI-tell**；`auto` 受欢迎（省去冗长迭代器类型）。
+- `references/ai-tone-blacklist.md`：AI-tell 增"算法竞赛全是 vector"一行（指向 cpp-oi-style）。
+
 ## [0.5.2] - 2026-06-06
 
 把"跨项目记录观察"的指令放进 skill 本身，使其随 GitHub 源可移植（替代不可移植的 `~/.claude/CLAUDE.md`）。
