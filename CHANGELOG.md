@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.6.2] - 2026-06-06
+
+同步网站第一方更新（题解日期格式漂移修复）。
+
+### Fixed
+
+- `references/docusaurus-style.md`：日期格式更新为 `YYYY-MM-DDTHH:MM:SS+08:00`（带秒 + Asia/Shanghai 偏移，避免 CI/UTC 渲染偏 8 小时）；题解用洛谷专栏对应版本的精确发布秒同步——对齐网站 `.claude/rules/writing-style.md` 最新规则。
+
 ## [0.6.1] - 2026-06-06
 
 A/B 校准第二轮（lailai 本人选择），继续精修聊天 / 对话维度。

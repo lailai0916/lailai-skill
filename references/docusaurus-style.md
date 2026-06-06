@@ -24,7 +24,7 @@
 
 - 博客字段顺序：`title`、`date`、`authors: lailai`（标量，不是数组）、`tags`（始终数组）。不用 `slug`（文件名即 slug）。
 - 文档页只有 `title:`，无 date / authors / tags。
-- 日期 `YYYY-MM-DDTHH:MM`（Asia/Shanghai 墙钟，无秒无时区）：`date: 2025-08-04T15:30`。
+- 日期 `YYYY-MM-DDTHH:MM:SS+08:00`——**带秒，且带 Asia/Shanghai 时区偏移**（`+08:00` 必须；否则 CI 的 UTC 环境会把无偏移时间戳渲染偏 $8$ 小时）：`date: 2025-08-04T15:30:00+08:00`。普通文章秒位用 `:00`；**题解**用其**洛谷专栏对应版本的精确发布秒**（`<Solution>` 的 `aid`，洛谷记录到秒），两边保持一致。
 - 标题格式 `<分类>：<名称>`，全角冒号。分类前缀固定：`题解：` / `数学：` / `项目：` / `资源：` / `个人：` / `旅行：` / `记录：` / `杂谈：`。
 - tags 只能取自 `blog/tags.yml`。题解恒为 `[oi, solution, <oj>]`（`<oj>` ∈ luogu / codeforces / atcoder / spoj / uva）；数学 `[math]`。不自造 tag。
 
