@@ -85,15 +85,16 @@ lailai-skill/
 <<<<<<< Updated upstream
 skill **必须**放在 runtime 的 skills 目录,放仓库根目录无效（Claude Code 不会发现它）。
 =======
-| Runtime                      | 放置路径                                       |
+| Runtime | 放置路径 |
 | :--------------------------- | :--------------------------------------------- |
-| Claude Code                  | `.claude/skills/lailai-skill/`                 |
+| Claude Code | `.claude/skills/lailai-skill/` |
 | Codex / Cursor / OpenClaw 等 | 各自的 skills 目录，或 `.agents/lailai-skill/` |
->>>>>>> Stashed changes
 
-| 安装方式 | 路径 | 适用 |
-| :-- | :-- | :-- |
-| **用户级**（推荐，个人自用） | `~/.claude/skills/lailai-skill/` | 一处安装，**所有项目**自动可用、单一源、零漂移 |
+> > > > > > > Stashed changes
+
+| 安装方式                       | 路径                                  | 适用                                              |
+| :----------------------------- | :------------------------------------ | :------------------------------------------------ |
+| **用户级**（推荐，个人自用）   | `~/.claude/skills/lailai-skill/`      | 一处安装，**所有项目**自动可用、单一源、零漂移    |
 | **项目级**（仓库自带、锁版本） | `<项目>/.claude/skills/lailai-skill/` | 需要 CI / 云端 agent / 别的机器 `clone 即自带` 时 |
 
 > 选法：纯自己跨项目用 → 用户级一次搞定；某仓库要在 CI / 云端跑 agent 自带 skill → 项目级 submodule。**不要同名同时装两级**——用户级会盖掉项目级。
