@@ -17,7 +17,7 @@
 4. **README** 用 `README.md`；多语言以英文为基准，其它语言用 `README.<language-tag>.md`（如 `README.zh-Hans.md`）。
 5. **许可协议**：每个开源项目都要有 `LICENSE`，**默认 MIT**。README 末尾必有 License 段说明。
 6. **版本**遵循 Semantic Versioning；**变更日志**遵循 Keep a Changelog。
-7. **代码风格**：HTML / CSS / JS / TS / JSON 遵循 **Prettier**（`printWidth: 80`、`singleQuote: true`、`trailingComma: "es5"`）；C++ 见 [cpp-oi-style.md](cpp-oi-style.md)。文档文本遵循 [markdown-style.md](markdown-style.md) / [wording.md](wording.md)。
+7. **Prettier 必装**：每个项目都装 Prettier 做格式化——`devDependency` + 配置文件（`printWidth: 80`、`singleQuote: true`、`trailingComma: "es5"`）+ `format` 脚本，HTML / CSS / JS / TS / JSON / MD 统一交给它，不手动对齐。C++ 见 [cpp-oi-style.md](cpp-oi-style.md)；文档文本遵循 [markdown-style.md](markdown-style.md) / [wording.md](wording.md)。
 
 ## README 文档风格
 
@@ -109,5 +109,5 @@ Licensed under the [MIT License](LICENSE).
 - [ ] 展示型项目有徽章；特性区 emoji + 加粗标题 + 一句说明？
 - [ ] 结构树 `text` 块、命令 `bash` 块且可复制？
 - [ ] 多语言以英文为基准（`README.md` / `README.zh-Hans.md`）、中英对等？
-- [ ] 有 `LICENSE`（开源默认 MIT），README 末尾有 License 段？
+- [ ] 有 `LICENSE`（开源默认 MIT）+ README 末尾 License 段；装了 Prettier（config + format 脚本）？
 - [ ] 无形容词轰炸、无求 star 收尾、技术正文 emoji 克制？
