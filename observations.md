@@ -63,3 +63,18 @@
 - 稳定性：报告与第一方证据多处吻合，但属第三方视角，解读性条目需本人确认。
 - 处理：已折中处理（印证项沉淀，解读项待确认）。
 - 隐私检查：否（报告与本条目均不含 PII）。
+
+### 2026-06-07 题解双发布：洛谷专栏版 vs 个人站 mdx（补 references 空白）
+
+- 现象：每篇题解发两处，格式不同。`docusaurus-style.md` 只覆盖了个人站 mdx，**洛谷专栏版是空白**。
+  - 个人站 mdx（已有规则）：`blog/solution/<PID>.mdx`（保留大写 PID）；frontmatter（`title` 全角冒号 / `date` 带秒+时区 / `authors: lailai` 标量 / `tags: [oi, solution, <oj>]`）+ `<Solution pid="<PID>" aid="<洛谷文章id>" />` + `{/* truncate */}`；正文从 `##` 起、无 H1、无徽章。
+  - 洛谷专栏版（缺口）：**无 frontmatter**；开头放 **2 张 shields.io 徽章**——题目 + 博客（已从 3 张减为 2 张，去掉「洛谷文章」那张）：
+    - `[![](https://img.shields.io/badge/Luogu-<PID>-blue?style=for-the-badge&logo=luogu)](https://www.luogu.com.cn/problem/<PID>)`
+    - `[![](https://img.shields.io/badge/Blog-Solution-blue?style=for-the-badge&logo=markdown)](https://lailai.one/blog/solution/<PID>)`
+  - 共同点：骨架（可选 `## 参考资料` → `## 题意简述` → 推导分节 → `## 参考代码`，推导末句给复杂度，无总结）、数学 `$...$`、代码遵循 cpp-oi-style，两版一致。
+  - 流程：**所有 OJ 题（含 CF/AT）都先发洛谷专栏拿 `aid`**（洛谷文章 id，记录到秒），个人站再用 `<Solution aid>` 引用，且 mdx 的 `date` 用洛谷专栏那一秒，两边一致。`oj` 随题号前缀（P/B→luogu、CF→codeforces、AT→atcoder、SP→spoj、UVA→uva）。
+- 场景：用 lailai 的经验手册 + 109 篇真实题解（`lailai0916.github.io/blog/solution`）校准自动题解工具 `luogu-auto-writer` 时发现。
+- 推测：洛谷专栏版从未进 references，因为站点规则仓库只管站内 mdx。
+- 稳定性：109 篇 mdx 一致 + 手册明述，确定性高。
+- 处理：建议沉淀为 `references/luogu-solution-style.md`，或在 `docusaurus-style.md` 增一节「洛谷专栏版」。
+- 隐私检查：否。
