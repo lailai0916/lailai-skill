@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.6.5] - 2026-06-07
+
+项目 i18n 多语言要求（lailai 本人补充）。
+
+### Changed
+
+- `references/project-docs-style.md`：规则 4 扩为"多语言以英文为基准"——README 之外，有可视化内容的项目做 i18n，默认 en + zh-Hans、默认英语；带例外（已有 i18n / 默认非英语 / 显然无需多语言就别硬加）。checklist 同步并入既有多语言项，不增条数。
+
 ## [0.6.4] - 2026-06-07
 
 UI 项目强制深浅双主题、默认跟随系统（lailai 本人补充）。
