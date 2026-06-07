@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.6.3] - 2026-06-07
+
+把 Prettier 从"风格遵循"升级为"每个项目必装"（lailai 本人补充）。
+
+### Changed
+
+- `references/project-docs-style.md`：规则 7 改为 **Prettier 必装**——每个项目都装为 `devDependency` + 配置文件 + `format` 脚本，HTML / CSS / JS / TS / JSON / MD 统一交给它，与"每项目必备 LICENSE"同级；checklist 合并入既有"每项目必备"项，不增条数。
+
 ## [0.6.2] - 2026-06-06
 
 同步网站第一方更新（题解日期格式漂移修复）。
