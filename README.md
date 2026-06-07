@@ -94,10 +94,10 @@ This repo is a standard Agent Skill (`SKILL.md` + frontmatter `name: lailai-skil
 
 A skill **must** live in the runtime's skills directory. Placing it at the repo root does nothing (Claude Code won't discover it).
 
-| Method | Path | When |
-| :-- | :-- | :-- |
-| **User level** (recommended for personal use) | `~/.claude/skills/lailai-skill/` | Install once, available in **all** projects; single source, zero drift |
-| **Project level** (vendored, version-pinned) | `<project>/.claude/skills/lailai-skill/` | When CI / cloud agents / other machines need `clone-and-it's-there` |
+| Method                                        | Path                                     | When                                                                   |
+| :-------------------------------------------- | :--------------------------------------- | :--------------------------------------------------------------------- |
+| **User level** (recommended for personal use) | `~/.claude/skills/lailai-skill/`         | Install once, available in **all** projects; single source, zero drift |
+| **Project level** (vendored, version-pinned)  | `<project>/.claude/skills/lailai-skill/` | When CI / cloud agents / other machines need `clone-and-it's-there`    |
 
 > Rule of thumb: personal cross-project use → user level, done once; a repo that runs agents in CI / the cloud → project-level submodule. **Don't install both levels under the same name** — the user level shadows the project level.
 
