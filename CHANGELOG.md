@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.6.4] - 2026-06-07
+
+UI 项目强制深浅双主题、默认跟随系统（lailai 本人补充）。
+
+### Added
+
+- `references/design-style.md`：新增规则 12 **深浅双主题必备**——任何有可视化 UI 的项目（web / app）都必须同时支持深 / 浅色、**默认跟随系统**（`prefers-color-scheme`），颜色走 token 两套各一份；checklist 并入既有"明暗"项，不增条数。
+
 ## [0.6.3] - 2026-06-07
 
 把 Prettier 从"风格遵循"升级为"每个项目必装"（lailai 本人补充）。
