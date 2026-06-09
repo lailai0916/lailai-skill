@@ -6,6 +6,30 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.7.0] - 2026-06-08
+
+ChatGPT 存档第三轮：40 片多 agent 工作流穷尽扫描，跨 11 维沉淀一批新画像。
+
+### Added / Changed
+
+- `profile/conversation-style.md`：默认不轻信（要权威来源 / 复核）、贴原文不复述。
+- `profile/thinking-style.md`：极端化思想实验检验、结构化建模（把非数学塞进数学 / 工程结构、先猜后验）。
+- `profile/decision-rules.md`：先查官方规范再动手。
+- `profile/preferences.md`：新增「品味取向」（Apple 生态 / 高端龙头品牌 / Claude 拥护 / 轻量可控栈）。
+- `profile/identity.md`：AI 协作两段式 + git 走 GUI；广博杂学兴趣（军事航空 / 数码器材规格 / 排名极值 / 英语词源）。
+- `references/cpp-oi-style.md`：简洁是审美，写完主动再抠一层（省变量 / 降复杂度 / 融合多份取最优）。
+- `references/engineering-code-style.md`：先懂原理再改、写法选一种贯穿。
+- `references/design-style.md`：规则 15 流畅是底线（性能即审美，逐帧对标）。
+- `references/writing-style.md`：润色守字数硬约束、格言式短句偏好（命名 / 点睛专用）。
+- `references/ai-tone-blacklist.md`：新增「读者宣传腔」（助你高效前行 / 提升效率）。
+
+### Notes
+
+- 工作流 15/40 片成功（约 9200 条 / 396 信号），全量候选与「待确认 / 排除」三档存档于 `observations.md` 与 `tasks/w1xizrsxz.output`。
+- **未写入、待本人确认（价值 / 身份级 🔴）**：「AI 优先」价值观、结果导向 + 直白不避攻击性、合规较真 + CC BY-NC-SA 协议偏好、决定论世界观、深浅切换是否收紧为纯跟随系统。
+- **排除**：技术品牌"鄙视链"（带偏见）、AI 当情感倾诉、应试突击旧信号、口头禅证据不足项。
+- C++ 反复纠正、统一、反 AI 腔等再获大量佐证，仅升置信。
+
 ## [0.6.10] - 2026-06-08
 
 ChatGPT 存档深挖第二轮（读 corrections / preferences / 话题分类，沉淀更完整画像）。
