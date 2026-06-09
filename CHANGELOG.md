@@ -6,6 +6,29 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.0] - 2026-06-08
+
+ChatGPT 存档补漏轮：修好分片重跑 25 个失败片（35/35 全成），挖出长尾并沉淀。
+
+### Added / Changed
+
+- `references/wording.md`：用词决策模式（列候选二选一 + 全文统一 + 主动找 N 处不一致）。
+- `references/writing-style.md`：抒情记叙 register（回忆录 / 赋 / epigraph 文学化但"文艺而不矫情"）。
+- `profile/conversation-style.md`：严守任务边界（别擅自增删 / 顺手优化）。
+- `profile/thinking-style.md`：对"严格"的执念、先自己做 AI 当审查者、泛化外推 + git bisect 二分定位。
+- `profile/decision-rules.md`：约束先行 / 结论在前、自建优先 / 白嫖到底。
+- `references/cpp-oi-style.md`：新增「常用写法与调试」——二分左闭右开模板、改代码点对点、高尔夫另一套标准。
+- `references/design-style.md`：规则 16 极简也要惊艳 / 跟住当代、规则 17 实物印刷按真实尺寸。
+- `profile/preferences.md`：AI 协作交还方式（一次一步 / 只给建议别动文件）、个人品牌与命名。
+- `profile/identity.md`：兴趣补加密货币、规则系统设计 / 协作绘板。
+- `profile/personality.md`：把对外交涉当工程推进。
+
+### Notes
+
+- **修复了首轮 37% 覆盖**：失败片消息长（代码 / 日志粘贴），按字节切 + 截断后 35/35 全成，覆盖剩余 ~1.5 万条。至此 24543 条**基本全覆盖**。
+- **未写入、待确认（敏感 🔴）**：「规则即风险、边界自己界定」（合规灰区）、「功利算计优先于道德直觉」、催 AI 爆粗（私人 register，不让分身输出带脏话）。
+- 全量候选存档 `observations.md` 与 `tasks/wk72y200u.output`。
+
 ## [0.7.2] - 2026-06-08
 
 用真实语料样本替换编造占位示例。
