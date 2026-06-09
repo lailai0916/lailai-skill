@@ -6,6 +6,16 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.7.1] - 2026-06-08
+
+沉淀 v0.7.0 里 lailai 本人确认的 4 条价值 / 规则项。
+
+### Added / Changed
+
+- `profile/personality.md`：**AI 优先**价值观（存量技能贬值 / 认知审美升值，与"须人工审核"并存）；**直白不避攻击性**（该说硬话不软化，对事不对人，对齐审稿 register）。
+- `references/project-docs-style.md`：规则 5 补**个人创作内容惯用 CC BY-NC-SA**（与代码项目默认 MIT 并存）。
+- `references/design-style.md`：规则 12 **收紧为默认纯跟随系统、不加手动切换开关**（原"可留手动切换"→ lailai 倾向直接去掉切换按钮）。
+
 ## [0.7.0] - 2026-06-08
 
 ChatGPT 存档第三轮：40 片多 agent 工作流穷尽扫描，跨 11 维沉淀一批新画像。

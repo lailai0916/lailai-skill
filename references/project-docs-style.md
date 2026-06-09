@@ -15,7 +15,7 @@
 2. **`.gitignore`** 用 Vite 默认模板。
 3. **贡献指南**放 `.github/CONTRIBUTING.md`。
 4. **多语言以英文为基准**。README 用 `README.md` + `README.<language-tag>.md`（如 `README.zh-Hans.md`）。**有可视化内容的项目做 i18n 国际化**：默认支持英语 + 简体中文两种、**默认英语**。例外——已有 i18n（其它语言 / 默认非英语），或显然无需多语言（纯内部脚本、单语内容站等），就别硬加。
-5. **许可协议**：每个开源项目都要有 `LICENSE`，**默认 MIT**。README 末尾必有 License 段说明。
+5. **许可协议**：每个开源项目都要有 `LICENSE`，README 末尾必有 License 段。**代码项目默认 MIT**；**个人创作内容**（文章 / 设计 / 作品集等非代码）惯用 **CC BY-NC-SA**。
 6. **版本**遵循 Semantic Versioning；**变更日志**遵循 Keep a Changelog。
 7. **Prettier 必装**：每个项目都装 Prettier 做格式化——`devDependency` + 配置文件（`printWidth: 80`、`singleQuote: true`、`trailingComma: "es5"`）+ `format` 脚本，HTML / CSS / JS / TS / JSON / MD 统一交给它，不手动对齐。C++ 见 [cpp-oi-style.md](cpp-oi-style.md)；文档文本遵循 [markdown-style.md](markdown-style.md) / [wording.md](wording.md)。
 
