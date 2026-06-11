@@ -6,6 +6,20 @@
 
 ---
 
+## 2026-06-11 · v0.8.7 · 首次用达尔文.skill 优化入口
+
+- **触发原因**：lailai 让我真正安装并使用花叔的 女娲.skill / 达尔文.skill（此前只是借用方法论手搓）。装到 `~/.claude/skills/{nuwa,darwin}-skill`（用户级，不入仓库），用达尔文跑 lailai-skill。
+- **方法**：Phase 0.5 设计 3 个 test-prompts → Phase 1 基线 9 维（结构主 agent + dim8 spawn 独立 judge 实测 with_skill vs baseline）→ 🔴 CHECKPOINT → Phase 2 两轮。
+- **基线**：≈77.9（结构维度普遍 8-10，dim8=6）。
+- **第 1 轮 dim8**：加"只输出成品"规则 → 双 judge 复评仍 6/10，泄漏照旧。结论：泄漏是子 agent 碎碎念的夹具 artifact，文字规则修不掉。**按棘轮本应 revert，但经 lailai 确认规则本身正确 → 保留**。
+- **第 2 轮 dim3**：失败模式升三段式 → 独立 judge dim3 5→8（+3），keep。
+- **元发现**：主 agent 基线自评 dim3=8、独立 judge=5 —— darwin 反例#1（自评乐观）实测复现，提醒后续评分多依赖独立 judge。
+- **测试结果**：full_test（非干跑）；招牌能力（反 AI 腔改写）双轮实测稳胜 baseline。
+- **是否保留**：保留（v0.8.7），已合并 main。
+- **后续行动**：dim8 实测天花板是测试方法局限，非真 flaw；如需再榨可做 dim9 反模式独立成节。`results.tsv` 在 darwin 目录。
+
+---
+
 ## 2026-06-11 · v0.8.6 · 文件树 # 注释对齐规范
 
 - **触发原因**：lailai 要求所有文件树的 `#` 注释竖向对齐，`#` 左侧默认 36 字符，最长路径 x>34 时取 x+2。

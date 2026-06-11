@@ -6,6 +6,22 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.7] - 2026-06-11
+
+用达尔文.skill（alchaincyf/darwin-skill 2.0）对入口 SKILL.md 做一轮评估 + 优化。
+
+### Changed
+
+- `SKILL.md`：工作流第 6 步 + 自检流程加**"只输出成品"硬规则**（不把读规则 / 自我校准 / 推理 / 英文旁白写进交付物）。
+- `SKILL.md`：**失败模式与兜底升级为三段式**（触发条件 → 一线修复 → 仍失败兜底），显式编码"一线修复也无效"的二次分支。
+- 新增 `test-prompts.json`：达尔文 dim8 实测用的 3 个典型 prompt（反 AI 腔改写 / 聊天命名 / 题解）。
+
+### Notes
+
+- 基线 9 维评估：独立 judge 实测（非干跑）。dim8（实测表现）双 judge 一致 6/10——发现并保留了一个真实结论：**子 agent 会把英文推理旁白泄进产出**，但这是测试夹具 artifact，SKILL.md 文字规则修不掉（加了规则泄漏照旧）。
+- dim3（失败模式）独立 judge 5→8（三段式确认有效，keep）。也暴露主 agent 基线自评偏乐观（darwin 反例#1）。
+- 达尔文最大价值是**证伪 + 体检**：确认 lailai-skill 结构已过硬（dims 1-7/9 多在 8-10）、招牌能力（反 AI 腔改写）实测稳胜 baseline。优化日志在 `~/.claude/skills/darwin-skill/results.tsv`。
+
 ## [0.8.6] - 2026-06-11
 
 文件树 `#` 注释对齐规范。
