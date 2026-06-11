@@ -6,6 +6,26 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.6] - 2026-06-11
+
+文件树 `#` 注释对齐规范。
+
+### Added
+
+- `references/project-docs-style.md`：规则 12 加文件树 `#` 注释对齐——所有 `#` 竖向对齐，左侧字段宽度取 `max(36, x+2)`（x=最长行左侧字符数），默认 36；Self-review Checklist 同步。
+
+### Changed
+
+- 本地项目：对齐 6 个仓库 10 份 README 的 `#` 文件树（code-comparator、hangzhou-highschool-map、gfssm-website、lailai-skill 含 examples/readme-demo）；gmp、novel 的空格 / CJK 树按 lailai 选择转成 `#`、严格按字符数对齐（gmp 因长中文名 x=39 取 41 列，novel 全 ASCII 取 36 列）。
+
+## [0.8.5] - 2026-06-11
+
+记录前先解码意图，不照搬原话。
+
+### Added
+
+- `references/maintenance-guide.md`：进化原则加一条「先解码意图，再落规范」——lailai 说"记进 lailai-skill / 加这条"时，先理解他真正想表达的意思（含糊先确认），再按本 skill 写作 / 用词 / 排版规范写成可执行、易懂的条目；原话是素材，成文要规范化。
+
 ## [0.8.4] - 2026-06-11
 
 给项目规范加分档元规则，从源头区分强制 / 推荐 / 仅位置。

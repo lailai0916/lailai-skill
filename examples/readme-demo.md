@@ -43,9 +43,9 @@ task ls --tag work
 
 \`\`\`text
 task-cli/
-├── bin/cli.js # 入口
-├── src/store.js # JSON 读写
-└── src/commands/ # 子命令
+├── bin/cli.js                      # 入口
+├── src/store.js                    # JSON 读写
+└── src/commands/                   # 子命令
 \`\`\`
 ```
 

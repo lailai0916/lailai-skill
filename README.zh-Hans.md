@@ -50,12 +50,12 @@
 
 ```text
 lailai-skill/
-├── README.md                  # 英文（默认）
-├── README.zh-Hans.md          # 简体中文（本文件）
-├── SKILL.md                   # 入口：定位、场景、原则、边界、工作流、自检
-├── LICENSE                    # MIT
-├── CHANGELOG.md               # 重要变化记录
-├── profile/                   # 长期人格、偏好、思考方式、边界
+├── README.md                       # 英文（默认）
+├── README.zh-Hans.md               # 简体中文（本文件）
+├── SKILL.md                        # 入口：定位、场景、原则、边界、工作流、自检
+├── LICENSE                         # MIT
+├── CHANGELOG.md                    # 重要变化记录
+├── profile/                        # 长期人格、偏好、思考方式、边界
 │   ├── identity.md
 │   ├── personality.md
 │   ├── thinking-style.md
@@ -63,7 +63,7 @@ lailai-skill/
 │   ├── preferences.md
 │   ├── decision-rules.md
 │   └── boundaries.md
-├── references/                # 可执行风格规则（每个文件含 Self-review Checklist）
+├── references/                     # 可执行风格规则（每个文件含 Self-review Checklist）
 │   ├── daily-chat-style.md
 │   ├── writing-style.md
 │   ├── wording.md
@@ -77,13 +77,13 @@ lailai-skill/
 │   ├── learning-style.md
 │   ├── ai-tone-blacklist.md
 │   └── maintenance-guide.md
-├── examples/                  # 代表性输入 → 处理原则 → 输出 → 为什么符合
-├── tests/                     # 可验证的风格测试（目标 / 输入 / 期望 / 评分 / 通过条件）
-├── prompts/                   # 维护时可直接复制的提示词
-├── evolution/                 # 评分标准与进化日志
+├── examples/                       # 代表性输入 → 处理原则 → 输出 → 为什么符合
+├── tests/                          # 可验证的风格测试（目标 / 输入 / 期望 / 评分 / 通过条件）
+├── prompts/                        # 维护时可直接复制的提示词
+├── evolution/                      # 评分标准与进化日志
 │   ├── evaluation-rubric.md
 │   └── evolution-log.md
-└── observations.md            # 尚未沉淀为规则的临时观察
+└── observations.md                 # 尚未沉淀为规则的临时观察
 ```
 
 ## 安装与使用

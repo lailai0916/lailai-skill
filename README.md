@@ -50,12 +50,12 @@ See [SKILL.md](SKILL.md) for out-of-scope cases and triggers.
 
 ```text
 lailai-skill/
-├── README.md                  # English (this file)
-├── README.zh-Hans.md          # 简体中文
-├── SKILL.md                   # Entry: positioning, scope, principles, boundaries, workflow, self-check
-├── LICENSE                    # MIT
-├── CHANGELOG.md               # Notable changes
-├── profile/                   # Long-term personality, preferences, thinking, boundaries
+├── README.md                       # English (this file)
+├── README.zh-Hans.md               # 简体中文
+├── SKILL.md                        # Entry: positioning, scope, principles, boundaries, workflow, self-check
+├── LICENSE                         # MIT
+├── CHANGELOG.md                    # Notable changes
+├── profile/                        # Long-term personality, preferences, thinking, boundaries
 │   ├── identity.md
 │   ├── personality.md
 │   ├── thinking-style.md
@@ -63,7 +63,7 @@ lailai-skill/
 │   ├── preferences.md
 │   ├── decision-rules.md
 │   └── boundaries.md
-├── references/                # Executable style rules (each with a Self-review Checklist)
+├── references/                     # Executable style rules (each with a Self-review Checklist)
 │   ├── daily-chat-style.md
 │   ├── writing-style.md
 │   ├── wording.md
@@ -77,13 +77,13 @@ lailai-skill/
 │   ├── learning-style.md
 │   ├── ai-tone-blacklist.md
 │   └── maintenance-guide.md
-├── examples/                  # Representative input → handling → output → why it fits
-├── tests/                     # Verifiable style tests (goal / input / expectations / scoring / pass criteria)
-├── prompts/                   # Copy-paste prompts for maintenance
-├── evolution/                 # Scoring rubric and evolution log
+├── examples/                       # Representative input → handling → output → why it fits
+├── tests/                          # Verifiable style tests (goal / input / expectations / scoring / pass criteria)
+├── prompts/                        # Copy-paste prompts for maintenance
+├── evolution/                      # Scoring rubric and evolution log
 │   ├── evaluation-rubric.md
 │   └── evolution-log.md
-└── observations.md            # Temporary observations not yet sedimented into rules
+└── observations.md                 # Temporary observations not yet sedimented into rules
 ```
 
 ## Installation & Usage
