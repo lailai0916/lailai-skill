@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.16] - 2026-06-13
+
+补简洁写法（lailai 第一方建议，P2400）。
+
+### Changed
+
+- `references/cpp-oi-style.md`：常用写法增「简单二选一 return 用三目 `return c?a:b;`」（规则 4「再抠一层」的落地；复杂逻辑别硬塞）。
+
 ## [0.8.15] - 2026-06-13
 
 补函数命名（lailai 第一方建议，P2400）。
