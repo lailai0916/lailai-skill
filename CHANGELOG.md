@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.20] - 2026-06-14
+
+符号不重载（lailai 第一方建议，P2400 细节复查）。
+
+### Changed
+
+- `references/latex-math-style.md`：规则 19 补「同一篇内一个符号只表示一个量，不跨小节重载」（题意「重复 $k$ 次」与 DP「断点 $k$」别共用 $k$）。
+
 ## [0.8.19] - 2026-06-14
 
 循环计数器命名澄清（lailai 第一方建议，P2400）。
