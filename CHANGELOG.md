@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.15] - 2026-06-13
+
+补函数命名（lailai 第一方建议，P2400）。
+
+### Changed
+
+- `references/cpp-oi-style.md`：规则 23 补「比较函数惯用 `cmp`，别自造名（如 `better`）」。
+
 ## [0.8.14] - 2026-06-13
 
 收紧规则 5 边界（lailai 裁决，P2400 嵌套循环）。
