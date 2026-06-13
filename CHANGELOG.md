@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.8] - 2026-06-12
+
+沉淀「洛谷专栏版题解格式」：从 observation 升为规则（`luogu-auto-writer` 校准 + P6598 真实 API 佐证）。
+
+### Added
+
+- `references/docusaurus-style.md`：题解部分增「洛谷专栏版（同步拷贝）」小节——洛谷专栏拷贝**无 frontmatter**、开头 **2 张 shields 徽章**（题目 + 博客），正文与站内 mdx 逐字节一致；所有 OJ 题先发专栏拿 `aid`、mdx `date` 用专栏精确秒。补此前 references 只覆盖站内 mdx 的空白。**并入而非新建文件**（反膨胀）。
+
 ## [0.8.7] - 2026-06-11
 
 用达尔文.skill（alchaincyf/darwin-skill 2.0）对入口 SKILL.md 做一轮评估 + 优化。

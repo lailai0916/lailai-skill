@@ -81,6 +81,21 @@
 
 **题解美学（语料校准）**：追求**精简、优雅、"几句话说清"的高手感**，不长篇教学。能一两句讲透的思路绝不铺开；显然的题意 / 定义直接略过（"是个人都知道"）。判断标准是"像顶尖高手随手写的"，不是"面面俱到的讲义"。
 
+### 洛谷专栏版（同步拷贝）
+
+每篇题解在洛谷专栏有一份**正文相同**的拷贝（`<Solution>` 的 `aid` 即其文章 id），与站内 mdx 只差结构性头部，正文骨架 / 数学 / 代码完全一致：
+
+- **无 frontmatter、无 `<Solution>`、无 `{/* truncate */}`**。
+- 开头放 **2 张 shields.io 徽章**（题目 + 博客），其后直接正文：
+
+  ```md
+  [![](https://img.shields.io/badge/Luogu-<PID>-blue?style=for-the-badge&logo=luogu)](https://www.luogu.com.cn/problem/<PID>)
+  [![](https://img.shields.io/badge/Blog-Solution-blue?style=for-the-badge&logo=markdown)](https://lailai.one/blog/solution/<PID>)
+  ```
+
+  （已从 3 张减为 2 张，去掉「洛谷文章」那张。）
+- **所有 OJ 题（含 CF / AT）都先发洛谷专栏拿到 `aid`**，站内 mdx 再用 `<Solution aid>` 引用；mdx 的 `date` 用洛谷专栏的精确发布秒，两边一致（见上「Frontmatter」）。
+
 ## lailai 排印约定（站点专属）
 
 - **lailai 始终小写**，即使出现在句首、段落开头或标题中。

@@ -76,7 +76,7 @@
 - 场景：用 lailai 的经验手册 + 109 篇真实题解（`lailai0916.github.io/blog/solution`）校准自动题解工具 `luogu-auto-writer` 时发现。
 - 推测：洛谷专栏版从未进 references，因为站点规则仓库只管站内 mdx。
 - 稳定性：109 篇 mdx 一致 + 手册明述，确定性高。
-- 处理：建议沉淀为 `references/luogu-solution-style.md`，或在 `docusaurus-style.md` 增一节「洛谷专栏版」。
+- 处理：**已沉淀** → `docusaurus-style.md`「洛谷专栏版（同步拷贝）」小节（并入而非新建，遵反膨胀）。
 - 隐私检查：否。
 
 ### 2026-06-08 ChatGPT 两年存档挖矿（第一方语料校准）
