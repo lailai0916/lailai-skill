@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.18] - 2026-06-13
+
+禁手动 LaTeX 间距命令（lailai 第一方建议，P2400）。
+
+### Changed
+
+- `references/latex-math-style.md`：规则 4 细化，禁用一切显式间距命令 `\,` `\;` `\:` `\!` `\quad` `\qquad` 及连写空格，交给 KaTeX 默认排版（`c(f_{i,j})` 不写 `c(\,f_{i,\,j}\,)`）。与「命令后接数字加空格」区分（那是普通空格非间距命令）。
+
 ## [0.8.17] - 2026-06-13
 
 修正题解分点规则的误读（lailai 第一方建议，P2400）。
