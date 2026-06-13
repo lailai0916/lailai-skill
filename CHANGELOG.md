@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.12] - 2026-06-13
+
+补一条代码风格（lailai 第一方建议，写 P2400 时）。
+
+### Changed
+
+- `references/cpp-oi-style.md`：常用写法增「bool 值用 `0`/`1` 不写 `false`/`true`」（`return 0;` 不写 `return false;`）；唯一例外 `ios::sync_with_stdio(false)`。
+
 ## [0.8.11] - 2026-06-13
 
 泛化已有规则（lailai 第一方建议，写 P2400 时）——不新增条目。
