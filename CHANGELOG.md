@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.10] - 2026-06-13
+
+补一条代码风格（lailai 第一方建议，写 P2400 时）。
+
+### Changed
+
+- `references/cpp-oi-style.md`：常用写法增「同类型定义合并一行」——`string s,f[N][N];`；变量多则标量、数组分别各占一行，不混排。
+
 ## [0.8.9] - 2026-06-13
 
 沉淀题解写作的三条实证教训（`luogu-auto-writer` 写 P2400 时 lailai 指出「不像我」，对照 109 篇真实题解 grep 校准）。
