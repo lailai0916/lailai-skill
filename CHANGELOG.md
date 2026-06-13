@@ -6,6 +6,15 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.9] - 2026-06-13
+
+沉淀题解写作的三条实证教训（`luogu-auto-writer` 写 P2400 时 lailai 指出「不像我」，对照 109 篇真实题解 grep 校准）。
+
+### Changed
+
+- `references/cpp-oi-style.md`：新增规则 24——**DP 数组用 `f` 不用 `dp`**（数学符号同用 `$f$`；站内 109 篇 `dp[` 出现 $0$ 次）。
+- `references/docusaurus-style.md`：题意简述**不含数据范围**；解题思路偏**连贯自然段**、少用 `**X**：` 加粗小标签、简单转移行内 `$...$` 带过不堆 `$$` 公式块。
+
 ## [0.8.8] - 2026-06-12
 
 沉淀「洛谷专栏版题解格式」：从 observation 升为规则（`luogu-auto-writer` 校准 + P6598 真实 API 佐证）。
