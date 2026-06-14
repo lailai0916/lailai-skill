@@ -6,6 +6,18 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.22] - 2026-06-14
+
+题意简述书面化 + 撤销「符号不重载」（lailai 第一方建议，P2400）。
+
+### Changed
+
+- `references/docusaurus-style.md`：题意简述补「书面精确转述、不口语化、不用举例代替定义、沿用题面记号如 $k(t)$」。
+
+### Removed
+
+- `references/latex-math-style.md`：撤销 v0.8.20 加的「符号不重载」。lailai 实测偏好沿用题面 $k(t)$ 的原版写法（即便与 DP 断点 $k$ 重名），该规则属过度约束、其举例本身被否决。
+
 ## [0.8.21] - 2026-06-14
 
 辅助函数按复用次数决定（lailai 第一方建议，P2400 改 O(n^3)）。
