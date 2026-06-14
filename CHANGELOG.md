@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.21] - 2026-06-14
+
+辅助函数按复用次数决定（lailai 第一方建议，P2400 改 O(n^3)）。
+
+### Changed
+
+- `references/cpp-oi-style.md`：常用写法补「辅助函数按复用次数决定」——$\ge2$ 次才抽 helper（`period` / `dig`），只用一次内联，重构后复用次数变了跟着调（解释本题 `period` 先内联后又抽出）。
+
 ## [0.8.20] - 2026-06-14
 
 符号不重载（lailai 第一方建议，P2400 细节复查）。
