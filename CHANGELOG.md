@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.23] - 2026-06-14
+
+`scanf/printf` 与 `endl` 的合理例外（lailai 第一方澄清）。
+
+### Changed
+
+- `references/cpp-oi-style.md`：规则 11 开例外——格式处理上 `scanf` / `printf` 明显更方便时允许用；规则 12 开例外——交互题需刷新缓冲区时可用 `endl`（换行 + flush）。（`#define mid (l+r>>1)` 规则 8 已覆盖，无需改。）
+
 ## [0.8.22] - 2026-06-14
 
 题意简述书面化 + 撤销「符号不重载」（lailai 第一方建议，P2400）。
