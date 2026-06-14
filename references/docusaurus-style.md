@@ -24,14 +24,14 @@
 
 - 博客字段顺序：`title`、`date`、`authors: lailai`（标量，不是数组）、`tags`（始终数组）。不用 `slug`（文件名即 slug）。
 - 文档页只有 `title:`，无 date / authors / tags。
-- 日期 `YYYY-MM-DDTHH:MM:SS+08:00`——**带秒，且带 Asia/Shanghai 时区偏移**（`+08:00` 必须；否则 CI 的 UTC 环境会把无偏移时间戳渲染偏 $8$ 小时）：`date: 2025-08-04T15:30:00+08:00`。普通文章秒位用 `:00`；**题解**用其**洛谷专栏对应版本的精确发布秒**（`<Solution>` 的 `aid`，洛谷记录到秒），两边保持一致。
+- 日期 `YYYY-MM-DDTHH:MM:SS+08:00`——**带秒，且带 Asia/Shanghai 时区偏移**（`+08:00` 必须；否则 CI 的 UTC 环境会把无偏移时间戳渲染偏 $8$ 小时）：`date: 2025-08-04T15:30:00+08:00`。普通文章秒位用 `:00`；**题解**用其**洛谷专栏对应版本的精确发布秒**（`<Solution>` 的 `lid`，洛谷记录到秒），两边保持一致。
 - 标题格式 `<分类>：<名称>`，全角冒号。分类前缀固定：`题解：` / `数学：` / `项目：` / `资源：` / `个人：` / `旅行：` / `记录：` / `杂谈：`。
 - tags 只能取自 `blog/tags.yml`。题解恒为 `[oi, solution, <oj>]`（`<oj>` ∈ luogu / codeforces / atcoder / spoj / uva）；数学 `[math]`。不自造 tag。
 
 ### 开头与 truncate
 
 - 每篇博客一段简短 lead（通常 < 30 字，一句），空行，再 `{/* truncate */}`。lead 是列表页展示内容。无问候、无"本文将"。
-- 题解用 `<Solution pid="..." aid="..." />` 替代 lead，再 `{/* truncate */}`，前面不放 prose。
+- 题解用 `<Solution pid="..." lid="..." />` 替代 lead，再 `{/* truncate */}`，前面不放 prose。
 
 ### 标题
 
@@ -50,7 +50,7 @@
 
 ### MDX 组件
 
-- `<Solution pid="..." aid="..." />`：每篇题解第一行（frontmatter 之后），恰两个属性。
+- `<Solution pid="..." lid="..." />`：每篇题解第一行（frontmatter 之后），恰两个属性。
 - `<Problem id="..." />`：文档题目页 `## 例题` 末尾。
 - `<Quote author="..." source="...">`：个人 / 记录文的题记，作者 / 来源须真实具体。
 - `<Desmos id="..." />`、`<Notation>…</Notation>`（极少用）、`<GitHub repo="owner/repo" />`、`<Tabs>/<TabItem>`。
@@ -69,7 +69,7 @@
 ### 题解模板（强制顺序）
 
 1. frontmatter：`title: 题解：<PID> <name>`，`tags: [oi, solution, <oj>]`。
-2. `<Solution pid="..." aid="..." />`
+2. `<Solution pid="..." lid="..." />`
 3. `{/* truncate */}`
 4. 可选 `## 参考资料`。
 5. `## 题意简述`（trivial CF / AT 可省）——一两句转述题目要求，**不含数据范围**（范围放思路 / 复杂度处）。**用书面精确语言转述，不口语化**；**不用「例如 X 缩成 Y」式举例代替定义**（题意是正式转述，不是科普讲解）。题面已有的记号（如压缩格式 $k(t)$）直接沿用，不必为避讳重名而改写或拆成例子。
@@ -83,7 +83,7 @@
 
 ### 洛谷专栏版（同步拷贝）
 
-每篇题解在洛谷专栏有一份**正文相同**的拷贝（`<Solution>` 的 `aid` 即其文章 id），与站内 mdx 只差结构性头部，正文骨架 / 数学 / 代码完全一致：
+每篇题解在洛谷专栏有一份**正文相同**的拷贝（`<Solution>` 的 `lid` 即其文章 id），与站内 mdx 只差结构性头部，正文骨架 / 数学 / 代码完全一致：
 
 - **无 frontmatter、无 `<Solution>`、无 `{/* truncate */}`**。
 - 开头放 **2 张 shields.io 徽章**（题目 + 博客），其后直接正文：
@@ -95,7 +95,7 @@
 
   （已从 3 张减为 2 张，去掉「洛谷文章」那张。）
 
-- **所有 OJ 题（含 CF / AT）都先发洛谷专栏拿到 `aid`**，站内 mdx 再用 `<Solution aid>` 引用；mdx 的 `date` 用洛谷专栏的精确发布秒，两边一致（见上「Frontmatter」）。
+- **所有 OJ 题（含 CF / AT）都先发洛谷专栏拿到 `lid`**，站内 mdx 再用 `<Solution lid>` 引用；mdx 的 `date` 用洛谷专栏的精确发布秒，两边一致（见上「Frontmatter」）。
 
 ## lailai 排印约定（站点专属）
 

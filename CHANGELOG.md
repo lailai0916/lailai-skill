@@ -6,6 +6,14 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.24] - 2026-06-14
+
+`<Solution>` 文章 id 属性 `aid` → `lid`（lailai 第一方要求，对齐洛谷官方字段名）。
+
+### Changed
+
+- `references/docusaurus-style.md` + `observations.md`：`<Solution>` 的文章 id 属性名由 `aid` 统一为 `lid`，与洛谷官方字段（文章列表 / `editSubmit` 的 `lid`）一致。值不变，仅属性名变。（站点 `Solution` 组件、110 篇 mdx、`publish_site.py`、`luogu-solution` SKILL 已同步。）
+
 ## [0.8.23] - 2026-06-14
 
 `scanf/printf` 与 `endl` 的合理例外（lailai 第一方澄清）。
