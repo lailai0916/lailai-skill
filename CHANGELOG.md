@@ -6,6 +6,15 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.25] - 2026-06-14
+
+OI 代码细则补强（lailai 第一方纠正，$17$ 篇洛谷题解重做触发）。
+
+### Added
+
+- `references/cpp-oi-style.md`「常用写法与调试」补 $4$ 条：相邻同类型定义合并（`vector<int> cv,mL,ms;`）；引用符号贴名留前空格（`auto &f` / `const string &a`）；`.size()` 不强转 `int`；常用算法严格照站内 `docs/contest/personal/common-templates.mdx`（快速幂 `Pow`、线性逆元、存图 `vector<int> G[N]`），不自创命名 / 实现。
+- `observations.md`：记录本次纠正及教训——`G[]` / 大括号充要条件 / 局部变量 / 合并定义本已是规则，失误在没严格执行，写前要逐条核对 checklist。
+
 ## [0.8.24] - 2026-06-14
 
 `<Solution>` 文章 id 属性 `aid` → `lid`（lailai 第一方要求，对齐洛谷官方字段名）。

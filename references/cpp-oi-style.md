@@ -63,7 +63,10 @@
 
 ## 常用写法与调试（语料校准）
 
-- **同类型定义合并一行**：`string s,f[N][N];`、`int n,m,a[N];`。变量多则**标量一行、数组一行**分开（标量归标量、数组归数组），不混排。
+- **同类型定义合并一行**：`string s,f[N][N];`、`int n,m,a[N];`。变量多则**标量一行、数组一行**分开（标量归标量、数组归数组），不混排。相邻、相同类型的多个定义也要合并（`vector<int> cv,mL,ms;`，不拆成三行）。
+- **引用 / 指针符号贴变量名、留前空格**：`Type &x`（`auto &f`、`const string &a`、`int &v=T[u][c]`），不写 `auto&f`；范围 for 取引用同理 `for(auto &v:G[u])`。
+- **`.size()` 不转 `int`**：一般直接用 `v.size()`（如 `for(int i=0;i<v.size();i++)`、`int n=s.size();`），不写 `(int)v.size()`；需要参与有符号运算时先存进 `int` 变量，别就地强转。
+- **常用算法严格用站内个人模板，不自创**：快速幂、乘法逆元、存图、并查集、线段树等一律照 `docs/contest/personal/common-templates.mdx`（lailai《常用模板》）的写法与命名。典型：快速幂 `ll Pow(ll x,ll y)`（先 `x%=mod;`）；线性逆元 `inv[i]=i==1?1:(mod-mod/i)*inv[mod%i]%mod;`；存图 `vector<int> G[N]`（大写 `G`，配规则 18）。别自己另起 `qpow` / `e[]` 之类的命名或实现。
 - **bool 值用 `0`/`1`**：不写 `false`/`true`（`return 0;` 不写 `return false;`）；唯一例外是固定惯用写法 `ios::sync_with_stdio(false)`。
 - **简单二选一 return 用三目**：`if(c)return a; return b;` 合并为 `return c?a:b;`（规则 4「再抠一层」的落地）；复杂逻辑别硬塞三目伤可读。
 - **辅助函数按复用次数决定**：同一段逻辑用到 $\ge2$ 次才抽成 helper（如周期判定 `period`、位数 `dig`）；**只用一次**的短逻辑直接内联，不为一次性逻辑造函数（规则 4 简洁）。重构后复用次数变了就跟着调：变 $1$ 次内联、变 $2$ 次抽出。
