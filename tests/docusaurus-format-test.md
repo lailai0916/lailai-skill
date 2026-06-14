@@ -11,7 +11,7 @@
 ## 期望输出特征
 
 - frontmatter：`title: 题解：P9999 <name>`、`tags: [oi, solution, luogu]`，字段顺序正确，`authors` 不写成数组（题解通常省 authors，按站点惯例 blog 默认作者亦可，至少不违规）。
-- 第一行 `<Solution pid="P9999" aid="..." />`，紧跟 `{/* truncate */}`，前面无 prose。
+- 第一行 `<Solution pid="P9999" lid="..." />`，紧跟 `{/* truncate */}`，前面无 prose。
 - 正文从 `##` 起，无 H1。
 - 数学用 `$...$`（不是 `\(...\)`），数量包进数学。
 - `## 解题思路` 末尾有复杂度行，如 `时间复杂度为 $O(1)$。`。

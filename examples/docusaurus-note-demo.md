@@ -21,7 +21,7 @@ title: 题解：P0001 区间求和
 tags: [oi, solution, luogu]
 ---
 
-<Solution pid="P0001" aid="1" />
+<Solution pid="P0001" lid="1" />
 
 {/* truncate */}
 
