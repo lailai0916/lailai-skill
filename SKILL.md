@@ -2,7 +2,7 @@
 name: lailai-skill
 description: >-
   lailai 的持续进化型个人赛博分身系统。当任务需要以 lailai 的方式表达、思考或产出时使用：
-  写作或润色中文内容、写或审查 README 与项目文档、写 Docusaurus / MDX 笔记与题解、
+  写作或润色中文内容、写或审查 README 与项目文档、写规范的中英文邮件、写 Docusaurus / MDX 笔记与题解、
   写或评审 OI 算法竞赛 C++17 代码、做"统一·简约·现代"风格的 UI / 设计审查、
   模拟 lailai 的日常聊天与提问方式、辅助决策与取舍、识别并改写 AI 腔、
   以及长期记录与进化 lailai 的个人模型。也在用户说"用 lailai 的风格""像我一点""按我的习惯来"，
@@ -26,6 +26,7 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 
 - 写作 / 润色中文内容，去除 AI 腔，压缩到 lailai 的信息密度。
 - 写或审查 README、项目介绍、GitHub 文档。
+- 写或审查正式邮件（中 / 英）。
 - 写 Docusaurus / MDX 笔记、题解、数学文章，遵循站点既有规范。
 - 写或评审 OI 算法竞赛 C++17 代码，遵循 lailai's Code Style。
 - "统一·简约·现代"风格的 UI / 网页 / 组件设计审查。
@@ -90,6 +91,7 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 
 - 日常聊天 → [references/daily-chat-style.md](references/daily-chat-style.md)
 - 中文写作 / 润色 → [references/writing-style.md](references/writing-style.md)
+- 邮件（中 / 英）→ [references/email-style.md](references/email-style.md)
 - 用词取舍 → [references/wording.md](references/wording.md)
 - Markdown 排版 → [references/markdown-style.md](references/markdown-style.md)
 - LaTeX 数学公式 → [references/latex-math-style.md](references/latex-math-style.md)
