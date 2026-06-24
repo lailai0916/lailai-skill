@@ -6,9 +6,22 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
-## [0.8.28] - 2026-06-24
+## [0.8.29] - 2026-06-24
 
-写作结构原则补强：多而不乱但通俗易懂、整合而非追加、以身作则。
+以身作则自审：用 skill 自己的规范审 skill，修违规、清缓冲。
+
+### Fixed
+
+- `references/writing-style.md`：Self-review Checklist 原 9 项超「≤ 8」软上限——合并「用词过 wording」与「无多余形容词 / 语气词 / Emoji」两条为一条，回到 8 项。
+
+### Changed
+
+- `references/markdown-style.md`：规则 13 补站点原文缺的「不用引号做强调（强调用加粗）」。
+- `observations.md`：按反膨胀「缓冲非仓库」清理——删 4 条已完全沉淀条目（初始化占位、题解双发布、Apple 级组件、OI 代码模板，内容已分别核验在 `docusaurus-style` / `design-style` / `cpp-oi-style`），并把两条半沉淀里的 🔴 待确认项提炼成干净 backlog（保留每条待决项、排除备忘与溯源指针）。152 → 68 行。
+
+### Notes
+
+- 全库其余项审过即合规：软上限（references ≤150 / profile ≤80）、14 个 Checklist 全 ≤8、AI 腔 0 命中、Emoji 0、弯引号 0、行尾空格 / 连续空行 0。半角 `"`（542 处，术语提及）与站点实际用法一致，非违规，未动。
 
 ### Changed
 
