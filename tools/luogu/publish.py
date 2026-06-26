@@ -3,7 +3,8 @@
 源：网站 blog/solution/<PID>.mdx（frontmatter 的 lid 指向洛谷文章；正文从第一个 `##` 起）。
 洛谷正文 = 站点正文 + 开头 2 张徽章。只改 content，category/status/solutionFor 按既定填齐。
 
-用法（三档，默认最安全的本地预览）：
+用法（四档，默认最安全的本地预览）：
+    python publish.py --check          # 登录自检（cookie 有效否）
     python publish.py P1234            # 本地渲染预览，不联网、不发布
     python publish.py P1234 --diff     # 联网只读：拉当前洛谷正文，与站点比对出 diff（不写）
     python publish.py P1234 --live     # 真发布：editSubmit 覆盖 content，发完回读逐字节核对
@@ -73,18 +74,15 @@ def diff_only(src: dict[str, Any]) -> int:
     if not src["lid"]:
         logger.error("frontmatter 缺 lid，无法定位洛谷文章。")
         return 2
-    client = LuoguClient()
-    art = client.get_article(src["lid"])
+    art = LuoguClient().get_article(src["lid"])
     col_body = body_from_first_h2(art.get("content") or "")
     cls = classify(src["web_body"], col_body)
     print(f"=== [只读 diff] {src['pid']} lid={src['lid']} ===")
     print(f"contentFull: {art.get('contentFull')}（False=洛谷正文可能截断，结果存疑）")
     print(f"分类: {cls}")
     if cls != "identical":
-        d = difflib.unified_diff(
-            col_body.split("\n"), src["web_body"].split("\n"),
-            fromfile=f"luogu/{src['pid']}", tofile=f"site/{src['pid']}", lineterm="",
-        )
+        d = difflib.unified_diff(col_body.split("\n"), src["web_body"].split("\n"),
+                                 fromfile=f"luogu/{src['pid']}", tofile=f"site/{src['pid']}", lineterm="")
         print("\n".join(list(d)[:300]))
     return 0
 
@@ -111,7 +109,6 @@ def publish_live(src: dict[str, Any]) -> int:
     client.update_article(src["lid"], payload)
     logger.info("editSubmit 成功 %s -> lid=%s", src["pid"], src["lid"])
 
-    # 回读逐字节核对
     art2 = client.get_article(src["lid"])
     col_body = body_from_first_h2(art2.get("content") or "")
     cls = classify(src["web_body"], col_body)
@@ -119,10 +116,8 @@ def publish_live(src: dict[str, Any]) -> int:
     if art2.get("contentFull") is False:
         print("⚠️ contentFull=False，洛谷正文可能截断，核对结果存疑。")
     if cls == "substantive":
-        d = difflib.unified_diff(
-            col_body.split("\n"), src["web_body"].split("\n"),
-            fromfile=f"luogu/{src['pid']}", tofile=f"site/{src['pid']}", lineterm="",
-        )
+        d = difflib.unified_diff(col_body.split("\n"), src["web_body"].split("\n"),
+                                 fromfile=f"luogu/{src['pid']}", tofile=f"site/{src['pid']}", lineterm="")
         print("\n".join(list(d)[:300]))
         logger.error("回读发现实质差异，请检查。")
         return 1

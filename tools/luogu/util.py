@@ -1,9 +1,10 @@
-"""luogu-publish 共享工具：配置/密钥加载（机器本地，仓库零密钥）、脱敏、mdx 解析、洛谷正文渲染。
+"""luogu 工具共享：配置/密钥（机器本地，仓库零密钥）、缓存目录、脱敏、mdx 解析、洛谷正文渲染。
 
 关键安全约定（见 references/luogu-publish.md）：
 - 本仓库是公开、且被多个项目各 clone 一份的 submodule，绝不放 Cookie/config。
 - Cookie 与机器本地配置从固定外部目录读：默认 ~/.config/luogu-publish/
   （可用环境变量 LUOGU_PUBLISH_HOME 覆盖）。任何 checkout 都指向同一份 Cookie。
+- 抓题/验证的中间产物落到仓库外缓存 ~/.cache/luogu/<PID>/，不进任何仓库。
 """
 from __future__ import annotations
 
@@ -17,6 +18,8 @@ from typing import Any
 
 import yaml
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+
 
 def config_home() -> Path:
     """机器本地配置/密钥目录（仓库外）。"""
@@ -26,17 +29,44 @@ def config_home() -> Path:
     return Path.home() / ".config" / "luogu-publish"
 
 
+def cache_root() -> Path:
+    """抓题/验证中间产物的缓存根（仓库外）。"""
+    env = os.environ.get("LUOGU_CACHE_HOME")
+    root = Path(env).expanduser() if env and env.strip() else Path.home() / ".cache" / "luogu"
+    root.mkdir(parents=True, exist_ok=True)
+    return root
+
+
+def cache_dir(pid: str) -> Path:
+    """单题工作目录 ~/.cache/luogu/<PID>/。"""
+    d = cache_root() / pid_normalize(pid)
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def compat_dir() -> Path:
+    """编译垫片头目录（compat/bits/stdc++.h，给 macOS/clang 补 <bits/stdc++.h>）。"""
+    return SCRIPT_DIR / "compat"
+
+
+def tasks_file() -> Path:
+    return cache_root() / "tasks.yaml"
+
+
 _DEFAULT_CONFIG: dict[str, Any] = {
     "luogu": {
         "base_url": "https://www.luogu.com.cn",
         "csrf_url": "https://www.luogu.com.cn/user/setting",
         "request_delay": 1.0,
-        # editSubmit 全字段覆盖；漏字段会被清空。category/status 跟随线上题解实测值，做成配置项。
+        "max_solutions": 8,  # 单题最多抓多少篇参考题解
+        # editSubmit 全字段覆盖；漏字段会被清空。category/status 跟随线上题解实测值。
         "article": {"category": 2, "status": 2, "top": 0},
     },
+    "verify": {"cxx": "g++", "std": "c++17", "compile_timeout": 60, "run_timeout": 10},
     "site": {
-        # 题解权威源：网站 blog/solution/<PID>.mdx。按 PID 发布时用它定位文件。
-        "repo_path": "/Users/lailai/GitHub/lailai0916.github.io",
+        # 题解权威源：网站 blog/solution/<PID>.mdx。按 PID 定位时用它；默认当前目录
+        # （从网站仓库根运行即可），真实绝对路径放机器本地 ~/.config/luogu-publish/config.yaml。
+        "repo_path": ".",
         "content_dir": "blog/solution",
         "blog_base_url": "https://lailai.one",  # 洛谷版徽章里的 Blog 链接用
     },
@@ -95,7 +125,7 @@ def redact(text: str | None) -> str:
     return _SECRET_PAT.sub(lambda m: m.group(0)[:6] + "***REDACTED***", str(text))
 
 
-def get_logger(name: str = "luogu-publish") -> logging.Logger:
+def get_logger(name: str = "luogu") -> logging.Logger:
     logger = logging.getLogger(name)
     if logger.handlers:
         return logger
@@ -108,7 +138,7 @@ def get_logger(name: str = "luogu-publish") -> logging.Logger:
     return logger
 
 
-# ---- 题号 / 时间 ----
+# ---- 题号 / OJ / 时间 ----
 
 def pid_normalize(pid: str) -> str:
     """规范化题号：去空白、首字母大写（P/B/CF 等保留）。"""
@@ -116,6 +146,20 @@ def pid_normalize(pid: str) -> str:
     if pid and pid[0].islower():
         pid = pid[0].upper() + pid[1:]
     return pid
+
+
+def oj_from_pid(pid: str) -> str:
+    """按题号前缀推断 OJ（站点 tags 的 oj 维度）。"""
+    p = pid.strip().upper()
+    if p.startswith("CF"):
+        return "codeforces"
+    if p.startswith("AT"):
+        return "atcoder"
+    if p.startswith("SP"):
+        return "spoj"
+    if p.startswith("UVA"):
+        return "uva"
+    return "luogu"  # P / B 及默认
 
 
 _CST = timezone(timedelta(hours=8))
@@ -127,7 +171,7 @@ def fmt_site_date(epoch: int | None = None) -> str:
     return dt.strftime("%Y-%m-%dT%H:%M:%S+08:00")
 
 
-# ---- 网站题解 mdx 解析（权威源） ----
+# ---- 网站题解 mdx 解析（发布权威源） ----
 
 _FM_RE = re.compile(r"^---\n(.*?)\n---\n", re.DOTALL)
 
@@ -138,8 +182,7 @@ def parse_mdx(text: str) -> dict[str, Any]:
     if not m:
         return {"frontmatter": {}, "body": text}
     fm = yaml.safe_load(m.group(1)) or {}
-    body = text[m.end():]
-    return {"frontmatter": fm, "body": body}
+    return {"frontmatter": fm, "body": text[m.end():]}
 
 
 def body_from_first_h2(text: str) -> str:

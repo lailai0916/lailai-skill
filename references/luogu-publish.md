@@ -2,7 +2,7 @@
 
 ## 目标
 
-把网站题解同步到洛谷专栏。**网站 `blog/solution/<PID>.mdx` 是唯一权威源**，洛谷是它的对外拷贝。工具在 [`tools/luogu-publish/`](../tools/luogu-publish/)。
+把网站题解同步到洛谷专栏。**网站 `blog/solution/<PID>.mdx` 是唯一权威源**，洛谷是它的对外拷贝。工具在 [`tools/luogu/`](../tools/luogu/)（`publish.py`）。写题解的完整工作流见 [luogu-solution.md](luogu-solution.md)。
 
 ## 适用场景
 
@@ -17,14 +17,14 @@
 
 ## 工作流
 
-改完某篇题解 mdx 就**主动发起**（不必等 lailai 提醒），`tools/luogu-publish/publish.py` 从最安全的本地起步：
+改完某篇题解 mdx 就**主动发起**（不必等 lailai 提醒），`tools/luogu/publish.py` 从最安全的本地起步：
 
-0. **cookie 自检**：`python tools/luogu-publish/publish.py --check`。失效就**跟 lailai 要洛谷 Cookie**，存到 `~/.config/luogu-publish/cookie.txt`（`mkdir -p` 后写入、`chmod 600`），**绝不写进仓库或回显**，再继续。
+0. **cookie 自检**：`python tools/luogu/publish.py --check`。失效就**跟 lailai 要洛谷 Cookie**，存到 `~/.config/luogu-publish/cookie.txt`（`mkdir -p` 后写入、`chmod 600`），**绝不写进仓库或回显**，再继续。
 
 1. **本地预览**（不联网、不发布）：
 
    ```bash
-   python tools/luogu-publish/publish.py <PID>     # 或给 mdx 路径
+   python tools/luogu/publish.py <PID>     # 或给 mdx 路径
    ```
 
    渲染洛谷正文（站点正文 + 开头 2 张徽章），检查 lid、标题、正文对不对。
@@ -32,7 +32,7 @@
 2. **只读 diff**（联网只读，不写）：
 
    ```bash
-   python tools/luogu-publish/publish.py <PID> --diff
+   python tools/luogu/publish.py <PID> --diff
    ```
 
    拉当前洛谷正文与站点逐字节比对，看本次会改什么。
@@ -40,7 +40,7 @@
 3. 🔴 **发布**（不可逆，先确认）：先把预览 / diff 给 lailai，**明确确认后**才：
 
    ```bash
-   python tools/luogu-publish/publish.py <PID> --live
+   python tools/luogu/publish.py <PID> --live
    ```
 
    `editSubmit` 只覆盖 content（保留线上标题 / `solutionFor` / 审核状态），发完**自动回读逐字节核对**，报 一致 / 仅空白 / 实质差异。
