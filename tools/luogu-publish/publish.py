@@ -130,10 +130,25 @@ def publish_live(src: dict[str, Any]) -> int:
     return 0
 
 
+def check_login() -> int:
+    """登录自检：cookie 有效返回 0，否则提示去哪放 cookie 并返回 3。"""
+    from util import config_home
+    st = LuoguClient().check_login()
+    if st.get("logged_in"):
+        print("✅ 已登录，cookie 有效。")
+        return 0
+    print(f"❌ 未登录 / cookie 失效：{st.get('message')}")
+    print(f"   请把整段洛谷 Cookie 存到 {config_home() / 'cookie.txt'}")
+    print("   （浏览器登录洛谷 → 开发者工具 → Network → 任意请求的 Cookie 请求头整段复制）")
+    return 3
+
+
 def main(argv: list[str]) -> int:
+    if "--check" in argv:
+        return check_login()
     args = [a for a in argv[1:] if not a.startswith("--")]
     if not args:
-        print("用法: python publish.py <PID|mdx路径> [--diff|--live]", file=sys.stderr)
+        print("用法: python publish.py <PID|mdx路径> [--check|--diff|--live]", file=sys.stderr)
         return 2
     try:
         src = load_source(args[0])

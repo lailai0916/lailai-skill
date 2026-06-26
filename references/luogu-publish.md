@@ -17,7 +17,9 @@
 
 ## 工作流
 
-`tools/luogu-publish/publish.py` 三档，从最安全的本地预览起步：
+改完某篇题解 mdx 就**主动发起**（不必等 lailai 提醒），`tools/luogu-publish/publish.py` 从最安全的本地起步：
+
+0. **cookie 自检**：`python tools/luogu-publish/publish.py --check`。失效就**跟 lailai 要洛谷 Cookie**，存到 `~/.config/luogu-publish/cookie.txt`（`mkdir -p` 后写入、`chmod 600`），**绝不写进仓库或回显**，再继续。
 
 1. **本地预览**（不联网、不发布）：
 
