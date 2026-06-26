@@ -10,8 +10,8 @@
 # 抓题/验证的中间产物落到 ~/.cache/luogu/<PID>/（仓库外），无需配置。
 
 luogu:
-  base_url: "https://www.luogu.com.cn"
-  csrf_url: "https://www.luogu.com.cn/user/setting"
+  base_url: 'https://www.luogu.com.cn'
+  csrf_url: 'https://www.luogu.com.cn/user/setting'
   request_delay: 1.0
   max_solutions: 8 # 单题最多抓多少篇参考题解
   # editSubmit 全字段覆盖；category/status 跟随线上题解实测值。
@@ -21,14 +21,14 @@ luogu:
     top: 0
 
 verify:
-  cxx: "g++"
-  std: "c++17"
+  cxx: 'g++'
+  std: 'c++17'
   compile_timeout: 60
   run_timeout: 10
 
 site:
   # 题解权威源所在的网站仓库（按 PID 定位 blog/solution/<PID>.mdx）。
   # 默认 "." = 从网站仓库根运行；也可填该仓库的绝对路径。
-  repo_path: "."
-  content_dir: "blog/solution"
-  blog_base_url: "https://lailai.one" # 洛谷版徽章里的 Blog 链接
+  repo_path: '.'
+  content_dir: 'blog/solution'
+  blog_base_url: 'https://lailai.one' # 洛谷版徽章里的 Blog 链接
