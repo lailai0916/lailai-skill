@@ -1,0 +1,25 @@
+# 机器本地配置模板。复制到 ~/.config/luogu-publish/config.yaml 后按需改。
+# 此仓库是公开 submodule，绝不放真实 config / cookie；它们只存在于 ~/.config/luogu-publish/。
+#
+#   mkdir -p ~/.config/luogu-publish
+#   cp config.example.yaml ~/.config/luogu-publish/config.yaml
+#   printf '%s' '你的整段洛谷 Cookie' > ~/.config/luogu-publish/cookie.txt
+#
+# Cookie 获取：浏览器登录洛谷 → 开发者工具 → Network → 任意请求的 Cookie 请求头，整段复制。
+# 也可改用环境变量：export LUOGU_COOKIE='_uid=...; __client_id=...'
+
+luogu:
+  base_url: "https://www.luogu.com.cn"
+  csrf_url: "https://www.luogu.com.cn/user/setting"
+  request_delay: 1.0
+  # editSubmit 全字段覆盖；category/status 跟随线上题解实测值。
+  article:
+    category: 2 # 2 = 题解
+    status: 2 # 2 = 公开
+    top: 0
+
+site:
+  # 题解权威源所在的网站仓库（按 PID 发布时据此定位 blog/solution/<PID>.mdx）。
+  repo_path: "/Users/lailai/GitHub/lailai0916.github.io"
+  content_dir: "blog/solution"
+  blog_base_url: "https://lailai.one" # 洛谷版徽章里的 Blog 链接

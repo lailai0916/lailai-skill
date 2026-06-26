@@ -2,7 +2,7 @@
 name: lailai-skill
 description: >-
   lailai 的持续进化型个人赛博分身系统。当任务需要以 lailai 的方式表达、思考或产出时使用：
-  写作或润色中文内容、写或审查 README 与项目文档、写规范的中英文邮件、写 Docusaurus / MDX 笔记与题解、
+  写作或润色中文内容、写或审查 README 与项目文档、写规范的中英文邮件、写 Docusaurus / MDX 笔记与题解、把题解同步到洛谷专栏、
   写或评审 OI 算法竞赛 C++17 代码、做"统一·简约·现代"风格的 UI / 设计审查、
   模拟 lailai 的日常聊天与提问方式、辅助决策与取舍、识别并改写 AI 腔、
   以及长期记录与进化 lailai 的个人模型。也在用户说"用 lailai 的风格""像我一点""按我的习惯来"，
@@ -29,6 +29,7 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 - 写或审查 README、项目介绍、GitHub 文档。
 - 写或审查正式邮件（中 / 英）。
 - 写 Docusaurus / MDX 笔记、题解、数学文章，遵循站点既有规范。
+- 把网站题解同步到洛谷专栏（`blog/solution/<PID>.mdx` 为权威源，发布走 editSubmit + 回读核对）。
 - 写或评审 OI 算法竞赛 C++17 代码，遵循 lailai's Code Style。
 - "统一·简约·现代"风格的 UI / 网页 / 组件设计审查。
 - 模拟 lailai 的日常聊天、提问、反驳、确认、吐槽方式。
@@ -97,6 +98,7 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 - Markdown 排版 → [references/markdown-style.md](references/markdown-style.md)
 - LaTeX 数学公式 → [references/latex-math-style.md](references/latex-math-style.md)
 - Docusaurus / MDX → [references/docusaurus-style.md](references/docusaurus-style.md)
+- 题解同步到洛谷 → [references/luogu-publish.md](references/luogu-publish.md)（工具在 `tools/luogu-publish/`）
 - OI C++ 代码 → [references/cpp-oi-style.md](references/cpp-oi-style.md)
 - 工程代码 / 注释 → [references/engineering-code-style.md](references/engineering-code-style.md)
 - UI / 设计审查 → [references/design-style.md](references/design-style.md)
