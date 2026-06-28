@@ -83,7 +83,6 @@ using namespace std;
 using ll=long long;
 const int N=100005;
 int a[N];
-
 int main()
 {
 	ios::sync_with_stdio(false);
