@@ -38,7 +38,7 @@
 15. 角度 **`\circ`** ← `\degree`。
 16. 横向省略号 **`\dots`** ← `\cdots` / `\ldots`；纵向 `\vdots`；斜向 `\ddots`。
 17. 空集 **`\varnothing`** ← `\emptyset`。集合用 **`\set{…}`** ← 裸 `\{…\}`（`\set{1,2,3}`、`\set{x\mid P}`、`\set{i}`）。例外：**数列** `\{a_n\}`（是 sequence 非集合，保留）、需**撑大**的 `\left\{…\right\}`（方程组 / 矩阵 / 含分数的集合，`\set` 不会自动撑大）。
-18. 逻辑用 `\implies` / `\impliedby` / `\iff`。
+18. 逻辑推出/反推/等价 **`\implies` / `\impliedby` / `\iff`** ← `\Rightarrow` / `\Leftarrow` / `\Leftrightarrow`。仅表示**逻辑**关系；赋值、变换仍用 `\to` / `\gets`（见 5）。否定的「不能推出」`\nRightarrow` 保留（无对应宏）。
 
 ### 格式细节
 
