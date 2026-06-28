@@ -40,7 +40,7 @@
 
 9. **主函数放末尾**，返回 `int`，以 `return 0;` 结束。
 10. 文件读写用 `freopen`；数据量大时加快读：`ios::sync_with_stdio(false); cin.tie(nullptr);`。
-11. 读写默认用 `cin` / `cout`，避免 `scanf` / `printf`；按需 `getline`。**例外：当格式处理上 `scanf` / `printf` 明显更方便时**（复杂格式、带分隔符的混合读写、精度控制等），允许用，不必硬切 `cin` / `cout`——便利 / 效率明显占优就用它。
+11. 读写默认用 `cin` / `cout`，避免 `scanf` / `printf`；按需 `getline`。**唯一该用 `scanf` / `printf` 的情形是输入带固定格式分隔符、非它不可**（如 `scanf("%d:%d:%d %d:%d:%d",&h1,&m1,&s1,&h2,&m2,&s2);` 读时间）。**精度输出一律 `cout<<fixed<<setprecision(k)`，绝不用 `printf("%.3f")`。** 且**同一份代码不混用**：要么全程 `cin` / `cout`，要么全程 `scanf` / `printf`，不一半一半。
 12. **单字符字面量一律用单引号** `'x'`（非 `"x"`）——输出 `cout<<'x'`、字符串拼接 `s+'('+...`（不写 `s+"("`）都算，作字符不作字符串；换行**永远是独立的** `<<'\n'`，**字符串字面量里绝不夹 `\n`**——`cout<<"No solution."<<'\n';`，不写 `cout<<"No solution.\n";`（也不用 `"\n"` / `endl`）；**例外：交互题需要即时刷新缓冲区时可用 `endl`**（它同时换行 + flush，正好满足交互的刷新需求）。忽略行尾空格和末尾多余换行。
 13. 自增自减用后置（`x++`）；`sizeof` 后通常不加括号（`sizeof x`）。
 
