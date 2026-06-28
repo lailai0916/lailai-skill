@@ -5,7 +5,6 @@ using ll=long long;
 const int N=200005;
 int a[N];
 ll s[N];
-
 int main()
 {
 	ios::sync_with_stdio(false);
