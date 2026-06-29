@@ -25,7 +25,7 @@
 5. 赋值用 `\to` 或 `\gets`，不用 `=`。
 6. 取模用 `\bmod` 或 `\pmod`，不用 `%` 或 `\mod`。
 7. 数列用 `a_i`，不用 `a[i]`。
-8. 向下取整 `\lfloor\rfloor`，向上取整 `\lceil\rceil`。
+8. **取整 / gcd / lcm 用规范记号，杜绝与中括号、圆括号撞义**：向下取整 `\lfloor x\rfloor`（**不写 `[x]`**），向上取整 `\lceil x\rceil`；最大公约数 `\gcd(a,b)`（**不写 `(a,b)`**），最小公倍数 `\operatorname{lcm}(a,b)`（**不写 `[a,b]`**）。
 9. 位运算用 `\operatorname{and}` / `\operatorname{or}` / `\operatorname{xor}`。
 10. 文本用 `\text`，字符串用 `\texttt`。
 11. 未定义但约定俗成的函数用 `\operatorname`（如 `\operatorname{lca}`、`\operatorname{lcm}`）。
