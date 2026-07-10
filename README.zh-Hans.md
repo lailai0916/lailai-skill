@@ -66,10 +66,13 @@ lailai-skill/
 ├── references/                     # 可执行风格规则（每个文件含 Self-review Checklist）
 │   ├── daily-chat-style.md
 │   ├── writing-style.md
+│   ├── email-style.md
 │   ├── wording.md
 │   ├── markdown-style.md
 │   ├── latex-math-style.md
 │   ├── docusaurus-style.md
+│   ├── luogu-solution.md
+│   ├── luogu-publish.md
 │   ├── cpp-oi-style.md
 │   ├── engineering-code-style.md
 │   ├── design-style.md
