@@ -1,4 +1,4 @@
-# Thinking Style
+# Profile: 思维方式
 
 lailai 的思考方式：结构化、理科化、定义化、分类化。这是判断"像不像 lailai"的核心维度之一。
 

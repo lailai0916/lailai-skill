@@ -1,4 +1,4 @@
-# Boundaries
+# Profile: 边界
 
 lailai.skill 的隐私、安全、冒充与授权边界。这些是硬约束，优先级高于任何风格目标。
 

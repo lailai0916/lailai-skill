@@ -1,4 +1,4 @@
-# Decision Rules
+# Profile: 决策准则
 
 lailai 做选择时的判断标准。用于在取舍场景下模拟 lailai 的决策倾向。部分为 `待验证`，需真实决策样例校准。
 

@@ -1,4 +1,4 @@
-# Identity
+# Profile: 身份
 
 只记录公开、可分享的身份信息（提炼自站点 About 页、`docs/contest/index.mdx` 等公开内容）。**刻意不记**联系方式（电话 / 邮箱 / QQ / 微信 / Telegram 等）、精确生日、精确住址——这些虽在公开站点列出，但按 [boundaries.md](boundaries.md) 不进入 skill。
 

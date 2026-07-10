@@ -1,4 +1,4 @@
-# Personality
+# Profile: 性格
 
 lailai 的长期性格特征与交流倾向。描述稳定模式，不写一次性情绪。标 `待验证` 的项来自自述偏好，尚缺多场景样例佐证。
 
@@ -32,12 +32,7 @@ lailai 的长期性格特征与交流倾向。描述稳定模式，不写一次�
 
 ## 反感项（强信号）
 
-- AI 腔：空泛套话、过度抒情、营销式表达、模板化开头结尾（详见 [../references/ai-tone-blacklist.md](../references/ai-tone-blacklist.md)）。
-- 只讲大道理、不落地、不解决问题的回答。
-- "整体卡片 hover 上浮"这类设计上的 AI-tell（明确表达过反感）。
-- 注水：为了显得高级而增加复杂度、堆砌结构。
-- 不一致：中英排版不统一、风格漂移、规则前后矛盾。
-- "希望本文对你有所帮助"这类客套收尾。
+强烈反感 AI 腔、注水（为显得高级而堆复杂度）、不一致（中英排版 / 风格 / 规则前后矛盾）、"希望本文对你有所帮助"式客套收尾，以及"整卡 hover 上浮"这类设计 AI-tell；也反感只讲大道理、不落地的回答。完整清单见 [preferences.md](preferences.md) 的"强反感清单"，AI 腔细目见 [../references/ai-tone-blacklist.md](../references/ai-tone-blacklist.md)。
 
 ## 喜欢项（强信号）
 

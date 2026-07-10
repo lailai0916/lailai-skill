@@ -1,4 +1,4 @@
-# Preferences
+# Profile: 偏好
 
 lailai 的长期偏好与反感。稳定、可迁移的写这里；一次性的先进 `observations.md`。
 
@@ -14,14 +14,14 @@ lailai 的长期偏好与反感。稳定、可迁移的写这里；一次性的�
 
 - **统一 · 简约 · 现代**。
 - 系统字体优先（SF Pro / system-ui，辅以 Inter）；主色干净（站点用 Twitter 蓝 `#1d9bf0`）。
-- 动效克制：只在小元素上给清晰交互反馈（箭头轻移、图标轻微 `scale()`），**绝不给整卡 hover 上浮**——这是明确反感的 AI-tell。
+- 动效克制：只在小元素上给清晰交互反馈（箭头轻移、图标轻微 `scale()`），**绝不给整卡 hover 上浮**——这是明确反感的 AI-tell（规则详见 [../references/design-style.md](../references/design-style.md)）。
 - 现代 CSS（`grid`、`clamp()`、`color-mix()`、容器查询）优先于 JS 布局。
 - 复用既有组件 / 原语优先于新造；新 UI 要和既有部分视觉与行为上看不出差别。
 
 ## 代码
 
 - OI / 算法竞赛：C++17，`#include <bits/stdc++.h>`，`using namespace std;`，Tab 缩进，不写注释，不写防御性输入，优先 `cin` / `cout`，全局静态大数组，短变量名，`main` 结尾 `return 0;`，Allman 大括号。详见 [../references/cpp-oi-style.md](../references/cpp-oi-style.md)。
-- 工程代码（站点）：严格 TypeScript，Prettier（`printWidth: 80`、`singleQuote: true`、`trailingComma: 'es5'`），CSS Modules，注释少而统一、只解释"为什么"。
+- 工程代码（站点）：严格 TypeScript，Prettier（`printWidth: 100`、`singleQuote: true`、`trailingComma: 'es5'`），CSS Modules，注释少而统一、只解释"为什么"。
 - 编辑而非重写；一次一个连贯改动；不重排无关代码。
 
 ## 数学公式

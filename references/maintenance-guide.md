@@ -12,34 +12,20 @@
 
 ## 核心闭环
 
-skill 的进化是一个固定闭环。每个新习惯都走完这条链,不跳步:
+skill 的进化是一个固定闭环，每个新习惯都走完这条链，不跳步：
 
 ```text
-observation → rule → example → test → evolution log →(回到)→ observation
+observation → rule → example → test → evolution log →（回到）→ observation
 ```
 
-1. **observation**:新习惯先进 [../observations.md](../observations.md)（带证据、标稳定性）。观察 ≠ 规则。
-2. **rule**:多次重现且稳定后,沉淀进 `../profile/` 或本目录某 reference 的"核心规则"。
-3. **example**:在 `../examples/` 加一个 before/after,展示新规则下"像 / 不像"的对照。
-4. **test**:在 `../tests/` 加可判定的检查项,让这条规则能被验证。
-5. **evolution log**:在 [../evolution/evolution-log.md](../evolution/evolution-log.md) 记一条(为什么改、改了什么、测试结果、保留 / 回滚),重要的同步 [../CHANGELOG.md](../CHANGELOG.md)。
-6. 回到 observation:用真实任务继续观察,发现偏差再进入下一轮。
+1. **observation**：新发现先进 [../observations.md](../observations.md)（带证据、标稳定性）。观察 ≠ 规则。
+2. **rule**：多次重现且稳定后（判定标准见下方"观察 → 规则的判定"），沉淀进 `../profile/` 或某 reference 的"核心规则"。
+3. **example**：在 `../examples/` 加一个 before/after，展示新规则下"像 / 不像"的对照。
+4. **test**：在 `../tests/` 加可判定的检查项，让规则能被验证。
+5. **evolution log**：在 [../evolution/evolution-log.md](../evolution/evolution-log.md) 记一条（为什么改、改了什么、测试结果、保留 / 回滚），重要的同步 [../CHANGELOG.md](../CHANGELOG.md)；涉长期人格 / 价值 / 隐私 / 公开表达的变化必须人工确认。
+6. **回到 observation**：用真实任务继续观察，过时规则即时清理，发现偏差进入下一轮。
 
-闭环的意义:任何规则都可追溯到一条观察,也都有对应示例和测试。**没有示例和测试的规则是半成品**。
-
-## 进化机制（11 步）
-
-1. **观察记录**：新发现先写进 [../observations.md](../observations.md)。观察 ≠ 规则。
-2. **稳定性判断**：区分短期情绪、临时偏好、长期稳定习惯。一次性现象不直接成文。
-3. **规则沉淀**：长期、稳定、可迁移、可执行的观察整理进 `profile/` 或 `references/`。
-4. **示例更新**：规则变化影响输出时，更新 `examples/`。
-5. **测试更新**：新规则可验证时，更新 `tests/`。
-6. **达尔文式优化**：评估 → 改进 → 测试 → 保留或回滚（见 [../prompts/evolve-skill.md](../prompts/evolve-skill.md)）。
-7. **版本记录**：重要变化记入 [../CHANGELOG.md](../CHANGELOG.md)。
-8. **进化日志**：每次重要进化记入 [../evolution/evolution-log.md](../evolution/evolution-log.md)（原因、修改、测试、保留与否）。
-9. **过时规则清理**：定期检查旧规则是否仍符合 lailai 当前状态，过时则标记 / 修改 / 删除。
-10. **真实项目验证**：在个人网站、README、Docusaurus 文档、代码、设计审查、聊天模拟等真实任务中验证。
-11. **人工最终确认**：长期人格、价值判断、隐私边界、公开表达的重要变化必须人工确认。
+闭环的意义：任何规则都可追溯到一条观察，也都有对应示例和测试。**没有示例和测试的规则是半成品**。达尔文式优化（评估 → 改进 → 测试 → 保留或回滚）见 [../prompts/evolve-skill.md](../prompts/evolve-skill.md)。
 
 ## 进化原则
 
