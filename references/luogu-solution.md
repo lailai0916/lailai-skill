@@ -25,6 +25,7 @@
 2. **解题 + 写码**：定算法，写 `~/.cache/luogu/<PID>/solution.cpp`（紧凑、无注释、`f` 不用 `dp`）。风格 → [cpp-oi-style.md](cpp-oi-style.md)；快速幂 / 逆元 / BSGS / 存图 / 并查集等**一律照本仓库 `docs/contest/personal/common-templates.mdx`，不自造**。
 3. **验证**：`python tools/luogu/verify.py <PID>`（编译 + 跑样例）。**本地样例过 ≠ AC**；在线提交由 lailai 人工过验证码，自动评测已废弃。WA / 编译错回第 2 步；解不出如实说明，**不硬写错代码**。
 4. **写站点 mdx**（权威源）：`blog/solution/<PID>.mdx`。frontmatter / 正文骨架 / 题解美学照 [docusaurus-style.md](docusaurus-style.md) 的「题解模板」，文风 → [writing-style.md](writing-style.md) + [wording.md](wording.md) + [ai-tone-blacklist.md](ai-tone-blacklist.md)，数学 → [latex-math-style.md](latex-math-style.md)。**`date` / `lid` 先留空**，发布后回填（第 6 步）。
+   - 🔍 **写完主动逐条跑各 reference 末尾的 Self-review Checklist**（latex-math-style 的间距 / `cases` 多行格式、cpp-oi-style 的代码、wording / ai-tone-blacklist 的 AI 腔），**自查违规并改干净再往下走——别交付后等 lailai 挑**。
 5. 🔴 **审阅 + 确认**：把要点 + 验证结果 + 只读预览 / diff 给 lailai，**停下等他确认**（红线 3），未确认不发布。
    - 发布前先 `python tools/luogu/publish.py --check` 自检 cookie。
    - 只读预览（不联网）：`python tools/luogu/publish.py <PID>`（站内正文 + 开头 2 张徽章）。
