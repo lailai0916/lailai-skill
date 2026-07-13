@@ -27,6 +27,16 @@ observation → rule → example → test → evolution log →（回到）→ o
 
 闭环的意义：任何规则都可追溯到一条观察，也都有对应示例和测试。**没有示例和测试的规则是半成品**。示例可内联在 reference 内（如 email / latex）；测试可由相邻域的行为测试覆盖（wording → writing-style-test、markdown → docusaurus-format-test）；纯流程域（如洛谷发布）由真实任务跑验，不强造 prompt 测试。达尔文式优化（评估 → 改进 → 测试 → 保留或回滚）见 [../prompts/evolve-skill.md](../prompts/evolve-skill.md)。
 
+## 机械校验：可判定的规则交给 checker
+
+prose 规则的天花板是「90% + 自觉」——模型总会漏几条。想要 99%，把**可机械判定**的规则从「模型记得」变成「机器验」。`tools/checker/check.py` 就是这层：
+
+- **两级**：ERROR（确定性、近零误报，Claude Code hook 命中即退出 2 打回）/ WARN（启发式，仅提示）。宁可漏报不可错报——错报会训练人无视 checker。
+- **diff-aware**：hook 只校验本次改动的行，存量违规（旧笔记的 `\dfrac`、老题解的「显然」）不挡无关改动，契合「新规则对新产出生效」。
+- **共同进化**：改一条可判定规则时，同一轮同步改 checker 与 `tests/`——规则 ↔ 校验绑定，别让 checker 落后于 reference。判断类规则（语气、审美、密度）不进 checker，留给 reviewer / 人。
+
+细节与「规则 → reference」对照见 [../tools/checker/README.md](../tools/checker/README.md)。
+
 ## 进化原则
 
 - 观察 ≠ 规则；临时情绪 ≠ 长期人格；一次性偏好 ≠ 稳定习惯。

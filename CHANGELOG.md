@@ -6,6 +6,26 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.32] - 2026-07-12
+
+新增机械校验：把可判定规则从「模型记得」变成「机器验」。
+
+### Added
+
+- `tools/checker/check.py`（新建）：stdlib-only 风格 checker，两级严格度（ERROR 确定性拦截 / WARN 提示），覆盖数学分隔符 / `\dfrac` / 手动间距 / Unicode、AI 腔黑名单、标题空行、OI C++ tell（万能头 / endl / 注释 / `" \n"[` 技巧…）、Conventional Commits 等；diff-aware（`git diff HEAD` 只查改动行，存量违规不挡无关改动）；忽略机制（文件级 `lailai-checker: disable`、行级 `checker-ignore`、`--hook` 跳过 `/.claude/`）。
+- `tools/checker/README.md`：规则 → reference 对照 + 用法 + 「故意不查什么」（判断类留给 reviewer）。
+- `tools/checker/tests/{good,bad}.mdx`：回归夹具（good 零命中、bad 覆盖各类 ERROR）。
+
+### Changed
+
+- `references/maintenance-guide.md`：新增「机械校验」一节——遵循率天花板与 checker 定位、两级、diff-aware、规则 ↔ 校验共同进化。
+- `SKILL.md`：reference 索引注册 checker；工作流第 5 步「自检」补「可判定项交给 checker、语义项靠人工 / reviewer」。
+
+### Notes
+
+- 落地验证：在 680 个真实 blog/docs 文件上跑，零误报；521 条 ERROR 全为真实历史遗留（旧笔记 `\dfrac`、老题解「显然」），故 hook 必须 diff-aware。
+- 配套：网站仓库 `.claude/settings.json` 挂 PostToolUse hook 调 `check.py --hook`（带存在性守卫，不吞 exit 2）。
+
 ## [0.8.31] - 2026-07-12
 
 补齐 test 覆盖，追平进化日志。

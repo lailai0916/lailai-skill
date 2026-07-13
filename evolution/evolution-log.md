@@ -6,6 +6,16 @@
 
 ---
 
+## 2026-07-12 · v0.8.32 · 机械校验 checker + hook（把可判定规则交给机器）
+
+- **触发原因**：lailai 指出 AI 用 skill 时遵循 ~90%、总漏几条。诊断：prose 规则天花板就是「90% + 自觉」，可判定的部分必须交给确定性校验。要求「全部要跑、做到完美」。
+- **修改**：新建 `tools/checker/check.py`（stdlib-only，两级 ERROR/WARN，diff-aware，忽略机制）+ `README.md` + `tests/{good,bad}.mdx`；`maintenance-guide.md` 加「机械校验」节；`SKILL.md` 注册 + 工作流第 5 步补执行版自检；网站仓库 `.claude/settings.json` 挂 PostToolUse hook。
+- **测试结果**：`good.mdx` 零命中、`bad.mdx` 覆盖各类 ERROR；680 个真实站点文件全扫**零误报**，521 条 ERROR 全为真实历史遗留 → 印证 hook 必须 diff-aware（只查改动行）；hook 端到端四场景（`.claude/` 跳过 / 干净放行 / 新违规拦截 exit 2 / 非目标扩展名放行）全过。
+- **判重 / 膨胀**：checker 是新层（tooling），非规则重复；maintenance-guide 加一节仍在软上限内。
+- **是否需人工确认**：否（工具 + 校验，不涉人格 / 价值 / 隐私 / 公开表达）。
+- **是否保留**：保留（v0.8.32）。
+- **元 / 后续**：定下「改一条可判定规则 → 同轮改 checker + tests」的共同进化约定；WARN 类（句长 / 中英空格）后续按真实噪声再调阈值；判断类规则不进 checker，留给 reviewer agent（下一步可做）。
+
 ## 2026-07-12 · v0.8.31 · 补齐 test 覆盖 + 追平进化日志
 
 - **触发原因**：体检发现自定不变式「没有示例和测试的规则是半成品」未兑现——14 个 reference 域仅 8 个有 test；且日志停在 v0.8.27，落后 CHANGELOG（已 v0.8.30）。
