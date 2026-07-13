@@ -72,7 +72,6 @@ lailai-skill/
 │   ├── latex-math-style.md
 │   ├── docusaurus-style.md
 │   ├── luogu-solution.md
-│   ├── luogu-publish.md
 │   ├── cpp-oi-style.md
 │   ├── engineering-code-style.md
 │   ├── design-style.md

@@ -1,6 +1,6 @@
 """luogu 工具共享：配置/密钥（机器本地，仓库零密钥）、缓存目录、脱敏、mdx 解析、洛谷正文渲染。
 
-关键安全约定（见 references/luogu-publish.md）：
+关键安全约定（见 references/luogu-solution.md）：
 - 本仓库是公开、且被多个项目各 clone 一份的 submodule，绝不放 Cookie/config。
 - Cookie 与机器本地配置从固定外部目录读：默认 ~/.config/luogu-publish/
   （可用环境变量 LUOGU_PUBLISH_HOME 覆盖）。任何 checkout 都指向同一份 Cookie。

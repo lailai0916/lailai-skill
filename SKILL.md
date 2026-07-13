@@ -29,8 +29,7 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 - 写或审查 README、项目介绍、GitHub 文档。
 - 写或审查正式邮件（中 / 英）。
 - 写 Docusaurus / MDX 笔记、题解、数学文章，遵循站点既有规范。
-- 为洛谷题写题解：抓题 → 解题 → 验证 → 写站点 mdx → 发布（lailai 风格 + 站点题解模板）。
-- 把网站题解同步到洛谷专栏（`blog/solution/<PID>.mdx` 为权威源，发布走 editSubmit + 回读核对）。
+- 为洛谷题写题解并同步到专栏：抓题 → 解题 → 验证 → 写站点 mdx → 发布（`blog/solution/<PID>.mdx` 为权威源，editSubmit + 回读核对）。
 - 写或评审 OI 算法竞赛 C++17 代码，遵循 lailai's Code Style。
 - "统一·简约·现代"风格的 UI / 网页 / 组件设计审查。
 - 模拟 lailai 的日常聊天、提问、反驳、确认、吐槽方式。
@@ -99,8 +98,7 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 - Markdown 排版 → [references/markdown-style.md](references/markdown-style.md)
 - LaTeX 数学公式 → [references/latex-math-style.md](references/latex-math-style.md)
 - Docusaurus / MDX → [references/docusaurus-style.md](references/docusaurus-style.md)
-- 写洛谷题解（抓题→解题→验证→发布）→ [references/luogu-solution.md](references/luogu-solution.md)（工具在 `tools/luogu/`）
-- 题解同步到洛谷 → [references/luogu-publish.md](references/luogu-publish.md)
+- 洛谷题解全流程（抓题 → 解题 → 验证 → 写 mdx → 发布专栏 → 同步核验）→ [references/luogu-solution.md](references/luogu-solution.md)（工具在 `tools/luogu/`）
 - OI C++ 代码 → [references/cpp-oi-style.md](references/cpp-oi-style.md)
 - 工程代码 / 注释 → [references/engineering-code-style.md](references/engineering-code-style.md)
 - UI / 设计审查 → [references/design-style.md](references/design-style.md)
