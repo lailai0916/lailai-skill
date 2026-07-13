@@ -6,6 +6,24 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.31] - 2026-07-12
+
+补齐 test 覆盖，追平进化日志。
+
+### Test
+
+- 新建 `tests/email-style-test.md`、`tests/latex-math-test.md`、`tests/project-docs-test.md`、`tests/engineering-code-test.md`——四个此前无 test 的 reference 域，各含可机械判定的客观检查项 + 通过条件，检查项逐条溯源到对应 reference 的强约束。
+
+### Changed
+
+- `references/maintenance-guide.md`：给「没有示例和测试的规则是半成品」不变式补口径——示例可内联在 reference 内、测试可由相邻域行为测试覆盖（`wording` → writing-style-test、`markdown` → docusaurus-format-test）、纯流程域（洛谷发布）由真实任务跑验不强造 prompt 测试。
+- `evolution/evolution-log.md`：补记 v0.8.29、v0.8.30 两条重要进化（此前只落 CHANGELOG），并加本次 v0.8.31 条目；日志与 CHANGELOG 追平。
+
+### Notes
+
+- 判重：`wording` / `markdown` 已被相邻域行为测试覆盖、`luogu-solution` 属流程域，按反膨胀不重复造 test，仅补四个真缺口。
+- 约定：此后重要变化须同一次提交同时落 CHANGELOG 与 evolution-log，防再次分叉。
+
 ## [0.8.30] - 2026-07-10
 
 沉淀「内外兼修」：效果 / 设计与代码内在质量同权重。
