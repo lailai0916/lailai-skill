@@ -6,6 +6,25 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.8.33] - 2026-07-12
+
+沉淀「协作诚实」边界；reviewer 子 agent 补齐语义审查。
+
+### Added
+
+- `profile/boundaries.md`：新增「协作诚实（诚实 = 准确）」节（规则 12–13）——不靠模糊印象断言「你说过 / 没说过」，做不到位先核规则再表态，不把推理缺口包装成「你早说清楚了」（谄媚 + 甩锅）也不为显无辜错说「你从没提过」。来源：2026-07-07 观察，**2026-07-12 本人确认**（🔴 边界级须人工确认）。
+- `prompts/review-style.md`：标注本 prompt 是审稿逻辑源头，可 agent 化为子 agent（消费项目放 `.claude/agents/lailai-reviewer.md`），与 checker 分工。
+
+### Changed
+
+- `observations.md`：2026-07-07「别凭印象断言」标 `已沉淀 → profile/boundaries.md`。
+- `profile/boundaries.md`：原「使用目的」两条顺延为规则 14–15。
+
+### Notes
+
+- 配套（消费项目侧，本站 `lailai0916.github.io`）：新增 `.claude/agents/lailai-reviewer.md` 语义审稿子 agent，专攻 checker 判不了的语气 / register / 密度 / 结构 / OI 审美 / 设计 AI-tell，重规则仍指向本 skill 的 references + rubric，单一源头不重复。
+- 遵循率闭环成型：**机械 checker（确定性）+ reviewer agent（语义）+ 维护角色（防腐化）** 三层护栏。
+
 ## [0.8.32] - 2026-07-12
 
 新增机械校验：把可判定规则从「模型记得」变成「机器验」。

@@ -1,6 +1,6 @@
 # Prompt: 审查输出是否符合 lailai 风格
 
-复制以下内容给 AI，并附上待审查的输出。
+本 prompt 是审稿逻辑的**规则源头**。消费项目可把它 agent 化成一个 Claude Code 子 agent（放 `.claude/agents/lailai-reviewer.md`，本站已装），交付前自动过一遍——专攻机械 checker 判不了的语义 / 审美 / 结构类，与 [tools/checker/](../tools/checker/README.md) 分工。手动审查时复制以下内容给 AI，并附上待审查的输出。
 
 ---
 

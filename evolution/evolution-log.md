@@ -6,6 +6,14 @@
 
 ---
 
+## 2026-07-12 · v0.8.33 · 协作诚实边界 + reviewer 子 agent
+
+- **触发原因**：接 v0.8.32，补全遵循率三层护栏的后两层——沉淀挂了很久的「协作诚实」observation（🔴 边界级，本人确认后落地）+ 建语义审稿 agent，管 checker 判不了的部分。
+- **修改**：`profile/boundaries.md` 加「协作诚实」节（规则 12–13，原 12–13 顺延 14–15）；`observations.md` 对应条目标已沉淀；`prompts/review-style.md` 标为审稿逻辑源头 + 子 agent 指针；消费项目 `.claude/agents/lailai-reviewer.md`（新建，读 skill references + rubric，只审不改，输出结构化发现）。
+- **是否需人工确认**：**是**——boundaries 属边界级，2026-07-12 lailai 明确「3 继续」确认后才写入。
+- **是否保留**：保留（v0.8.33）。
+- **元 / 后续**：至此遵循率闭环 = 机械 checker（确定性拦截）+ reviewer agent（语义审查）+ 维护角色（防腐化）三层；reviewer 与 checker 严格分工不重叠，避免双重误报。
+
 ## 2026-07-12 · v0.8.32 · 机械校验 checker + hook（把可判定规则交给机器）
 
 - **触发原因**：lailai 指出 AI 用 skill 时遵循 ~90%、总漏几条。诊断：prose 规则天花板就是「90% + 自觉」，可判定的部分必须交给确定性校验。要求「全部要跑、做到完美」。
