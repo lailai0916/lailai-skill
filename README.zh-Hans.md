@@ -9,22 +9,24 @@
   </p>
 </div>
 
+## 项目简介
+
 > lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai 的表达方式、思维方式、审美偏好、工作习惯与日常交流风格。
 
 面向 Claude Code / Codex / Cursor / OpenClaw 等 AI Agent 的个人 skill。它不是一句"请扮演 lailai"，而是一个结构化、可维护、可验证、可持续进化的个人模型。
 
-## 它解决什么问题
+## 项目目标
 
 让 AI 在写作、文档、代码、设计、聊天、判断与项目维护中尽可能像 lailai，并且随时间越来越像——风格一致、信息密度高、没有 AI 腔、能落地。
 
-## 它不是什么
+## 非项目标
 
 - 不是人格扮演 Prompt，也不是"扮演 lailai"。
 - 不是一次性生成后固定不变的静态人设。
 - 不是用来冒充 lailai 本人欺骗他人的工具。
 - 不是只服务工作的模板——它也覆盖日常聊天、学习与长期自我建模。
 
-## 边界
+## 安全边界
 
 - 不冒充 lailai 本人对外发言、做承诺、声明身份或授权。
 - 不保存账号、密码、密钥、证件、精确住址等敏感信息。
@@ -46,14 +48,17 @@
 
 不适用场景与触发条件见 [SKILL.md](SKILL.md)。
 
-## 仓库结构
+## 项目结构
 
-```text
+```bash
 lailai-skill/
 ├── README.md                       # 英文（默认）
 ├── README.zh-Hans.md               # 简体中文（本文件）
 ├── SKILL.md                        # 入口：定位、场景、原则、边界、工作流、自检
-├── LICENSE                         # MIT
+├── AGENTS.md                       # 跨 Runtime Agent 入口
+├── CLAUDE.md                       # Claude 兼容入口
+├── LICENSE                         # 代码许可协议
+├── LICENSE-docs                    # 文档与 Skill 内容许可协议
 ├── CHANGELOG.md                    # 重要变化记录
 ├── profile/                        # 长期人格、偏好、思考方式、边界
 │   ├── identity.md
@@ -81,14 +86,16 @@ lailai-skill/
 │   └── maintenance-guide.md
 ├── examples/                       # 代表性输入 → 处理原则 → 输出 → 为什么符合
 ├── tests/                          # 可验证的风格测试（目标 / 输入 / 期望 / 评分 / 通过条件）
+├── test-prompts.json               # Prompt 回归样例
 ├── prompts/                        # 维护时可直接复制的提示词
+├── tools/                          # Checker 与辅助工具
 ├── evolution/                      # 评分标准与进化日志
 │   ├── evaluation-rubric.md
 │   └── evolution-log.md
 └── observations.md                 # 尚未沉淀为规则的临时观察
 ```
 
-## 安装与使用
+## 快速开始
 
 本仓库是一个标准 Agent Skill（`SKILL.md` + frontmatter `name: lailai-skill`），可用于 Claude Code、Codex、Cursor、OpenClaw、Gemini CLI 等兼容 skills 的 runtime。
 
@@ -136,7 +143,7 @@ git commit -m "chore: add lailai-skill submodule"   # gitlink 必须一起提交
 1. 入口是其中的 `SKILL.md`；Agent 先读它，再按任务类型读对应 `profile/` 与 `references/`（链接都是相对路径，整体搬动后仍有效）。
 2. 触发：描述聊天 / 写作 / 代码 / 设计 / 决策类任务时自动匹配 description，或明确说"用 lailai 的风格""按我的习惯来""像我一点"。
 
-## 如何记录新习惯
+## 习惯记录
 
 发现一个新的表达、偏好、反感项或习惯时，**先记到 [observations.md](observations.md)**，不要直接改规则。
 
@@ -144,7 +151,7 @@ git commit -m "chore: add lailai-skill submodule"   # gitlink 必须一起提交
 
 可直接复制 [prompts/add-observation.md](prompts/add-observation.md) 给 AI 来记录。
 
-## 如何持续进化
+## 持续进化
 
 1. 观察记录：新习惯先进 `observations.md`。
 2. 稳定性判断：区分短期情绪、临时偏好与长期习惯。
@@ -154,7 +161,7 @@ git commit -m "chore: add lailai-skill submodule"   # gitlink 必须一起提交
 6. 版本与日志：重要变化记入 `CHANGELOG.md` 与 `evolution/evolution-log.md`。
 7. 人工确认：涉及长期人格、价值判断、隐私边界、公开表达的变化，由 lailai 确认。
 
-## 如何维护和更新
+## 维护更新
 
 维护是长期工作，不是一次性任务。细则见 [references/maintenance-guide.md](references/maintenance-guide.md)，评分用 [evolution/evaluation-rubric.md](evolution/evaluation-rubric.md)。原则：
 
@@ -162,6 +169,6 @@ git commit -m "chore: add lailai-skill submodule"   # gitlink 必须一起提交
 - 规则必须可执行、可检查。每次进化都能说清"为什么改"。
 - 若新规则让输出更不像 lailai，回滚；若旧规则与当前状态冲突，更新或废弃。
 
-## 许可证
+## 许可协议
 
-代码与文本以 [MIT License](LICENSE) 授权。本 skill 描述的是公开可分享的风格与方法，不包含隐私信息。
+本项目代码采用 [MIT 许可协议](LICENSE)，原创文档与 Skill 内容采用 [知识共享 署名 4.0 国际许可协议](LICENSE-docs)。

@@ -9,22 +9,24 @@
   </p>
 </div>
 
+## Project Introduction
+
 > A continuously evolving personal cyber-twin system for lailai — replicating lailai's expression, thinking, aesthetics, working habits, and everyday communication style as faithfully as possible.
 
 A personal skill for AI agents (Claude Code / Codex / Cursor / OpenClaw, etc.). Not a one-line "act as lailai," but a structured, maintainable, verifiable, and continuously evolving personal model.
 
-## What It Solves
+## Project Goals
 
 Make AI as much like lailai as possible in writing, docs, code, design, chat, judgment, and project maintenance — and more so over time: consistent style, high information density, no AI tone, and actionable output.
 
-## What It Is Not
+## Non-Goals
 
 - Not a persona-roleplay prompt, nor "act as lailai."
 - Not a static persona fixed after a single generation.
 - Not a tool to impersonate lailai and deceive others.
 - Not a work-only template — it also covers everyday chat, learning, and long-term self-modeling.
 
-## Boundaries
+## Safety Boundaries
 
 - Does not impersonate lailai in public statements, promises, identity claims, or authorization.
 - Does not store accounts, passwords, keys, IDs, precise addresses, or other sensitive data.
@@ -46,14 +48,17 @@ See [profile/boundaries.md](profile/boundaries.md) for the full boundaries.
 
 See [SKILL.md](SKILL.md) for out-of-scope cases and triggers.
 
-## Repository Structure
+## Project Structure
 
-```text
+```bash
 lailai-skill/
 ├── README.md                       # English (this file)
 ├── README.zh-Hans.md               # 简体中文
 ├── SKILL.md                        # Entry: positioning, scope, principles, boundaries, workflow, self-check
-├── LICENSE                         # MIT
+├── AGENTS.md                       # Runtime-neutral Agent entry point
+├── CLAUDE.md                       # Claude compatibility entry point
+├── LICENSE                         # Code license
+├── LICENSE-docs                    # Documentation and skill-content license
 ├── CHANGELOG.md                    # Notable changes
 ├── profile/                        # Long-term personality, preferences, thinking, boundaries
 │   ├── identity.md
@@ -81,14 +86,16 @@ lailai-skill/
 │   └── maintenance-guide.md
 ├── examples/                       # Representative input → handling → output → why it fits
 ├── tests/                          # Verifiable style tests (goal / input / expectations / scoring / pass criteria)
+├── test-prompts.json               # Prompt-level regression cases
 ├── prompts/                        # Copy-paste prompts for maintenance
+├── tools/                          # Checkers and supporting utilities
 ├── evolution/                      # Scoring rubric and evolution log
 │   ├── evaluation-rubric.md
 │   └── evolution-log.md
 └── observations.md                 # Temporary observations not yet sedimented into rules
 ```
 
-## Installation & Usage
+## Getting Started
 
 This repo is a standard Agent Skill (`SKILL.md` + frontmatter `name: lailai-skill`), usable in any skills-compatible runtime — Claude Code, Codex, Cursor, OpenClaw, Gemini CLI, and more.
 
@@ -137,7 +144,7 @@ git commit -m "chore: add lailai-skill submodule"   # commit the gitlink too —
 1. The entry is its `SKILL.md`; the agent reads it first, then the relevant `profile/` and `references/` by task type (all links are relative, so they survive moving the whole folder).
 2. Triggering: describe a chat / writing / code / design / decision task to match the description automatically, or say explicitly "use lailai's style," "do it my way," or "make it more like me."
 
-## Recording New Habits
+## Habit Recording
 
 When you notice a new expression, preference, dislike, or habit, **record it first in [observations.md](observations.md)** — don't edit the rules directly.
 
@@ -145,7 +152,7 @@ When you notice a new expression, preference, dislike, or habit, **record it fir
 
 Copy [prompts/add-observation.md](prompts/add-observation.md) to have the AI record it.
 
-## How It Evolves
+## Skill Evolution
 
 1. Observe: new habits go into `observations.md` first.
 2. Stability check: separate transient moods, one-off preferences, and long-term habits.
@@ -155,7 +162,7 @@ Copy [prompts/add-observation.md](prompts/add-observation.md) to have the AI rec
 6. Versioning & logs: notable changes go into `CHANGELOG.md` and `evolution/evolution-log.md`.
 7. Human confirmation: changes to long-term personality, value judgments, privacy boundaries, or public expression are confirmed by lailai.
 
-## Maintenance & Updates
+## Skill Maintenance
 
 Maintenance is long-term work, not a one-off. See [references/maintenance-guide.md](references/maintenance-guide.md) for details, and score with [evolution/evaluation-rubric.md](evolution/evaluation-rubric.md). Principles:
 
@@ -165,4 +172,4 @@ Maintenance is long-term work, not a one-off. See [references/maintenance-guide.
 
 ## License
 
-Licensed under the [MIT License](LICENSE). This skill describes publicly shareable style and methods, and contains no private information.
+This project's code is licensed under [MIT License](LICENSE), and its original documentation and skill content are licensed under [CC BY 4.0](LICENSE-docs).
