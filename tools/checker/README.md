@@ -4,7 +4,8 @@
 
 ## 两级严格度
 
-- **ERROR**：确定性、近零误报。Claude Code hook 命中即退出 2、打回让模型自己改。
+- **ERROR**：确定性、近零误报。Hook 模式命中即退出 2，可由支持命令 hook 的 runtime
+  直接拦截。
 - **WARN**：启发式（句长、中英空格、日期、emoji 等），只提示不拦截。
 
 分级是命门——**宁可漏报，不可错报**。错报会训练人无视 checker，比没有更糟。拿不准的规则一律放 WARN，永不进 ERROR。
@@ -16,7 +17,7 @@
 python3 check.py <file>...
 python3 check.py --errors-only --quiet blog/**/*.mdx   # 只看 ERROR
 
-# Claude Code PostToolUse hook（读 stdin JSON，diff-aware，只查本次改动行）
+# 兼容 Claude Code PostToolUse JSON 的 hook 模式（diff-aware，只查本次改动行）
 python3 check.py --hook
 
 # 一条 commit message
@@ -34,7 +35,8 @@ python3 check.py --commit .git/COMMIT_EDITMSG
 
 - 文件内任一行含 `lailai-checker: disable` → 跳过整个文件。
 - 某行含 `checker-ignore` → 跳过该行的违规。
-- `--hook` 自动跳过 `/.claude/` 下的路径（skill 自身 meta 文件合法含反面示例，走 CLI 自查）。
+- `--hook` 自动跳过 `/.agents/` 与 `/.claude/` 下的路径（skill 自身 meta 文件合法含
+  反面示例，走 CLI 自查）。
 
 ## 规则 → reference 对照
 

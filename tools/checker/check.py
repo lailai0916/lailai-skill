@@ -6,7 +6,7 @@
 
 用法：
     python3 check.py <file>...                # CLI，逐条打印，含 ERROR 则退出 1
-    python3 check.py --hook                   # Claude Code PostToolUse hook（读 stdin JSON）
+    python3 check.py --hook                   # PostToolUse-compatible hook（读 stdin JSON）
     python3 check.py --commit <msgfile>       # 校验一条 commit message
     开关：--no-aitone --no-cjk-space --no-sentence --errors-only --quiet
 
@@ -620,7 +620,7 @@ def main(argv):
             return 0
         # skill 自身的 meta 文件合法含反面示例（显然 / \( / \dfrac），由 CLI 自查流程处理，hook 跳过
         norm = path.replace("\\", "/")
-        if "/.claude/" in norm:
+        if "/.agents/" in norm or "/.claude/" in norm:
             return 0
         ext = os.path.splitext(path)[1].lower()
         if ext not in MD_EXT + CPP_EXT + ENG_EXT:

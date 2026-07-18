@@ -94,38 +94,43 @@ This repo is a standard Agent Skill (`SKILL.md` + frontmatter `name: lailai-skil
 
 ### Where it goes (a hard requirement)
 
-A skill **must** live in the runtime's skills directory. Placing it at the repo root does nothing (Claude Code won't discover it).
+A skill **must** live in a configured skills directory. Placing it at an arbitrary repository
+root does not make every runtime discover it.
 
-| Method                                        | Path                                     | When                                                                   |
-| :-------------------------------------------- | :--------------------------------------- | :--------------------------------------------------------------------- |
-| **User level** (recommended for personal use) | `~/.claude/skills/lailai-skill/`         | Install once, available in **all** projects; single source, zero drift |
-| **Project level** (vendored, version-pinned)  | `<project>/.claude/skills/lailai-skill/` | When CI / cloud agents / other machines need `clone-and-it's-there`    |
+| Method                                        | Path                                    | When                                                                   |
+| :-------------------------------------------- | :-------------------------------------- | :--------------------------------------------------------------------- |
+| **User level** (recommended for personal use) | `~/.agents/skills/lailai-skill/`        | Install once, available in **all** projects; single source, zero drift |
+| **Project level** (vendored, version-pinned)  | `<project>/.agents/skills/lailai-skill/` | When CI / cloud agents / other machines need `clone-and-it's-there`    |
 
-> Rule of thumb: personal cross-project use → user level, done once; a repo that runs agents in CI / the cloud → project-level submodule. **Don't install both levels under the same name** — the user level shadows the project level.
+> Rule of thumb: personal cross-project use → user level, done once; a repo that runs agents
+> in CI / the cloud → project-level submodule. If a runtime does not discover `.agents/skills`
+> natively, give it one directory link or external-directory setting. Do not copy this skill
+> into every runtime-specific directory.
 
 ### User level (clone once)
 
 ```bash
-git clone https://github.com/lailai0916/lailai-skill ~/.claude/skills/lailai-skill
-# Update: cd ~/.claude/skills/lailai-skill && git pull
+mkdir -p ~/.agents/skills
+git clone https://github.com/lailai0916/lailai-skill ~/.agents/skills/lailai-skill
+# Update: cd ~/.agents/skills/lailai-skill && git pull
 ```
 
 ### Project level (git submodule)
 
 ```bash
 cd <project>
-git submodule add https://github.com/lailai0916/lailai-skill .claude/skills/lailai-skill
-git commit -m "chore(claude): add lailai-skill submodule"   # commit the gitlink too — see below
+git submodule add https://github.com/lailai0916/lailai-skill .agents/skills/lailai-skill
+git commit -m "chore: add lailai-skill submodule"   # commit the gitlink too — see below
 ```
 
-⚠️ **Two things to get right:**
+⚠️ **Three things to get right:**
 
-1. **Clone with submodules**, or `.claude/skills/lailai-skill/` is an empty shell:
+1. **Clone with submodules**, or `.agents/skills/lailai-skill/` is an empty shell:
    - Fresh clone: `git clone --recurse-submodules <project>`
    - Existing clone: `git submodule update --init --recursive`
    - CI (GitHub Actions): set `actions/checkout` with `submodules: recursive` (GitLab: `GIT_SUBMODULE_STRATEGY: recursive`).
-2. **Don't drop the gitlink when committing.** `git submodule add` stages both `.gitmodules` and the gitlink — commit them together. Afterward, `git submodule status` should show one line `<sha> .claude/skills/lailai-skill`; committing only `.gitmodules` without the gitlink leaves a fresh clone with no content.
-3. **Bump the pinned version**: `git submodule update --remote .claude/skills/lailai-skill && git add .claude/skills/lailai-skill && git commit -m "chore: bump lailai-skill"`.
+2. **Don't drop the gitlink when committing.** `git submodule add` stages both `.gitmodules` and the gitlink — commit them together. Afterward, `git submodule status` should show one line `<sha> .agents/skills/lailai-skill`; committing only `.gitmodules` without the gitlink leaves a fresh clone with no content.
+3. **Bump the pinned version**: `git submodule update --remote .agents/skills/lailai-skill && git add .agents/skills/lailai-skill && git commit -m "chore: bump lailai-skill"`.
 
 ### After installing
 
