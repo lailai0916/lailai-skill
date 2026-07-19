@@ -392,16 +392,46 @@ def strip_cpp_literals(line):
     return STRLIT_RE.sub('""', line)
 
 
+def strip_cpp_comments(line, in_block):
+    out = []
+    pos = 0
+    while pos < len(line):
+        if in_block:
+            end = line.find("*/", pos)
+            if end == -1:
+                return "", True
+            pos = end + 2
+            in_block = False
+            continue
+        line_comment = line.find("//", pos)
+        block_comment = line.find("/*", pos)
+        if line_comment != -1 and (block_comment == -1 or line_comment < block_comment):
+            out.append(line[pos:line_comment])
+            break
+        if block_comment != -1:
+            out.append(line[pos:block_comment])
+            pos = block_comment + 2
+            in_block = True
+            continue
+        out.append(line[pos:])
+        break
+    return "".join(out), in_block
+
+
 def check_cpp(path, blocks, disabled_lines, issues):
     for start, buf in blocks:
+        in_block_comment = False
         for offset, (lineno, raw) in enumerate(buf):
+            code = strip_cpp_literals(raw)
+            code_without_comments, in_block_comment = strip_cpp_comments(code, in_block_comment)
             if lineno in disabled_lines:
                 continue
-            code = strip_cpp_literals(raw)
             if re.search(r"#include\s*<(iostream|cstdio|cstring|algorithm|vector|cmath|string|queue|stack|map|set|bitset|numeric|iomanip)>", raw):
                 issues.append(Issue(path, lineno, "ERROR", "cpp-include", "用万能头 #include <bits/stdc++.h>"))
             if '" \\n"[' in raw or '" \\n"[' in raw.replace(" ", " "):
                 issues.append(Issue(path, lineno, "ERROR", "cpp-space-newline", '不用 <<" \\n"[i==n] 技巧：输出空格、末尾无换行'))
+            if re.search(r"\bstatic\b", code_without_comments):
+                issues.append(Issue(path, lineno, "ERROR", "cpp-static", "OI 代码不使用 static 修饰符"))
             if re.search(r'"[^"]*\\n', raw):
                 issues.append(Issue(path, lineno, "WARN", "cpp-newline-in-str", "换行独立 <<'\\n'，字符串里不夹 \\n"))
             if re.search(r"\bendl\b", code):

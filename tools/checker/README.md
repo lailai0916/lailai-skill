@@ -54,7 +54,7 @@ python3 check.py --commit .git/COMMIT_EDITMSG
 | `emoji` / `date-format` / `time-format` | WARN | writing 规则 12、20、21 |
 | `cjk-latin-space` / `sentence-length` | WARN | markdown 规则 17；writing 规则 6 |
 | `trailing-space` / `blank-lines` | WARN | markdown 规则 3 |
-| `cpp-include` / `cpp-space-newline` | ERROR | [cpp-oi-style](../../references/cpp-oi-style.md) 规则 6、12 |
+| `cpp-include` / `cpp-space-newline` / `cpp-static` | ERROR | [cpp-oi-style](../../references/cpp-oi-style.md) 规则 6、12、16 |
 | `cpp-endl` / `cpp-stdio` / `cpp-comment` / `cpp-bool` / `cpp-dp` / `cpp-std-prefix` / `cpp-indent` | WARN | cpp 规则 11、4、14、24、7、3 |
 | `ascii-art` / `todo` | WARN | [engineering-code-style](../../references/engineering-code-style.md) |
 | `commit-conventional` | ERROR | [project-docs-style](../../references/project-docs-style.md) 规则 1 |
