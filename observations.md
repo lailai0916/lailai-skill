@@ -103,6 +103,15 @@
 - 处理：先用于本轮仓库改造并继续观察。待在多个项目验证后，再修订 `references/project-docs-style.md` 的冲突规则，并补充示例与测试。
 - 隐私检查：否。
 
+### 2026-07-18 GitHub 社区文件按 Owner 维护单一真源
+
+- 现象：lailai 明确区分 `username/username` 个人 Profile 仓库与 `username/.github` 默认社区文件仓库，并要求完成集中化治理。
+- 场景：多个 GitHub 仓库共享 issue 模板、PR 清单、贡献指南与安全策略。
+- 推测：每个 Owner 使用公开 `.github` 仓库作为通用社区文件单一真源；普通仓库仅保留项目专属覆盖。`lailai-template` 为了跨账号可移植可保留一份常数级模板副本。Profile README 与默认社区文件不应混在同一仓库职责中；`LICENSE` 仍须逐仓库保留。
+- 稳定性：首次系统说明，与既有「单一真源 + 常数级兼容层」偏好一致。
+- 处理：已用于本轮仓库治理，继续观察后再决定是否沉淀到 `references/project-docs-style.md`。
+- 隐私检查：否。
+
 下列候选由历轮语料挖矿浮现，但属**人格 / 价值 / 身份级**，按 🔴 检查点须 lailai 本人定夺后才能写入 `profile/`——确认或否决前一律不进硬规则。已稳定的条目均已并入对应 `references/` / `profile/` 并从本文件清除，使其保持缓冲而非仓库（历轮原始候选见 `tasks/w1xizrsxz.output`、`tasks/wk72y200u.output` 与 `CHANGELOG.md` v0.6.9–v0.8.0；语料为 ChatGPT 两年导出 2541 段 / 24830 条 user 消息）。
 
 ### 待确认 🔴：身份级
