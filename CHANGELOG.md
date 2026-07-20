@@ -6,6 +6,20 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.9.1] - 2026-07-19
+
+修正洛谷题解同步的徽章转义与完整正文核对。
+
+### Fixed
+
+- `tools/luogu/util.py`：按 Shields static badge path 语法转义题号；仅归一传输层换行，保留正文结构参与核对。
+- `tools/luogu/publish.py`：`--diff` 与发布后回读改为比较完整洛谷版，徽章错误不再被正文截取掩盖。
+- `references/{docusaurus-style,luogu-solution}.md`：同步正文生成、核对口径与 Shields 转义规则。
+
+### Test
+
+- 新增 `tools/luogu/test_{util,publish}.py`，覆盖题号转义、链接边界、换行归一及完整稿 diff。
+
 ## [0.9.0] - 2026-07-15
 
 沉淀"做 GFSSM 协作平台（Next.js / Tailwind）时的设计理念与工程经验"。

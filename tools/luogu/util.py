@@ -188,7 +188,7 @@ def parse_mdx(text: str) -> dict[str, Any]:
 def body_from_first_h2(text: str) -> str:
     """从第一个 `## ` 起取正文 + 传输层归一（\\r\\n→\\n、去首尾空行），不动实际内容。
 
-    站点 mdx 与洛谷专栏正文都用这个口径对齐——自然排除 frontmatter / truncate / 徽章。
+    生成洛谷版时用它排除 frontmatter / Solution / truncate；完整稿核对另用 normalize_transport。
     """
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     lines = text.split("\n")
@@ -198,12 +198,18 @@ def body_from_first_h2(text: str) -> str:
     return "\n".join(lines[start:]).strip("\n")
 
 
+def shield_path_text(text: str) -> str:
+    """转义 Shields static badge 的 path 文本：空格 `_`、下划线 `__`、连字符 `--`。"""
+    return text.replace("-", "--").replace("_", "__").replace(" ", "_")
+
+
 def render_luogu_md(pid: str, mdx_body: str) -> str:
     """洛谷专栏版正文：开头 2 张 shields.io 徽章（题目 + 博客），其后为站点正文（从第一个 `##` 起）。"""
     blog_base = load_config()["site"].get("blog_base_url", "https://lailai.one").rstrip("/")
     body = body_from_first_h2(mdx_body)
+    badge_pid = shield_path_text(pid)
     badges = (
-        f"[![](https://img.shields.io/badge/Luogu-{pid}-blue?style=for-the-badge&logo=luogu)]"
+        f"[![](https://img.shields.io/badge/Luogu-{badge_pid}-blue?style=for-the-badge&logo=luogu)]"
         f"(https://www.luogu.com.cn/problem/{pid})\n"
         f"[![](https://img.shields.io/badge/Blog-Solution-blue?style=for-the-badge&logo=markdown)]"
         f"({blog_base}/blog/solution/{pid})\n\n"
@@ -211,14 +217,21 @@ def render_luogu_md(pid: str, mdx_body: str) -> str:
     return badges + body + "\n"
 
 
+def normalize_transport(text: str) -> str:
+    """只归一传输层换行，不改正文内容。"""
+    return text.replace("\r\n", "\n").replace("\r", "\n").strip("\n")
+
+
 def _collapse_ws(text: str) -> str:
     return "\n".join(ln.rstrip() for ln in text.split("\n") if ln.strip())
 
 
-def classify(web_body: str, col_body: str) -> str:
+def classify(expected: str, actual: str) -> str:
     """回读核对分类：完全一致 / 仅空白差异 / 实质差异。"""
-    if web_body == col_body:
+    expected = normalize_transport(expected)
+    actual = normalize_transport(actual)
+    if expected == actual:
         return "identical"
-    if _collapse_ws(web_body) == _collapse_ws(col_body):
+    if _collapse_ws(expected) == _collapse_ws(actual):
         return "whitespace"
     return "substantive"

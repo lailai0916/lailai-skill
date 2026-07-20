@@ -95,6 +95,8 @@
 
   （已从 3 张减为 2 张，去掉「洛谷文章」那张。）
 
+  图片 URL 中的 `<PID>` 须按 Shields static badge path 语法转义：`_` 写成 `__`，`-` 写成 `--`；题目链接与博客链接仍用原题号。例如 `AT_arc222_f` 在图片 URL 中写成 `AT__arc222__f`。
+
 - **所有 OJ 题（含 CF / AT）都先发洛谷专栏拿到 `lid`**，站内 mdx 再用 `<Solution lid>` 引用；mdx 的 `date` 用洛谷专栏的精确发布秒，两边一致（见上「Frontmatter」）。
 
 ## lailai 排印约定（站点专属）
