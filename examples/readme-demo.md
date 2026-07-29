@@ -19,7 +19,7 @@
 ## 输出（lailai 风格）
 
 ```markdown
-# task-cli
+# Task CLI
 
 > 一个极简的命令行待办工具，纯本地、零依赖、单文件存储。
 
@@ -41,12 +41,15 @@ task ls --tag work
 
 ## Project Structure
 
-\`\`\`text
+\`\`\`bash
 task-cli/
-├── bin/cli.js # 入口
-├── src/store.js # JSON 读写
-└── src/commands/ # 子命令
+├── bin/                           # Executable entry
+└── src/                           # Command and storage logic
 \`\`\`
+
+## License
+
+This project's code is licensed under [MIT License](https://github.com/lailai0916/tools/blob/main/LICENSE).
 ```
 
 ## 为什么符合 lailai.skill
@@ -54,4 +57,7 @@ task-cli/
 - 第一行一句话定位，10 秒看懂"是什么"。
 - 删掉"super powerful""revolutionize""give us a star"。
 - 特性用 emoji + 加粗标题 + 一句说明，具体不空泛。
-- 快速开始给可复制命令，结构树用 `text` 代码块。
+- 项目名使用正式大小写，仓库名仍为小写 kebab-case。
+- 快速开始给可复制命令，结构树用 `bash` 代码块。
+- 结构树仅列项目专属目录，文件夹按字典序排列，`#` 前严格为 $36$ 个字符。
+- License 使用统一的 `lailai0916/tools` MIT 链接。

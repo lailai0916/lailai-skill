@@ -21,19 +21,20 @@
 2. **`.gitignore`** 用 Vite 默认模板。
 3. **贡献指南（仅协作项目）**：有外部协作 / 会接受贡献的项目才写贡献指南，放 `.github/CONTRIBUTING.md`；单人小工具不必加。
 4. **多语言以英文为基准**。README 用 `README.md` + `README.<language-tag>.md`（如 `README.zh-Hans.md`）。**有可视化内容的项目做 i18n 国际化**：默认支持英语 + 简体中文两种、**默认英语**。例外——已有 i18n（其它语言 / 默认非英语），或显然无需多语言（纯内部脚本、单语内容站等），就别硬加。
-5. **许可协议**：每个开源项目都要有 `LICENSE`，README 末尾必有 License 段。**代码项目默认 MIT**；**个人创作内容**（文章 / 设计 / 作品集等非代码）惯用 **CC BY-NC-SA**。
+5. **许可协议**：每个开源项目都要有 `LICENSE`，README 末尾必有 License 段。**代码项目默认 MIT**；README 的 MIT 链接统一指向 `https://github.com/lailai0916/tools/blob/main/LICENSE`，不链接当前仓库内的 `LICENSE`。英文固定写 `This project's code is licensed under [MIT License](https://github.com/lailai0916/tools/blob/main/LICENSE).`；中文对应写 `本项目代码采用 [MIT 许可协议](https://github.com/lailai0916/tools/blob/main/LICENSE)。`。**个人创作内容**（文章 / 设计 / 作品集等非代码）惯用 **CC BY-NC-SA**。
 6. **版本与变更日志（仅发版项目）**：需要对外发布版本的项目才维护——版本遵循 Semantic Versioning，变更日志遵循 Keep a Changelog（`CHANGELOG.md`）。一次性脚本、小工具、单语内容项目不强加空骨架。
 7. **Prettier 必装**：每个项目都装 Prettier 做格式化——`devDependency` + 配置文件（`printWidth: 100`、`singleQuote: true`、`trailingComma: "es5"`）+ `format` 脚本，HTML / CSS / JS / TS / JSON / MD 统一交给它，不手动对齐。C++ 见 [cpp-oi-style.md](cpp-oi-style.md)；文档文本遵循 [markdown-style.md](markdown-style.md) / [wording.md](wording.md)。
+8. **仓库名、项目名、文件名分层**：GitHub 仓库名用小写 kebab-case；README `<h1>` 写正式项目名，不机械复制仓库名。单个英文单词的项目名首字母大写（仓库 `wordcloud` → 项目 `Wordcloud`）；多词项目按正式品牌分词与大小写。新文件与目录默认使用英文 ASCII 名称，遵循语言生态的命名习惯，禁止中文文件名；Finder 启动脚本写成 `start.command` 这类英文 kebab-case 名称。
 
 ## README 文档风格
 
-8. **一句话定位放最前**：用一句准确的话说清"这是什么"，10 秒看懂。
-9. **结构清晰、跨项目统一**：介绍 → 特性 → 快速开始 → 结构 → 其它 → **末尾 License 段**。每节短、直给；**所有项目 README 用同一套结构与格式**。
-10. **居中头部 + 徽章**（展示型项目）：标题、双语切换链接、一排 shields.io 徽章（CI、last commit、top language、repo size、code style、license）。
-11. **特性清单**：emoji + 加粗小标题 + 一句说明（`🎨 **Bespoke Home** — 一句话。`）。emoji 仅在 README 特性区用，技术正文不用。
-12. **结构树用 `text` 代码块**画目录，关键目录后跟 `#` 注释，**所有 `#` 竖向对齐**——`#` 左侧字段宽度取 `max(36, x+2)`（x 为该树最长一行左侧内容的字符数），默认 36；**快速开始给可复制 `bash` 命令**。
-13. **双语对等**：英文与中文各一份完整 README，互为镜像，不是翻译残桩。
-14. **专业克制**：不堆形容词，不写"最强 / 革命性 / 颠覆"，不写"求 star"式收尾。
+9. **一句话定位放最前**：用一句准确的话说清"这是什么"，10 秒看懂。
+10. **结构清晰、跨项目统一**：介绍 → 特性 → 快速开始 → 结构 → 其它 → **末尾 License 段**。每节短、直给；**所有项目 README 用同一套结构与格式**。
+11. **居中头部 + 徽章**（展示型项目）：标题、双语切换链接、一排 shields.io 徽章（CI、last commit、top language、repo size、code style、license）。
+12. **特性清单**：emoji + 加粗小标题 + 一句说明（`🎨 **Bespoke Home** — 一句话。`）。emoji 仅在 README 特性区用，技术正文不用。
+13. **项目结构树严格统一**：只用 `bash` 代码块，根节点写 GitHub 仓库名。仅列帮助理解项目的专属核心目录与文件；不列 `README*`、`LICENSE*`、`.gitignore`、`.gitattributes`、`.gitmodules`、`.agents/`、`.claude/`、`AGENTS.md`、`CLAUDE.md` 等通用仓库元数据。每一级都先列文件夹、再列文件；同组按名称字典序排列。每个条目行末写一句必要注释。设所有条目删去注释与尾随空格后的最大字符数为 $w$，每个 `#` 前必须恰有 $k=\max(w+1,36)$ 个字符；按 Unicode 字符数计算，不按等宽字体的视觉宽度计算。**快速开始给可复制 `bash` 命令**。
+14. **双语对等**：英文与中文各一份完整 README，互为镜像，不是翻译残桩。
+15. **专业克制**：不堆形容词，不写"最强 / 革命性 / 颠覆"，不写"求 star"式收尾。
 
 ## 推荐做法
 
@@ -99,21 +100,29 @@ README 头部骨架（`<owner>` / `<repo>` 替换为实际值；preview 图可�
 </div>
 ```
 
+合规的项目结构树：
+
+```bash
+task-cli/
+├── bin/                           # Executable entry
+└── src/                           # Command and storage logic
+```
+
 末尾 License 段：
 
 ```markdown
 ## License
 
-Licensed under the [MIT License](LICENSE).
+This project's code is licensed under [MIT License](https://github.com/lailai0916/tools/blob/main/LICENSE).
 ```
 
 ## Self-review Checklist
 
 - [ ] 提交信息是 Conventional Commits（`type(scope): description`）？
-- [ ] README 第一屏一句话定位，10 秒看懂？
+- [ ] README 使用正式项目名；第一屏一句话定位，10 秒看懂；新增路径无中文文件名？
 - [ ] 结构：介绍 → 特性 → 快速开始 → 结构 → 其它，每节简短？
 - [ ] 展示型项目有徽章；特性区 emoji + 加粗标题 + 一句说明？
-- [ ] 结构树 `text` 块、`#` 注释对齐到 `max(36, x+2)` 列、命令 `bash` 块可复制？
+- [ ] 结构树为 `bash` 块，仅列项目专属内容；文件夹优先、各组字典序；`#` 前字符数严格等于 `max(w+1,36)`？
 - [ ] 多语言以英文为基准（`README.md` / `README.zh-Hans.md` 中英对等；有 UI 内容则 i18n 默认 en + zh-Hans、默认英语，除非已有 i18n 或显然没必要）？
-- [ ] 有 `LICENSE`（开源默认 MIT）+ README 末尾 License 段；装了 Prettier（config + format 脚本）？
+- [ ] 有 `LICENSE`（开源默认 MIT）+ README 末尾 License 段，MIT 链接指向 `lailai0916/tools`；装了 Prettier（config + format 脚本）？
 - [ ] 无形容词轰炸、无求 star 收尾、技术正文 emoji 克制？

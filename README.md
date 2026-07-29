@@ -52,47 +52,16 @@ See [SKILL.md](SKILL.md) for out-of-scope cases and triggers.
 
 ```bash
 lailai-skill/
-├── README.md                       # English (this file)
-├── README.zh-Hans.md               # 简体中文
-├── SKILL.md                        # Entry: positioning, scope, principles, boundaries, workflow, self-check
-├── AGENTS.md                       # Runtime-neutral Agent entry point
-├── CLAUDE.md                       # Claude compatibility entry point
-├── LICENSE                         # Code license
-├── LICENSE-docs                    # Documentation and skill-content license
-├── CHANGELOG.md                    # Notable changes
-├── profile/                        # Long-term personality, preferences, thinking, boundaries
-│   ├── identity.md
-│   ├── personality.md
-│   ├── thinking-style.md
-│   ├── conversation-style.md
-│   ├── preferences.md
-│   ├── decision-rules.md
-│   └── boundaries.md
-├── references/                     # Executable style rules (each with a Self-review Checklist)
-│   ├── daily-chat-style.md
-│   ├── writing-style.md
-│   ├── email-style.md
-│   ├── wording.md
-│   ├── markdown-style.md
-│   ├── latex-math-style.md
-│   ├── docusaurus-style.md
-│   ├── luogu-solution.md
-│   ├── cpp-oi-style.md
-│   ├── engineering-code-style.md
-│   ├── design-style.md
-│   ├── project-docs-style.md
-│   ├── learning-style.md
-│   ├── ai-tone-blacklist.md
-│   └── maintenance-guide.md
-├── examples/                       # Representative input → handling → output → why it fits
-├── tests/                          # Verifiable style tests (goal / input / expectations / scoring / pass criteria)
-├── test-prompts.json               # Prompt-level regression cases
-├── prompts/                        # Copy-paste prompts for maintenance
+├── evolution/                      # Evaluation rubric and evolution log
+├── examples/                       # Representative input and output pairs
+├── profile/                        # Long-term identity, preferences, and boundaries
+├── prompts/                        # Maintenance prompts
+├── references/                     # Executable style and workflow rules
+├── tests/                          # Verifiable behavior tests
 ├── tools/                          # Checkers and supporting utilities
-├── evolution/                      # Scoring rubric and evolution log
-│   ├── evaluation-rubric.md
-│   └── evolution-log.md
-└── observations.md                 # Temporary observations not yet sedimented into rules
+├── observations.md                 # Pending observations
+├── SKILL.md                        # Skill entry point
+└── test-prompts.json               # Prompt-level regression cases
 ```
 
 ## Getting Started
@@ -172,4 +141,4 @@ Maintenance is long-term work, not a one-off. See [references/maintenance-guide.
 
 ## License
 
-This project's code is licensed under [MIT License](LICENSE), and its original documentation and skill content are licensed under [CC BY 4.0](LICENSE-docs).
+This project's code is licensed under [MIT License](https://github.com/lailai0916/tools/blob/main/LICENSE). Its original documentation and skill content are licensed under [CC BY 4.0](LICENSE-docs).

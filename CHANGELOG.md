@@ -6,6 +6,26 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.9.2] - 2026-07-29
+
+修正项目命名、README 结构树与 License 规范。
+
+### Fixed
+
+- `references/project-docs-style.md`：区分小写仓库名与正式项目名；禁止中文文件名；结构树统一为 `bash`，仅列项目专属内容，逐级按「文件夹优先 + 字典序」排序；`#` 前字符数改为严格的 `max(w+1,36)`。
+- `references/markdown-style.md`：把 README 项目结构树明确为字符画禁令的唯一例外，并统一使用 `bash` 代码块。
+- `README.md` / `README.zh-Hans.md`：项目结构删去通用仓库元数据，按新规则重排并严格对齐；MIT 链接改为统一来源。
+
+### Changed
+
+- `observations.md`：2026-07-18 的 README 观察经 2026-07-29 第二次明确确认后标记为已沉淀。
+- `examples/readme-demo.md` 与 `tests/project-docs-test.md`：同步正式项目名、英文路径、结构树排序 / 对齐和统一 License 文案。
+
+### Test
+
+- `tools/checker/check.py`：新增正式项目名、`.command` 文件名、项目结构树和 License 确定性检查。
+- 新增 README 正反夹具与 checker 单元测试，覆盖本次全部规则。
+
 ## [0.9.1] - 2026-07-19
 
 修正洛谷题解同步的徽章转义与完整正文核对。

@@ -58,6 +58,9 @@ python3 check.py --commit .git/COMMIT_EDITMSG
 | `cpp-endl` / `cpp-stdio` / `cpp-comment` / `cpp-bool` / `cpp-dp` / `cpp-std-prefix` / `cpp-indent` | WARN | cpp 规则 11、4、14、24、7、3 |
 | `ascii-art` / `todo` | WARN | [engineering-code-style](../../references/engineering-code-style.md) |
 | `commit-conventional` | ERROR | [project-docs-style](../../references/project-docs-style.md) 规则 1 |
+| `project-title-case` / `path-filename-ascii` / `command-filename` | ERROR | project-docs-style 规则 8 |
+| `project-tree-*` | ERROR | project-docs-style 规则 13 |
+| `license-link` / `license-wording` | ERROR | project-docs-style 规则 5 |
 
 ## 故意不查什么（判断类，留给 reviewer / 人）
 
@@ -73,9 +76,12 @@ checker 只碰能确定判定的。下列**不进 checker**，靠 reviewer agent
 
 ## 自测
 
-`tests/` 下 `bad.mdx` / `good.mdx` 是回归夹具：`good` 必须零 ERROR 零 WARN，`bad` 覆盖每类 ERROR。改 checker 后跑：
+`tests/` 下的通用与 README 回归夹具覆盖各类 ERROR。`good` 必须零 ERROR 零 WARN，`bad` 必须命中预期规则。改 checker 后跑：
 
 ```bash
 python3 check.py tests/good.mdx   # 期望：0 ERROR，0 WARN
 python3 check.py tests/bad.mdx    # 期望：各类 ERROR 齐全
+python3 check.py tests/readme-good.md
+python3 check.py tests/readme-bad.md
+python3 -m unittest test_checker.py
 ```

@@ -11,10 +11,13 @@
 ## 期望输出特征
 
 - 第一屏一句话定位，10 秒看懂「是什么」。
+- README 标题使用正式项目名 `CSV Diff`，仓库名仍为 `csv-diff`；所有新增路径使用英文 ASCII 名称。
 - 结构：介绍 → 特性 → 快速开始 → 结构 → 其它 → 末尾 License 段。
 - 特性区 emoji + 加粗小标题 + 一句说明；技术正文不用 emoji。
-- 快速开始给可复制 `bash` 命令；结构树用 `text` 块、`#` 注释竖向对齐。
-- 末尾有 License 段，代码项目默认 MIT。
+- 快速开始给可复制 `bash` 命令；结构树也使用 `bash` 块。
+- 结构树不列 README、LICENSE、`.gitignore`、`.agents` 等通用条目；每一级文件夹优先，再按名称字典序排列。
+- 设最长条目字符数为 $w$，每个 `#` 前严格为 $\max(w+1,36)$ 个字符。
+- 末尾 License 段使用 `lailai0916/tools` 的统一 MIT 链接。
 - 提交信息为 `type(scope): description`。
 
 ## 评分标准（0～5）
@@ -29,15 +32,21 @@
 - 没有一句话定位，直接讲背景故事。
 - 「如果觉得有用请给个 star ⭐」式收尾。
 - 提交信息写 `update` / `fix bug`，无 type、无 scope。
+- 标题直接写小写仓库名 `csv-diff`，或新增中文文件名。
+- 项目结构使用 `text` 代码块，混列文件与文件夹，或用空格凭视觉对齐。
+- 项目结构列出 README、LICENSE、`.gitignore`、`.agents` 等通用条目。
+- License 链接当前仓库内的 `LICENSE`。
 
 ## 客观检查项（可机械判定，全过才算通过）
 
-- [ ] 第一屏有一句话定位（介绍段首句即说清是什么）。
-- [ ] 有 `## Features`（或等价）特性区，条目为 emoji + 加粗标题 + 一句说明。
+- [ ] 标题为 `CSV Diff`，新增路径均为英文 ASCII 名称；第一屏一句话说清项目定位。
+- [ ] `## Features` 条目使用 emoji + 加粗标题 + 一句具体说明，无营销形容词或求 star 文案。
 - [ ] 有可复制的 `bash` 安装 / 运行命令块。
-- [ ] 有末尾 `## License` 段，注明 MIT（代码项目）。
-- [ ] 无「powerful」「revolutionary」「求 star / give it a star」等词。
-- [ ] 三条提交信息均为 `type: …` 或 `type(scope): …`，无裸 `update` / `fix bug`。
+- [ ] 项目结构为 `bash` 块，且不含通用仓库元数据。
+- [ ] 项目结构逐级「文件夹在前、文件在后」，各组按名称字典序排列。
+- [ ] 项目结构所有 `#` 前字符数均为 $\max(w+1,36)$。
+- [ ] 有末尾 `## License` 段，链接统一的 MIT License URL。
+- [ ] 三条提交信息符合 Conventional Commits，无裸 `update` / `fix bug`。
 
 ## 通过条件
 

@@ -52,47 +52,16 @@
 
 ```bash
 lailai-skill/
-├── README.md                       # 英文（默认）
-├── README.zh-Hans.md               # 简体中文（本文件）
-├── SKILL.md                        # 入口：定位、场景、原则、边界、工作流、自检
-├── AGENTS.md                       # 跨 Runtime Agent 入口
-├── CLAUDE.md                       # Claude 兼容入口
-├── LICENSE                         # 代码许可协议
-├── LICENSE-docs                    # 文档与 Skill 内容许可协议
-├── CHANGELOG.md                    # 重要变化记录
-├── profile/                        # 长期人格、偏好、思考方式、边界
-│   ├── identity.md
-│   ├── personality.md
-│   ├── thinking-style.md
-│   ├── conversation-style.md
-│   ├── preferences.md
-│   ├── decision-rules.md
-│   └── boundaries.md
-├── references/                     # 可执行风格规则（每个文件含 Self-review Checklist）
-│   ├── daily-chat-style.md
-│   ├── writing-style.md
-│   ├── email-style.md
-│   ├── wording.md
-│   ├── markdown-style.md
-│   ├── latex-math-style.md
-│   ├── docusaurus-style.md
-│   ├── luogu-solution.md
-│   ├── cpp-oi-style.md
-│   ├── engineering-code-style.md
-│   ├── design-style.md
-│   ├── project-docs-style.md
-│   ├── learning-style.md
-│   ├── ai-tone-blacklist.md
-│   └── maintenance-guide.md
-├── examples/                       # 代表性输入 → 处理原则 → 输出 → 为什么符合
-├── tests/                          # 可验证的风格测试（目标 / 输入 / 期望 / 评分 / 通过条件）
-├── test-prompts.json               # Prompt 回归样例
-├── prompts/                        # 维护时可直接复制的提示词
-├── tools/                          # Checker 与辅助工具
 ├── evolution/                      # 评分标准与进化日志
-│   ├── evaluation-rubric.md
-│   └── evolution-log.md
-└── observations.md                 # 尚未沉淀为规则的临时观察
+├── examples/                       # 代表性输入与输出对照
+├── profile/                        # 长期身份、偏好与边界
+├── prompts/                        # 维护提示词
+├── references/                     # 可执行风格与工作流规则
+├── tests/                          # 可验证行为测试
+├── tools/                          # Checker 与辅助工具
+├── observations.md                 # 尚未沉淀的观察
+├── SKILL.md                        # Skill 入口
+└── test-prompts.json               # Prompt 回归样例
 ```
 
 ## 快速开始
@@ -171,4 +140,4 @@ git commit -m "chore: add lailai-skill submodule"   # gitlink 必须一起提交
 
 ## 许可协议
 
-本项目代码采用 [MIT 许可协议](LICENSE)，原创文档与 Skill 内容采用 [知识共享 署名 4.0 国际许可协议](LICENSE-docs)。
+本项目代码采用 [MIT 许可协议](https://github.com/lailai0916/tools/blob/main/LICENSE)。原创文档与 Skill 内容采用 [知识共享 署名 4.0 国际许可协议](LICENSE-docs)。
