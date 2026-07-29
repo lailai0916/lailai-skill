@@ -108,8 +108,8 @@
 - 现象：lailai 以 `lailai0916.github.io` 为成熟基线。双语 README 的简介、特性、快速开始、项目结构与许可章节应使用统一名称。英文标题通常为 $2$ 个首字母大写的单词，中文标题通常为 $4$ 个汉字。中英结构与内容必须镜像。结构树以仓库名为根，使用 `bash` 代码块，并完整列出关键文件。注释的 `#` 通常位于第 $37$ 列。代码默认使用 MIT，原创文本内容使用 CC BY 4.0。MIT 英文许可表述使用「This project's code is licensed under ...」。
 - 场景：统一多个 GitHub 仓库的双语 README。反馈用于纠正机械套用模板造成的结构偏差。
 - 推测：README 不只求信息齐全。个人网站的成熟写法应向 skill、模板与普通项目逐层传播。跨仓库统一章节语法、双语镜像与许可边界，具体内容仍按项目类型调整。
-- 稳定性：第 $2$ 次明确确认。2026-07-29，lailai 因 `wordcloud` 仓库再次逐项纠正项目名大小写、中文文件名、结构树语言 / 排序 / 对齐公式、通用条目与 License 链接，并要求同步修正 skill 与模板。
-- 处理：已沉淀 → `references/project-docs-style.md`、`references/markdown-style.md`、`examples/readme-demo.md`、`tests/project-docs-test.md` 与 `tools/checker/`。
+- 稳定性：第 $2$ 次明确确认。2026-07-29，lailai 因 `wordcloud` 仓库再次逐项纠正项目名大小写、中文文件名、结构树语言 / 排序 / 对齐公式、通用条目与 License 链接，并要求同步修正 skill 与模板；随后确认 `lailai-template` 是品牌显示名特例，仍保留小写连字符。
+- 处理：已沉淀 → `references/project-docs-style.md`、`references/markdown-style.md`、`examples/readme-demo.md`、`tests/project-docs-test.md` 与 `tools/checker/`；checker 仅精确豁免 `lailai-template`。
 - 隐私检查：否。
 
 ### 2026-07-18 GitHub 社区文件按 Owner 维护单一真源

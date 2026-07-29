@@ -11,7 +11,7 @@
 ## 期望输出特征
 
 - 第一屏一句话定位，10 秒看懂「是什么」。
-- README 标题使用正式项目名 `CSV Diff`，仓库名仍为 `csv-diff`；所有新增路径使用英文 ASCII 名称。
+- README 标题使用正式项目名 `CSV Diff`，仓库名仍为 `csv-diff`；仅明确的品牌写法可以例外（如 `lailai-template`）；所有新增路径使用英文 ASCII 名称。
 - 结构：介绍 → 特性 → 快速开始 → 结构 → 其它 → 末尾 License 段。
 - 特性区 emoji + 加粗小标题 + 一句说明；技术正文不用 emoji。
 - 快速开始给可复制 `bash` 命令；结构树也使用 `bash` 块。

@@ -6,6 +6,19 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.9.3] - 2026-07-29
+
+保留 `lailai-template` 的品牌显示名。
+
+### Fixed
+
+- `references/project-docs-style.md`：把 `lailai-template` 记录为项目显示名的明确例外，不套用普通多词项目的标题转换。
+- `tools/checker/check.py`：仅对 `lailai-template` 放行小写连字符标题，其他仓库名仍须转换为正式项目名。
+
+### Test
+
+- `tools/checker/test_checker.py`：新增品牌例外回归测试。
+
 ## [0.9.2] - 2026-07-29
 
 修正项目命名、README 结构树与 License 规范。

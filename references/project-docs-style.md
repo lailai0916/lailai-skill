@@ -24,7 +24,7 @@
 5. **许可协议**：每个开源项目都要有 `LICENSE`，README 末尾必有 License 段。**代码项目默认 MIT**；README 的 MIT 链接统一指向 `https://github.com/lailai0916/tools/blob/main/LICENSE`，不链接当前仓库内的 `LICENSE`。英文固定写 `This project's code is licensed under [MIT License](https://github.com/lailai0916/tools/blob/main/LICENSE).`；中文对应写 `本项目代码采用 [MIT 许可协议](https://github.com/lailai0916/tools/blob/main/LICENSE)。`。**个人创作内容**（文章 / 设计 / 作品集等非代码）惯用 **CC BY-NC-SA**。
 6. **版本与变更日志（仅发版项目）**：需要对外发布版本的项目才维护——版本遵循 Semantic Versioning，变更日志遵循 Keep a Changelog（`CHANGELOG.md`）。一次性脚本、小工具、单语内容项目不强加空骨架。
 7. **Prettier 必装**：每个项目都装 Prettier 做格式化——`devDependency` + 配置文件（`printWidth: 100`、`singleQuote: true`、`trailingComma: "es5"`）+ `format` 脚本，HTML / CSS / JS / TS / JSON / MD 统一交给它，不手动对齐。C++ 见 [cpp-oi-style.md](cpp-oi-style.md)；文档文本遵循 [markdown-style.md](markdown-style.md) / [wording.md](wording.md)。
-8. **仓库名、项目名、文件名分层**：GitHub 仓库名用小写 kebab-case；README `<h1>` 写正式项目名，不机械复制仓库名。单个英文单词的项目名首字母大写（仓库 `wordcloud` → 项目 `Wordcloud`）；多词项目按正式品牌分词与大小写。新文件与目录默认使用英文 ASCII 名称，遵循语言生态的命名习惯，禁止中文文件名；Finder 启动脚本写成 `start.command` 这类英文 kebab-case 名称。
+8. **仓库名、项目名、文件名分层**：GitHub 仓库名用小写 kebab-case；README `<h1>` 写正式项目名，不机械复制仓库名。单个英文单词的项目名首字母大写（仓库 `wordcloud` → 项目 `Wordcloud`）；多词项目按正式品牌分词与大小写。明确的品牌写法优先，`lailai-template` 是特例，项目显示名仍为 `lailai-template`。新文件与目录默认使用英文 ASCII 名称，遵循语言生态的命名习惯，禁止中文文件名；Finder 启动脚本写成 `start.command` 这类英文 kebab-case 名称。
 
 ## README 文档风格
 

@@ -45,6 +45,16 @@ class CheckerTest(unittest.TestCase):
             self.assertIn("command-filename", rules)
             self.assertIn("path-filename-ascii", rules)
 
+    def test_project_title_exception(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "README.md"
+            path.write_text(
+                '<div align="center">\n  <h1>lailai-template</h1>\n</div>\n',
+                encoding="utf-8",
+            )
+            rules = {issue.rule for issue in check.check_file(str(path), OPTS)}
+            self.assertNotIn("project-title-case", rules)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -388,6 +388,7 @@ def check_md_structure(path, lines, has_frontmatter, code_line_set, disabled_lin
 PROJECT_STRUCTURE_HEADINGS = {"## Project Structure", "## 项目结构"}
 TREE_ENTRY_RE = re.compile(r"^(?P<prefix>(?:│   |    )*)(?:├── |└── )(?P<name>.+)$")
 PROJECT_TITLE_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+PROJECT_TITLE_EXCEPTIONS = {"lailai-template"}
 MIT_LICENSE_URL = "https://github.com/lailai0916/tools/blob/main/LICENSE"
 MIT_LICENSE_SENTENCE = (
     "This project's code is licensed under "
@@ -511,7 +512,11 @@ def check_readme_project_docs(path, lines, code_line_set, disabled_lines, issues
         if not title_match:
             continue
         title = title_match.group(1).strip()
-        if PROJECT_TITLE_RE.fullmatch(title) and idx + 1 not in disabled_lines:
+        if (
+            PROJECT_TITLE_RE.fullmatch(title)
+            and title not in PROJECT_TITLE_EXCEPTIONS
+            and idx + 1 not in disabled_lines
+        ):
             issues.append(
                 Issue(
                     path,
