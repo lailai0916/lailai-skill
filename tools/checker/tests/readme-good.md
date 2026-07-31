@@ -1,5 +1,6 @@
 <div align="center">
   <h1>CSV Diff</h1>
+  <p><strong>English</strong> · <a href="README.zh-Hans.md">简体中文</a></p>
 </div>
 
 ## Project Structure

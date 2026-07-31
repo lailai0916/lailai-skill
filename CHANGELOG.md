@@ -6,6 +6,21 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [0.9.4] - 2026-08-01
+
+统一 README 多语言导航。
+
+### Changed
+
+- `README.md` / `README.zh-Hans.md`：语言改用 `·` 分隔，并加粗当前语言。
+- `profile/preferences.md` 与 `references/project-docs-style.md`：固化「当前语言加粗且不加链接，其他语言保留链接」的导航规范与双语示例。
+- `observations.md`：记录从方案取舍、8 语言落地到跨项目推广的 3 次确认，并标记为已沉淀。
+
+### Test
+
+- `tools/checker/check.py`：新增 README 语言分隔符、当前语言状态与其他语言链接检查。
+- README 正反夹具、checker 单元测试与 `tests/project-docs-test.md` 同步新规范。
+
 ## [0.9.3] - 2026-07-29
 
 保留 `lailai-template` 的品牌显示名。

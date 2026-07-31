@@ -20,7 +20,10 @@
 1. **Git 提交遵循 Conventional Commits**：`type(scope): description`（如 `feat: ...`、`fix(blog): ...`、`docs: ...`）。
 2. **`.gitignore`** 用 Vite 默认模板。
 3. **贡献指南（仅协作项目）**：有外部协作 / 会接受贡献的项目才写贡献指南，放 `.github/CONTRIBUTING.md`；单人小工具不必加。
-4. **多语言以英文为基准**。README 用 `README.md` + `README.<language-tag>.md`（如 `README.zh-Hans.md`）。**有可视化内容的项目做 i18n 国际化**：默认支持英语 + 简体中文两种、**默认英语**。例外——已有 i18n（其它语言 / 默认非英语），或显然无需多语言（纯内部脚本、单语内容站等），就别硬加。
+4. **多语言以英文为基准**。英文使用 `README.md`。
+   其他语言使用 `README.<language-tag>.md`，如 `README.zh-Hans.md`。
+   **有可视化内容的项目做 i18n 国际化**。默认支持英语 + 简体中文两种，**默认英语**。
+   已有 i18n（其他语言 / 默认非英语）时沿用原配置。纯内部脚本、单语内容站等明确无需多语言的项目不强加。
 5. **许可协议**：每个开源项目都要有 `LICENSE`，README 末尾必有 License 段。**代码项目默认 MIT**；README 的 MIT 链接统一指向 `https://github.com/lailai0916/tools/blob/main/LICENSE`，不链接当前仓库内的 `LICENSE`。英文固定写 `This project's code is licensed under [MIT License](https://github.com/lailai0916/tools/blob/main/LICENSE).`；中文对应写 `本项目代码采用 [MIT 许可协议](https://github.com/lailai0916/tools/blob/main/LICENSE)。`。**个人创作内容**（文章 / 设计 / 作品集等非代码）惯用 **CC BY-NC-SA**。
 6. **版本与变更日志（仅发版项目）**：需要对外发布版本的项目才维护——版本遵循 Semantic Versioning，变更日志遵循 Keep a Changelog（`CHANGELOG.md`）。一次性脚本、小工具、单语内容项目不强加空骨架。
 7. **Prettier 必装**：每个项目都装 Prettier 做格式化——`devDependency` + 配置文件（`printWidth: 100`、`singleQuote: true`、`trailingComma: "es5"`）+ `format` 脚本，HTML / CSS / JS / TS / JSON / MD 统一交给它，不手动对齐。C++ 见 [cpp-oi-style.md](cpp-oi-style.md)；文档文本遵循 [markdown-style.md](markdown-style.md) / [wording.md](wording.md)。
@@ -30,7 +33,9 @@
 
 9. **一句话定位放最前**：用一句准确的话说清"这是什么"，10 秒看懂。
 10. **结构清晰、跨项目统一**：介绍 → 特性 → 快速开始 → 结构 → 其它 → **末尾 License 段**。每节短、直给；**所有项目 README 用同一套结构与格式**。
-11. **居中头部 + 徽章**（展示型项目）：标题、双语切换链接、一排 shields.io 徽章（CI、last commit、top language、repo size、code style、license）。
+11. **居中头部**（展示型项目）：标题下放语言导航，下一行放 shields.io 徽章。
+    语言间用 ` · ` 分隔。当前语言用 `<strong>` 加粗且不加链接。其他语言保留链接。
+    徽章包括 CI、last commit、top language、repo size、code style 与 license。
 12. **特性清单**：emoji + 加粗小标题 + 一句说明（`🎨 **Bespoke Home** — 一句话。`）。emoji 仅在 README 特性区用，技术正文不用。
 13. **项目结构树严格统一**：只用 `bash` 代码块，根节点写 GitHub 仓库名。仅列帮助理解项目的专属核心目录与文件；不列 `README*`、`LICENSE*`、`.gitignore`、`.gitattributes`、`.gitmodules`、`.agents/`、`.claude/`、`AGENTS.md`、`CLAUDE.md` 等通用仓库元数据。每一级都先列文件夹、再列文件；同组按名称字典序排列。每个条目行末写一句必要注释。设所有条目删去注释与尾随空格后的最大字符数为 $w$，每个 `#` 前必须恰有 $k=\max(w+1,36)$ 个字符；按 Unicode 字符数计算，不按等宽字体的视觉宽度计算。**快速开始给可复制 `bash` 命令**。
 14. **双语对等**：英文与中文各一份完整 README，互为镜像，不是翻译残桩。
@@ -76,7 +81,7 @@ README 头部骨架（`<owner>` / `<repo>` 替换为实际值；preview 图可�
 ```html
 <div align="center">
   <h1>project-name</h1>
-  <p>English | <a href="README.zh-Hans.md">简体中文</a></p>
+  <p><strong>English</strong> · <a href="README.zh-Hans.md">简体中文</a></p>
   <p>
     <img
       src="https://img.shields.io/github/actions/workflow/status/<owner>/<repo>/deploy.yml?style=flat-square"
@@ -98,6 +103,12 @@ README 头部骨架（`<owner>` / `<repo>` 替换为实际值；preview 图可�
     />
   </p>
 </div>
+```
+
+`README.zh-Hans.md` 的语言行镜像为：
+
+```html
+<p><a href="README.md">English</a> · <strong>简体中文</strong></p>
 ```
 
 合规的项目结构树：
@@ -123,6 +134,6 @@ This project's code is licensed under [MIT License](https://github.com/lailai091
 - [ ] 结构：介绍 → 特性 → 快速开始 → 结构 → 其它，每节简短？
 - [ ] 展示型项目有徽章；特性区 emoji + 加粗标题 + 一句说明？
 - [ ] 结构树为 `bash` 块，仅列项目专属内容；文件夹优先、各组字典序；`#` 前字符数严格等于 `max(w+1,36)`？
-- [ ] 多语言以英文为基准（`README.md` / `README.zh-Hans.md` 中英对等；有 UI 内容则 i18n 默认 en + zh-Hans、默认英语，除非已有 i18n 或显然没必要）？
+- [ ] 多语言以英文为基准，`README.md` / `README.zh-Hans.md` 中英对等？语言导航是否用 ` · ` 分隔，并仅加粗当前语言？有 UI 内容时，i18n 是否默认 en + zh-Hans、默认英语？
 - [ ] 有 `LICENSE`（开源默认 MIT）+ README 末尾 License 段，MIT 链接指向 `lailai0916/tools`；装了 Prettier（config + format 脚本）？
 - [ ] 无形容词轰炸、无求 star 收尾、技术正文 emoji 克制？

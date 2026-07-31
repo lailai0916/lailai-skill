@@ -382,7 +382,7 @@ def check_md_structure(path, lines, has_frontmatter, code_line_set, disabled_lin
 
 
 # ---------------------------------------------------------------------------
-# README 项目规范：正式项目名 / 结构树 / License
+# README 项目规范：语言导航 / 正式项目名 / 结构树 / License
 # ---------------------------------------------------------------------------
 
 PROJECT_STRUCTURE_HEADINGS = {"## Project Structure", "## 项目结构"}
@@ -395,6 +395,20 @@ MIT_LICENSE_SENTENCE = (
     "[MIT License]({}).".format(MIT_LICENSE_URL)
 )
 MIT_LICENSE_SENTENCE_ZH = "本项目代码采用 [MIT 许可协议]({})。".format(MIT_LICENSE_URL)
+README_LANGUAGE_LINK_RE = re.compile(
+    r'^<a href="README(?:\.[A-Za-z][A-Za-z0-9-]*)?\.md">[^<>]+</a>$'
+)
+README_LANGUAGE_CURRENT_RE = re.compile(r"^<strong>[^<>]+</strong>$")
+README_CURRENT_LANGUAGES = {
+    "README.md": "English",
+    "README.zh-Hans.md": "简体中文",
+    "README.zh-Hant.md": "繁體中文",
+    "README.ja.md": "日本語",
+    "README.ko.md": "한국어",
+    "README.es.md": "Español",
+    "README.fr.md": "Français",
+    "README.ru.md": "русский",
+}
 
 
 def is_common_tree_entry(name):
@@ -498,10 +512,69 @@ def check_project_tree(path, block, disabled_lines, issues):
             )
 
 
+def check_readme_language_nav(path, basename, lines, code_line_set, disabled_lines, issues):
+    for idx, raw in enumerate(lines[:30]):
+        lineno = idx + 1
+        if lineno in code_line_set or lineno in disabled_lines:
+            continue
+        paragraph = re.search(r"<p>(.*?)</p>", raw)
+        if not paragraph:
+            continue
+        content = paragraph.group(1)
+        if "English" not in content or "简体中文" not in content:
+            continue
+
+        parts = content.split(" · ")
+        separator_ok = len(parts) >= 2 and " | " not in content
+        if not separator_ok:
+            issues.append(
+                Issue(
+                    path,
+                    lineno,
+                    "ERROR",
+                    "readme-language-separator",
+                    "README 语言导航使用 ` · ` 分隔",
+                )
+            )
+
+        current = [part for part in parts if README_LANGUAGE_CURRENT_RE.fullmatch(part)]
+        expected = README_CURRENT_LANGUAGES.get(basename)
+        if len(current) != 1 or (
+            expected is not None and current[0] != "<strong>{}</strong>".format(expected)
+        ):
+            issues.append(
+                Issue(
+                    path,
+                    lineno,
+                    "ERROR",
+                    "readme-language-current",
+                    "README 仅加粗当前语言，且当前语言不加链接",
+                )
+            )
+
+        if separator_ok and any(
+            not README_LANGUAGE_CURRENT_RE.fullmatch(part)
+            and not README_LANGUAGE_LINK_RE.fullmatch(part)
+            for part in parts
+        ):
+            issues.append(
+                Issue(
+                    path,
+                    lineno,
+                    "ERROR",
+                    "readme-language-links",
+                    "README 除当前语言外的语言均保留链接",
+                )
+            )
+        return
+
+
 def check_readme_project_docs(path, lines, code_line_set, disabled_lines, issues):
     basename = os.path.basename(path)
     if not basename.lower().startswith("readme"):
         return
+
+    check_readme_language_nav(path, basename, lines, code_line_set, disabled_lines, issues)
 
     for idx, raw in enumerate(lines[:30]):
         if idx + 1 in code_line_set:

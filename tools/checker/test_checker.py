@@ -27,6 +27,8 @@ class CheckerTest(unittest.TestCase):
         self.assertTrue(
             {
                 "project-title-case",
+                "readme-language-separator",
+                "readme-language-current",
                 "project-tree-language",
                 "project-tree-common",
                 "project-tree-filename",
@@ -36,6 +38,33 @@ class CheckerTest(unittest.TestCase):
                 "license-wording",
             }.issubset(rules)
         )
+
+    def test_readme_language_navigation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            readme = Path(directory) / "README.md"
+            readme.write_text(
+                '<p><strong>English</strong> · '
+                '<a href="README.zh-Hans.md">简体中文</a></p>\n',
+                encoding="utf-8",
+            )
+            rules = {issue.rule for issue in check.check_file(str(readme), OPTS)}
+            self.assertFalse(any(rule.startswith("readme-language-") for rule in rules))
+
+            readme_zh = Path(directory) / "README.zh-Hans.md"
+            readme_zh.write_text(
+                '<p><a href="README.md">English</a> · '
+                '<strong>简体中文</strong></p>\n',
+                encoding="utf-8",
+            )
+            rules = {issue.rule for issue in check.check_file(str(readme_zh), OPTS)}
+            self.assertFalse(any(rule.startswith("readme-language-") for rule in rules))
+
+            readme.write_text(
+                '<p><strong>English</strong> · 简体中文</p>\n',
+                encoding="utf-8",
+            )
+            rules = {issue.rule for issue in check.check_file(str(readme), OPTS)}
+            self.assertIn("readme-language-links", rules)
 
     def test_command_filename(self):
         with tempfile.TemporaryDirectory() as directory:
