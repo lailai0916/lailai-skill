@@ -2,7 +2,7 @@
 
 ## 目标
 
-用 lailai 的审美做 UI / 网页 / 平面 / 排版设计审查。提炼自站点 `docs/project/guides/design.mdx`（lailai 的《设计风格指南》，参考 Apple HIG、Material Design 3、WCAG）与 `.claude/CLAUDE.md` / `.github/CONTRIBUTING.md` 的工程约定。
+用 lailai 的跨项目审美做 UI、网页、平面与排版设计审查。具体产品的设计系统和实现约束留在目标项目。
 
 ## 适用场景
 

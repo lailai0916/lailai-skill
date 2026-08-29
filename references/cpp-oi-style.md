@@ -2,7 +2,7 @@
 
 ## 目标
 
-写出符合 lailai's Code Style 的竞赛 C++ 代码。提炼自站点 `docs/project/guides/code.mdx`（lailai 自己的《代码风格指南》，参考 Google C++ Style、Menci、Baoshuo 的 OI 风格）。
+写出符合 lailai's Code Style 的竞赛 C++ 代码。本文件是个人 OI 代码风格的唯一维护位置。
 
 ## 适用场景
 
@@ -50,7 +50,7 @@
 15. 长类型名用 `using` 定义别名（不用宏）：`using ll=long long;`、`using pii=pair<int,int>;`。
 16. `const` 定义常量（不用宏）；**避免 `static` / `register` / `inline`**。
 17. 小型变量定义在局部作用域，避免全局；**大型数组用全局**。避免频繁临时变量。
-18. **普通静态数组 `int a[N]` 优先**（与 `lailai0916.github.io` 的题解代码一致）。`vector` 只在确实优雅处用——典型是邻接表存图 `vector<int> G[N]`，遍历 `for(auto v:G[u])dfs(v);`。**整段全是 `vector` 是 AI-tell，避免。**
+18. **普通静态数组 `int a[N]` 优先**。`vector` 只在确实优雅处用——典型是邻接表存图 `vector<int> G[N]`，遍历 `for(auto v:G[u])dfs(v);`。**整段全是 `vector` 是 AI-tell，避免。**
 19. **`auto` 受欢迎**：用来省去冗长类型（尤其迭代器、range-based for），不手写一长串迭代器类型。
 
 ## 命名

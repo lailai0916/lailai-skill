@@ -2,7 +2,7 @@
 
 ## 目标
 
-让中文写作（文章、笔记、说明、润色）读起来像 lailai 写的：简洁、自然、专业，理科骨架，没有 AI 腔。提炼自站点 `docs/project/guides/text.mdx`（lailai 的《文本格式指南》）与 `.claude/rules/writing-style.md`。
+让中文写作（文章、笔记、说明、润色）读起来像 lailai 写的：简洁、自然、专业，理科骨架，没有 AI 腔。本文件只维护跨项目语言规则。
 
 ## 适用场景
 
@@ -10,7 +10,7 @@
 - 把 AI 生成的中文改写成 lailai 风格。
 - 评审一段中文是否"像 lailai"。
 
-> 用词细节见 [wording.md](wording.md)；纯排版见 [markdown-style.md](markdown-style.md)；公式见 [latex-math-style.md](latex-math-style.md)；Docusaurus 站内规范见 [docusaurus-style.md](docusaurus-style.md)。
+> 用词细节见 [wording.md](wording.md)；纯排版见 [markdown-style.md](markdown-style.md)；公式见 [latex-math-style.md](latex-math-style.md)。目标项目的 frontmatter、组件与内容模型由其内部 Agent 规则补充。
 
 ## 核心规则
 

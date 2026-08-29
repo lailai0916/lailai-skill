@@ -26,13 +26,13 @@ lailai 的长期偏好与反感。稳定、可迁移的写这里；一次性的�
 
 ## 数学公式
 
-- 统一用 `$...$`（行内）与 `$$...$$`（行间），所有场景一致（含 Docusaurus 站内）。不用 `\(...\)` / `\[...\]`。详见 [../references/markdown-style.md](../references/markdown-style.md) 与 [../references/docusaurus-style.md](../references/docusaurus-style.md)。
+- 统一用 `$...$`（行内）与 `$$...$$`（行间），所有场景一致。不用 `\(...\)` / `\[...\]`。详见 [../references/markdown-style.md](../references/markdown-style.md) 与 [../references/latex-math-style.md](../references/latex-math-style.md)。目标仓库有项目专属渲染规则时，以其内部 Agent 规范为准。
 
 ## 文档与排版
 
 - Markdown 标题与正文之间保留一行空行。
 - 中文 prose 用全角标点；引号用「」，书名用《》。
-- README / 项目文档：语言间用 `·`。当前语言加粗，其他语言保留链接。保留徽章、emoji 功能清单、树形结构与双语对等。
+- README / 项目文档：语言间用 `·`。当前语言加粗，其他语言保留链接。居中标题、双语、徽章、emoji 功能清单、树形结构与仓库 About 元数据均按交付项严格核对。
 
 ## 品味取向（语料校准）
 

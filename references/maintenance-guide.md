@@ -25,7 +25,7 @@ observation → rule → example → test → evolution log →（回到）→ o
 5. **evolution log**：在 [../evolution/evolution-log.md](../evolution/evolution-log.md) 记一条（为什么改、改了什么、测试结果、保留 / 回滚），重要的同步 [../CHANGELOG.md](../CHANGELOG.md)；涉长期人格 / 价值 / 隐私 / 公开表达的变化必须人工确认。
 6. **回到 observation**：用真实任务继续观察，过时规则即时清理，发现偏差进入下一轮。
 
-闭环的意义：任何规则都可追溯到一条观察，也都有对应示例和测试。**没有示例和测试的规则是半成品**。示例可内联在 reference 内（如 email / latex）；测试可由相邻域的行为测试覆盖（wording → writing-style-test、markdown → docusaurus-format-test）；纯流程域（如洛谷发布）由真实任务跑验，不强造 prompt 测试。达尔文式优化（评估 → 改进 → 测试 → 保留或回滚）见 [../prompts/evolve-skill.md](../prompts/evolve-skill.md)。
+闭环的意义：任何规则都可追溯到一条观察，也都有对应示例和测试。**没有示例和测试的规则是半成品**。示例可内联在 reference 内（如 email / latex）；测试可由相邻域的行为测试覆盖（wording / markdown → writing-style-test）；专用工作流移交独立 Skill 后，由其自身测试负责。达尔文式优化（评估 → 改进 → 测试 → 保留或回滚）见 [../prompts/evolve-skill.md](../prompts/evolve-skill.md)。
 
 ## 机械校验：可判定的规则交给 checker
 
@@ -76,7 +76,7 @@ prose 规则的天花板是「90% + 自觉」——模型总会漏几条。想�
 ## 局部规则 vs 长期规则
 
 - **长期 / 可迁移规则**：写入 `profile/` 或通用 `references/`（如 writing-style、ai-tone-blacklist）。
-- **局部 / 项目规则**：标明适用范围（如 docusaurus-style 只适用站点；数学分隔符站内用 `$...$`）。冲突时局部规则在其范围内优先。
+- **局部 / 项目规则**：留在目标仓库并标明适用范围；冲突时目标仓库内部规则在其范围内优先，不把项目专属 frontmatter、组件或发布流程复制回本 Skill。
 
 ## 定期复查清单（建议每次较大更新或定期跑一次）
 

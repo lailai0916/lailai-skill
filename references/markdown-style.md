@@ -2,14 +2,14 @@
 
 ## 目标
 
-统一 Markdown 排版细节，符合 lailai 习惯。提炼自站点 `docs/project/guides/text.mdx`（Markdown / 标点 / 空格 / 数字 章节）与 `.claude/rules/writing-style.md`。
+统一 Markdown 排版细节，符合 lailai 的跨项目习惯。目标项目只补充自身格式差异。
 
 ## 适用场景
 
 - 写任何 Markdown / MDX 文档。
 - 审查 Markdown 排版一致性。
 
-> 用词见 [wording.md](wording.md)；公式见 [latex-math-style.md](latex-math-style.md)；站点专属（frontmatter、组件、题解模板）见 [docusaurus-style.md](docusaurus-style.md)。
+> 用词见 [wording.md](wording.md)；公式见 [latex-math-style.md](latex-math-style.md)。Frontmatter、组件与内容模型等项目专属规则留在目标仓库内部。
 
 ## 文件
 
@@ -24,7 +24,7 @@
 6. 不跳过标题等级；不用相同的上下级标题；不孤立标题编号（上级标题下不能只有 1 个下级）。
 7. 标题是短名词短语、**各级都尽量精简**（删「的 / 我国 / ……的表现 / ……的基本特点」等冗余，能两四字说清就不堆长句），**结尾不加标点**。例外：**逐字引用来源的标题**（如教材「第 X 单元 / 第 X 章」章节名）保持原文，不缩写、不改写。
 
-> **本 skill 内部文档例外**：`profile/` / `references/` / `prompts/` / `tests/` / `examples/` / `evolution/` 与 README 用 `# 一级标题`（`# Reference: …`、`# Profile: …` 等）作文件标题、不带 frontmatter；规则 4、5 针对站点 `docs/` / `blog/` 内容。仅入口 `SKILL.md` 带 `name` / `description` frontmatter。
+> **Agent Skill / 仓库元文档例外**：`profile/` / `references/` / `prompts/` / `tests/` / `examples/` / `evolution/` 与 README 可用 `# 一级标题`作文件标题、不带 frontmatter；规则 4、5 针对受本规范直接约束的内容正文。仅入口 `SKILL.md` 带 `name` / `description` frontmatter。目标仓库内部规则可定义自己的元数据结构。
 
 ## 强调与列表
 
@@ -44,13 +44,13 @@
 ## 空格
 
 17. **中文与英文 / 数字之间加空格**；**加粗 / 斜体 / 链接 / 代码 / 公式两侧也各留一个空格**（`这是一段 **加粗** 的示例。`），但**紧邻标点时不加**（标点已分隔，如 `**加粗**（Bold）`、`……是 **强调**。`）。
-18. 数字与单位之间加空格；与简写计数 / `%` / `°` 之间不加。
+18. 普通物理量在散文中加空格（`15 km`、`70 kg`）；产品规格按行业惯例紧贴（`256GB`、`140W`、`46mm`、`4K`）。货币符号、`%`、`°` 与数值紧贴；型号与标识符也不拆开。
 19. 全角标点前后不加空格。行内代码 / 数学的句末标点放在外面。
 
 ## 链接、图片、代码、表格
 
 20. 链接 `[描述性文本](url)`，相对路径省略 `./`；不用裸 URL（裸 URL 只在代码块里）。
-21. 图片加替代文本 `![alt](url)`（站点图片惯例见 docusaurus-style）。
+21. 图片加替代文本 `![alt](url)`；存储位置、组件与图床由目标仓库内部规则决定。
 22. 行内代码块标语言标签（`cpp`，纯文本标 `text`）；C++ 遵循 [cpp-oi-style.md](cpp-oi-style.md)。**代码块只放代码 / 数据 / 命令，绝不用「代码块 + 字符画」拼示意图或图表**（ASCII 时间轴 / 流程图 / 箭头连线等）——要图用 Mermaid 或图片，要结构用表格，否则纯文字描述。唯一例外是 README 的 `Project Structure` / `项目结构` 文件树，严格按 [project-docs-style.md](project-docs-style.md) 使用 `bash` 代码块。
 23. 表格**默认居中对齐** `:-:`（大多数表格如此，无特殊理由就居中）；分隔线用 3 个连字符 `---`。
 24. 键盘按键用 `<kbd>`（`<kbd>⌘</kbd> + <kbd>C</kbd>`）；界面元素用方括号 `[]`。
@@ -59,7 +59,7 @@
 
 25. 数字用半角阿拉伯数字，避免千分位；正式 / 约定俗成词用中文数字（「三局两胜」）。
 26. 时间用 ISO 8601（`1969-07-20`、`20:17:40`）；货币用 ISO 4217（`CNY 6599`）。
-27. 数量精确化：narrative 里的数量也包进行内数学（`$30$ 分`），见 [latex-math-style.md](latex-math-style.md)。
+27. 数量精确化，但不机械数学化：普通散文的年份、日期、计数、百分比与度量写纯文本；公式、关系与变量才用数学。OI 题解沿用个人旧稿习惯，除日期外的数值量可包进行内数学。详见 [latex-math-style.md](latex-math-style.md)。
 
 ## 不推荐做法
 
@@ -78,4 +78,4 @@
 - [ ] 中英 / 中数 / 中-格式之间有空格，全角标点旁无空格？
 - [ ] 链接描述性且省略 `./`，图片有 alt，代码块标语言？
 - [ ] 表格 `:-:` 居中，分隔线 `---`，按键 `<kbd>`？
-- [ ] 时间 ISO 8601，数量包进数学？
+- [ ] 时间 ISO 8601；普通散文数字是纯文本，公式与 OI 题解例外处理正确？

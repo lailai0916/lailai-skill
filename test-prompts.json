@@ -11,7 +11,7 @@
   },
   {
     "id": 3,
-    "prompt": "帮我写一道洛谷题解：求长度为 n 的数组的区间和（前缀和），按我的风格和站点题解格式",
-    "expected": "cpp-oi-style(C++17/bits/tab/无注释/cin cout/全局数组/return 0)+docusaurus题解(标题前缀、Solution组件、思路末尾复杂度、无总结、精简优雅)"
+    "prompt": "帮我写一道洛谷题解：求长度为 n 的数组的区间和（前缀和），按我的风格完成完整工作流",
+    "expected": "自动路由 luogu-solution；正文精简专业、最高 H2；显然复杂度可省略；代码遵 cpp-oi-style(C++17/bits/tab/无注释/f/cin cout/全局数组/return 0)；目标仓库另有内部规则时叠加"
   }
 ]

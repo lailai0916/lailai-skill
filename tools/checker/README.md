@@ -60,7 +60,8 @@ python3 check.py --commit .git/COMMIT_EDITMSG
 | `commit-conventional` | ERROR | [project-docs-style](../../references/project-docs-style.md) 规则 1 |
 | `project-title-case` / `path-filename-ascii` / `command-filename` | ERROR | project-docs-style 规则 8 |
 | `readme-language-*` | ERROR | project-docs-style 规则 11 |
-| `project-tree-*` | ERROR | project-docs-style 规则 13 |
+| `project-tree-*` | ERROR | project-docs-style 规则 14 |
+| `readme-centered-header` / `readme-required-badges` | ERROR | project-docs-style 规则 12 |
 | `license-link` / `license-wording` | ERROR | project-docs-style 规则 5 |
 
 ## 故意不查什么（判断类，留给 reviewer / 人）

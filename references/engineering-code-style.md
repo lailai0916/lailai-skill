@@ -2,7 +2,7 @@
 
 ## 目标
 
-让工程代码（TS / React / CSS 等非竞赛代码）的注释与约定符合 lailai 习惯。提炼自站点 `.claude/rules/comments.md` 与 `CONTRIBUTING.md`。
+让工程代码（TS / React / CSS 等非竞赛代码）的注释与约定符合 lailai 的跨项目习惯。
 
 ## 适用场景
 

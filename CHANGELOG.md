@@ -6,6 +6,29 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [1.0.0] - 2026-08-30
+
+收紧为个人赛博分身核心，并建立明确的跨仓库职责图。
+
+### Changed
+
+- `SKILL.md`：新增「目标仓库内部规则优先」与两条自动路由——洛谷题解交给独立 `luogu-solution`，新建 GitHub 仓库从 `lailai-template` 开始。
+- `SKILL.md`：补充四仓库唯一所有者表和「下游只保留路由 + 本地差异」原则；洛谷流程完成后由本仓库 checker 单独验证个人代码风格。
+- `README.md` / `README.zh-Hans.md`：安装方式统一为用户级单一真源；项目只作文本引用，不再推荐 submodule 或内嵌副本。
+- `references/project-docs-style.md`：新建公开仓库默认严格执行居中双语 README、真实徽章、GitHub description / topics 与模板初始化；项目结构注释统一到索引 $32$。
+- 通用 Markdown、写作、偏好、审稿与评分规则改为服从目标仓库内部 frontmatter、组件与内容模型，不再内置单一网站实现。
+- 通用写作、Markdown、LaTeX、C++、工程代码与设计 reference 不再把网站文件写成运行时来源；数字、单位与 OI 题解的数学化例外统一由本仓库维护。
+
+### Removed
+
+- 移除 `references/docusaurus-style.md`、`references/luogu-solution.md` 与 `tools/luogu/`。前者迁回个人网站内部 Agent 规范；后者迁入独立 `luogu-solution` Skill。
+- 移除本仓库的 Docusaurus 专属示例与测试；对应更新版由网站仓库维护。
+
+### Test
+
+- Checker 新增强制居中 README 头部、四个基础徽章与索引 $32$ 的项目结构检查；同步正反夹具、单元测试、README 示例和项目文档行为测试。
+- 写作与 LaTeX 行为测试同步普通散文数字、产品规格单位和 OI 题解例外的新单一来源。
+
 ## [0.9.4] - 2026-08-01
 
 统一 README 多语言导航。

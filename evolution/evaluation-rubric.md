@@ -32,13 +32,13 @@
 - 常见失败：套话开场 / 收尾；只讲概念无例子。
 - 改进：读 `references/writing-style.md`；删首尾套话，补例子。
 
-## 4. Markdown / Docusaurus 格式一致性
+## 4. Markdown / LaTeX 格式一致性
 
-- 0：标题不空行、数学分隔符错、frontmatter / 模板乱。
-- 3：主体对，1～2 处违规（如用了 `\(...\)` 或缺复杂度行）。
-- 5：排版、数学分隔符、frontmatter、题解模板全合规。
-- 常见失败：用 `\(...\)` 而非 `$...$`；题解加总结；自造 tag。
-- 改进：读 `references/markdown-style.md`、`docusaurus-style.md`。
+- 0：标题不空行、数学分隔符错、列表与代码块混乱。
+- 3：主体对，仍有 1～2 处排版或公式违规。
+- 5：通用 Markdown 与 LaTeX 规范全部合规，并正确服从目标仓库局部规则。
+- 常见失败：用 `\(...\)` 而非 `$...$`；忽略项目内部 frontmatter 或组件要求。
+- 改进：读 `references/markdown-style.md`、`latex-math-style.md` 与目标仓库内部规则。
 
 ## 5. C++ OI 代码风格一致性
 

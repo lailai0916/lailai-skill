@@ -40,8 +40,9 @@ See [profile/boundaries.md](profile/boundaries.md) for the full boundaries.
 
 - Writing / polishing Chinese content, removing AI tone.
 - Writing or reviewing READMEs, project intros, and GitHub docs.
-- Writing Docusaurus / MDX notes, problem solutions, and math articles.
+- Writing Markdown / MDX notes, problem solutions, and math articles under the target repo's local rules.
 - Writing or reviewing OI competitive-programming C++17 code.
+- Routing Luogu workflows to `luogu-solution` and new repositories to `lailai-template`.
 - "Unity · Simplicity · Modernity" UI / design review.
 - Simulating lailai's everyday chat and questioning style.
 - Decision support, learning companion, long-term self-modeling and updates.
@@ -52,16 +53,16 @@ See [SKILL.md](SKILL.md) for out-of-scope cases and triggers.
 
 ```bash
 lailai-skill/
-├── evolution/                      # Evaluation rubric and evolution log
-├── examples/                       # Representative input and output pairs
-├── profile/                        # Long-term identity, preferences, and boundaries
-├── prompts/                        # Maintenance prompts
-├── references/                     # Executable style and workflow rules
-├── tests/                          # Verifiable behavior tests
-├── tools/                          # Checkers and supporting utilities
-├── observations.md                 # Pending observations
-├── SKILL.md                        # Skill entry point
-└── test-prompts.json               # Prompt-level regression cases
+├── evolution/                  # Evaluation rubric and evolution log
+├── examples/                   # Representative input and output pairs
+├── profile/                    # Long-term identity, preferences, and boundaries
+├── prompts/                    # Maintenance prompts
+├── references/                 # Executable style and workflow rules
+├── tests/                      # Verifiable behavior tests
+├── tools/                      # Checkers and supporting utilities
+├── observations.md             # Pending observations
+├── SKILL.md                    # Skill entry point
+└── test-prompts.json           # Prompt-level regression cases
 ```
 
 ## Getting Started
@@ -73,15 +74,10 @@ This repo is a standard Agent Skill (`SKILL.md` + frontmatter `name: lailai-skil
 A skill **must** live in a configured skills directory. Placing it at an arbitrary repository
 root does not make every runtime discover it.
 
-| Method                                        | Path                                    | When                                                                   |
-| :-------------------------------------------- | :-------------------------------------- | :--------------------------------------------------------------------- |
-| **User level** (recommended for personal use) | `~/.agents/skills/lailai-skill/`        | Install once, available in **all** projects; single source, zero drift |
-| **Project level** (vendored, version-pinned)  | `<project>/.agents/skills/lailai-skill/` | When CI / cloud agents / other machines need `clone-and-it's-there`    |
-
-> Rule of thumb: personal cross-project use → user level, done once; a repo that runs agents
-> in CI / the cloud → project-level submodule. If a runtime does not discover `.agents/skills`
-> natively, give it one directory link or external-directory setting. Do not copy this skill
-> into every runtime-specific directory.
+The canonical user installation is `~/.agents/skills/lailai-skill/`. Install it once and let
+projects reference it textually by Skill name or canonical repository URL. Do not vendor,
+submodule, or copy it into each project; that creates stale parallel sources. If a runtime does
+not discover `~/.agents/skills` natively, add one constant-size directory adapter.
 
 ### User level (clone once)
 
@@ -91,27 +87,13 @@ git clone https://github.com/lailai0916/lailai-skill ~/.agents/skills/lailai-ski
 # Update: cd ~/.agents/skills/lailai-skill && git pull
 ```
 
-### Project level (git submodule)
-
-```bash
-cd <project>
-git submodule add https://github.com/lailai0916/lailai-skill .agents/skills/lailai-skill
-git commit -m "chore: add lailai-skill submodule"   # commit the gitlink too — see below
-```
-
-⚠️ **Three things to get right:**
-
-1. **Clone with submodules**, or `.agents/skills/lailai-skill/` is an empty shell:
-   - Fresh clone: `git clone --recurse-submodules <project>`
-   - Existing clone: `git submodule update --init --recursive`
-   - CI (GitHub Actions): set `actions/checkout` with `submodules: recursive` (GitLab: `GIT_SUBMODULE_STRATEGY: recursive`).
-2. **Don't drop the gitlink when committing.** `git submodule add` stages both `.gitmodules` and the gitlink — commit them together. Afterward, `git submodule status` should show one line `<sha> .agents/skills/lailai-skill`; committing only `.gitmodules` without the gitlink leaves a fresh clone with no content.
-3. **Bump the pinned version**: `git submodule update --remote .agents/skills/lailai-skill && git add .agents/skills/lailai-skill && git commit -m "chore: bump lailai-skill"`.
-
 ### After installing
 
 1. The entry is its `SKILL.md`; the agent reads it first, then the relevant `profile/` and `references/` by task type (all links are relative, so they survive moving the whole folder).
 2. Triggering: describe a chat / writing / code / design / decision task to match the description automatically, or say explicitly "use lailai's style," "do it my way," or "make it more like me."
+3. Target-repo Agent rules take priority within that project. Luogu work routes to
+   [`luogu-solution`](https://github.com/lailai0916/luogu-solution); new GitHub repositories
+   start from [`lailai-template`](https://github.com/lailai0916/lailai-template).
 
 ## Habit Recording
 

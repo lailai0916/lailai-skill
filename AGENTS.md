@@ -16,6 +16,8 @@ Read `SKILL.md` before changing behavior, then read the affected files under `pr
   `CHANGELOG.md` and `evolution/evolution-log.md` when appropriate.
 - Preserve the privacy, impersonation, and human-confirmation boundaries in
   `profile/boundaries.md`.
+- Keep cross-repository guidance single-source: this repository owns personal and reusable
+  style; downstream repositories keep only a route plus their local deltas, never mirrored rules.
 - Keep English and Simplified-Chinese README installation guidance aligned.
 
 ## Validation

@@ -19,7 +19,18 @@
 ## 输出（lailai 风格）
 
 ```markdown
-# Task CLI
+<div align="center">
+  <h1>Task CLI</h1>
+  <p><strong>English</strong> · <a href="README.zh-Hans.md">简体中文</a></p>
+  <p>
+    <img src="https://img.shields.io/github/last-commit/example/task-cli?style=flat-square" />
+    <img src="https://img.shields.io/github/languages/top/example/task-cli?style=flat-square" />
+    <img src="https://img.shields.io/github/repo-size/example/task-cli?style=flat-square" />
+    <img src="https://img.shields.io/github/license/example/task-cli?style=flat-square" />
+  </p>
+</div>
+
+## Project Introduction
 
 > 一个极简的命令行待办工具，纯本地、零依赖、单文件存储。
 
@@ -43,8 +54,8 @@ task ls --tag work
 
 \`\`\`bash
 task-cli/
-├── bin/                           # Executable entry
-└── src/                           # Command and storage logic
+├── bin/                        # Executable entry
+└── src/                        # Command and storage logic
 \`\`\`
 
 ## License
@@ -55,9 +66,11 @@ This project's code is licensed under [MIT License](https://github.com/lailai091
 ## 为什么符合 lailai.skill
 
 - 第一行一句话定位，10 秒看懂"是什么"。
+- 居中标题、双语导航与四个基础徽章齐全；简体中文 README 必须完整镜像。
 - 删掉"super powerful""revolutionize""give us a star"。
 - 特性用 emoji + 加粗标题 + 一句说明，具体不空泛。
 - 项目名使用正式大小写，仓库名仍为小写 kebab-case。
 - 快速开始给可复制命令，结构树用 `bash` 代码块。
-- 结构树仅列项目专属目录，文件夹按字典序排列，`#` 前严格为 $36$ 个字符。
+- 结构树仅列项目专属目录，文件夹按字典序排列，所有 `#` 均位于索引 $32$。
 - License 使用统一的 `lailai0916/tools` MIT 链接。
+- GitHub About 另设一句英文 description 与 $3\sim8$ 个准确 topics，不留默认空白。

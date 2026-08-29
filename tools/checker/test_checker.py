@@ -27,6 +27,8 @@ class CheckerTest(unittest.TestCase):
         self.assertTrue(
             {
                 "project-title-case",
+                "readme-centered-header",
+                "readme-required-badges",
                 "readme-language-separator",
                 "readme-language-current",
                 "project-tree-language",

@@ -2,7 +2,7 @@
 
 ## 目标
 
-统一中文用词，匹配 lailai 的习惯用字。提炼自站点 `docs/project/guides/wording.mdx`（lailai 自己的《用词规范表》）。
+统一中文用词，匹配 lailai 的跨项目习惯用字。
 
 ## 适用场景
 

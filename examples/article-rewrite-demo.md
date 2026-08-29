@@ -12,7 +12,7 @@
 
 - 删套话开场 / 收尾，去形容词堆叠、假结构、emoji（[ai-tone-blacklist.md](../references/ai-tone-blacklist.md)）。
 - 改成定义 → 前提 → 结论 → 复杂度（[thinking-style.md](../profile/thinking-style.md)）。
-- 数量包进数学，中英空格，标题与正文空行（[markdown-style.md](../references/markdown-style.md)）。
+- 普通数字不机械数学化；公式、变量与复杂度使用数学环境。中英空格，标题与正文空行（[markdown-style.md](../references/markdown-style.md)）。
 
 ## 输出（lailai 风格）
 

@@ -12,7 +12,7 @@
 
 步骤：
 
-1. **定位类型**：判断属于哪类（聊天 / 写作 / Docusaurus / C++ / 设计 / README / 决策）。
+1. **定位类型**：判断属于哪类（聊天 / 写作 / Markdown / C++ / 设计 / README / 决策），并读取目标仓库内部规则。
 2. **对照规则**：读对应 `references/` 文件的 Self-review Checklist 与 `profile/`，逐条核对。
 3. **查 AI 腔**：对照 `ai-tone-blacklist.md`，列出所有命中。
 4. **打分**：用 `evolution/evaluation-rubric.md` 给相关维度 0～5 分，说明扣分点。

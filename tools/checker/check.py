@@ -430,12 +430,10 @@ def is_common_tree_entry(name):
 
 def check_project_tree(path, block, disabled_lines, issues):
     entries = []
-    content_lengths = []
     for lineno, raw in block:
         if not raw.strip():
             continue
         left = raw.split("#", 1)[0].rstrip()
-        content_lengths.append(len(left))
         m = TREE_ENTRY_RE.match(left)
         if not m:
             continue
@@ -465,8 +463,8 @@ def check_project_tree(path, block, disabled_lines, issues):
                 Issue(path, lineno, "ERROR", "project-tree-filename", "项目路径使用英文 ASCII 名称")
             )
 
-    if content_lengths:
-        width = max(max(content_lengths) + 1, 36)
+    if entries:
+        width = 32
         for entry in entries:
             if "#" not in entry["raw"] or entry["line"] in disabled_lines:
                 continue
@@ -478,9 +476,7 @@ def check_project_tree(path, block, disabled_lines, issues):
                         entry["line"],
                         "ERROR",
                         "project-tree-align",
-                        "# 前应恰有 {} 个字符，当前 {} 个（k=max(w+1,36)）".format(
-                            width, actual
-                        ),
+                        "# 必须位于索引 32，当前索引 {}".format(actual),
                     )
                 )
 
@@ -575,6 +571,29 @@ def check_readme_project_docs(path, lines, code_line_set, disabled_lines, issues
         return
 
     check_readme_language_nav(path, basename, lines, code_line_set, disabled_lines, issues)
+
+    head = "\n".join(lines[:40])
+    if '<div align="center">' not in head:
+        issues.append(
+            Issue(path, 1, "ERROR", "readme-centered-header", "README 标题必须使用居中头部")
+        )
+    required_badges = {
+        "last-commit": "last commit",
+        "languages/top": "top language",
+        "repo-size": "repo size",
+        "license": "license",
+    }
+    missing_badges = [label for marker, label in required_badges.items() if marker not in head]
+    if missing_badges:
+        issues.append(
+            Issue(
+                path,
+                1,
+                "ERROR",
+                "readme-required-badges",
+                "README 缺少真实基础徽章：{}".format(", ".join(missing_badges)),
+            )
+        )
 
     for idx, raw in enumerate(lines[:30]):
         if idx + 1 in code_line_set:

@@ -2,44 +2,43 @@
 
 ## 目标
 
-写出像 lailai 的 README、项目文档，并遵循 lailai 的项目工程规范。提炼自站点 `docs/project/guides/project.mdx`（lailai 的《项目规范指南》）、`README.md` / `README.zh-Hans.md`、`.claude/CLAUDE.md`。
+写出像 lailai 的 README、项目文档，并遵循 lailai 的通用项目工程规范。本文件是这些规范的唯一维护位置；`lailai-template` 只提供可直接使用的实例。
 
 ## 适用场景
 
 - 写或改 README、项目介绍、贡献指南、文档站首页。
 - 审查项目结构、Git / 提交规范、文档风格。
 
-## 项目工程规范（来自《项目规范指南》）
+## 项目工程规范
 
-> **套用前先判档**，别把"推荐 / 位置"读成"强制"：
+> **套用前先判档**，但新建公开 GitHub 仓库默认按完整标准交付：
 >
-> - **强制**（每个项目都要）：`LICENSE`、Conventional Commits、`.gitignore`；JS/TS 项目还含 Prettier。
-> - **推荐**（展示型 / 协作型 / 会发版的项目才需）：README 徽章、`CHANGELOG.md`。
-> - **仅位置**（有该文件才放指定路径，没有不强加）：`CONTRIBUTING.md`、i18n（按可视化内容与受众判断）。
+> - **强制**：从 `lailai-template` 起步；`LICENSE`、Conventional Commits、`.gitignore`、居中双语 README、徽章、仓库描述与 topics；JS/TS 项目还含 Prettier。
+> - **按项目决定**：对外发版才需 `CHANGELOG.md`；接受外部贡献才需 `CONTRIBUTING.md`。只有用户明确限定为私有内部脚本或单语内容时，才能省略 README i18n。
 
 1. **Git 提交遵循 Conventional Commits**：`type(scope): description`（如 `feat: ...`、`fix(blog): ...`、`docs: ...`）。
 2. **`.gitignore`** 用 Vite 默认模板。
 3. **贡献指南（仅协作项目）**：有外部协作 / 会接受贡献的项目才写贡献指南，放 `.github/CONTRIBUTING.md`；单人小工具不必加。
 4. **多语言以英文为基准**。英文使用 `README.md`。
    其他语言使用 `README.<language-tag>.md`，如 `README.zh-Hans.md`。
-   **有可视化内容的项目做 i18n 国际化**。默认支持英语 + 简体中文两种，**默认英语**。
-   已有 i18n（其他语言 / 默认非英语）时沿用原配置。纯内部脚本、单语内容站等明确无需多语言的项目不强加。
+   新建公开仓库至少提供英语 + 简体中文两份完整 README，**默认英语**；有可视化内容时，产品本身也做 en + zh-Hans i18n。已有 i18n（其他语言 / 默认非英语）时沿用原配置。只有用户明确限定为私有内部脚本或单语内容时才省略。
 5. **许可协议**：每个开源项目都要有 `LICENSE`，README 末尾必有 License 段。**代码项目默认 MIT**；README 的 MIT 链接统一指向 `https://github.com/lailai0916/tools/blob/main/LICENSE`，不链接当前仓库内的 `LICENSE`。英文固定写 `This project's code is licensed under [MIT License](https://github.com/lailai0916/tools/blob/main/LICENSE).`；中文对应写 `本项目代码采用 [MIT 许可协议](https://github.com/lailai0916/tools/blob/main/LICENSE)。`。**个人创作内容**（文章 / 设计 / 作品集等非代码）惯用 **CC BY-NC-SA**。
 6. **版本与变更日志（仅发版项目）**：需要对外发布版本的项目才维护——版本遵循 Semantic Versioning，变更日志遵循 Keep a Changelog（`CHANGELOG.md`）。一次性脚本、小工具、单语内容项目不强加空骨架。
 7. **Prettier 必装**：每个项目都装 Prettier 做格式化——`devDependency` + 配置文件（`printWidth: 100`、`singleQuote: true`、`trailingComma: "es5"`）+ `format` 脚本，HTML / CSS / JS / TS / JSON / MD 统一交给它，不手动对齐。C++ 见 [cpp-oi-style.md](cpp-oi-style.md)；文档文本遵循 [markdown-style.md](markdown-style.md) / [wording.md](wording.md)。
 8. **仓库名、项目名、文件名分层**：GitHub 仓库名用小写 kebab-case；README `<h1>` 写正式项目名，不机械复制仓库名。单个英文单词的项目名首字母大写（仓库 `wordcloud` → 项目 `Wordcloud`）；多词项目按正式品牌分词与大小写。明确的品牌写法优先，`lailai-template` 是特例，项目显示名仍为 `lailai-template`。新文件与目录默认使用英文 ASCII 名称，遵循语言生态的命名习惯，禁止中文文件名；Finder 启动脚本写成 `start.command` 这类英文 kebab-case 名称。
+9. **仓库 About 元数据是交付物**：description 用一句英文准确定位，不塞营销词；topics 使用 $3\sim8$ 个小写 kebab-case 关键词，覆盖领域、技术栈与用途；若有项目主页，同步 homepage。新建或重构仓库时必须核对 GitHub About 面板，不把它留作未说明的手工善后。
 
 ## README 文档风格
 
-9. **一句话定位放最前**：用一句准确的话说清"这是什么"，10 秒看懂。
-10. **结构清晰、跨项目统一**：介绍 → 特性 → 快速开始 → 结构 → 其它 → **末尾 License 段**。每节短、直给；**所有项目 README 用同一套结构与格式**。
-11. **居中头部**（展示型项目）：标题下放语言导航，下一行放 shields.io 徽章。
+10. **一句话定位放最前**：用一句准确的话说清"这是什么"，10 秒看懂。
+11. **结构清晰、跨项目统一**：介绍 → 特性 → 快速开始 → 结构 → 其它 → **末尾 License 段**。每节短、直给；**所有项目 README 用同一套结构与格式**。
+12. **居中头部**：标题下放语言导航，下一行放 shields.io 徽章。
     语言间用 ` · ` 分隔。当前语言用 `<strong>` 加粗且不加链接。其他语言保留链接。
-    徽章包括 CI、last commit、top language、repo size、code style 与 license。
-12. **特性清单**：emoji + 加粗小标题 + 一句说明（`🎨 **Bespoke Home** — 一句话。`）。emoji 仅在 README 特性区用，技术正文不用。
-13. **项目结构树严格统一**：只用 `bash` 代码块，根节点写 GitHub 仓库名。仅列帮助理解项目的专属核心目录与文件；不列 `README*`、`LICENSE*`、`.gitignore`、`.gitattributes`、`.gitmodules`、`.agents/`、`.claude/`、`AGENTS.md`、`CLAUDE.md` 等通用仓库元数据。每一级都先列文件夹、再列文件；同组按名称字典序排列。每个条目行末写一句必要注释。设所有条目删去注释与尾随空格后的最大字符数为 $w$，每个 `#` 前必须恰有 $k=\max(w+1,36)$ 个字符；按 Unicode 字符数计算，不按等宽字体的视觉宽度计算。**快速开始给可复制 `bash` 命令**。
-14. **双语对等**：英文与中文各一份完整 README，互为镜像，不是翻译残桩。
-15. **专业克制**：不堆形容词，不写"最强 / 革命性 / 颠覆"，不写"求 star"式收尾。
+    徽章至少包括 last commit、top language、repo size 与 license；存在 CI、code style、coverage、release 等真实能力时必须同步展示，不放失效或虚构徽章。
+13. **特性清单**：emoji + 加粗小标题 + 一句说明（`🎨 **Bespoke Home** — 一句话。`）。emoji 仅在 README 特性区用，技术正文不用。
+14. **项目结构树严格统一**：只用 `bash` 代码块，根节点写 GitHub 仓库名。仅列帮助理解项目的专属核心目录与文件；不列 `README*`、`LICENSE*`、`.gitignore`、`.gitattributes`、`.gitmodules`、`.agents/`、`.claude/`、`AGENTS.md`、`CLAUDE.md` 等通用仓库元数据。每一级都先列文件夹、再列文件；同组按名称字典序排列。每个条目行末写一句必要注释；所有 `#` 必须位于索引 $32$（即前面恰有 $32$ 个字符）。**快速开始给可复制 `bash` 命令**。
+15. **双语对等**：英文与中文各一份完整 README，互为镜像，不是翻译残桩。
+16. **专业克制**：不堆形容词，不写"最强 / 革命性 / 颠覆"，不写"求 star"式收尾。
 
 ## 推荐做法
 
@@ -130,10 +129,10 @@ This project's code is licensed under [MIT License](https://github.com/lailai091
 ## Self-review Checklist
 
 - [ ] 提交信息是 Conventional Commits（`type(scope): description`）？
-- [ ] README 使用正式项目名；第一屏一句话定位，10 秒看懂；新增路径无中文文件名？
+- [ ] 从 `lailai-template` 起步；README 使用正式项目名；第一屏一句话定位，10 秒看懂；新增路径无中文文件名？
 - [ ] 结构：介绍 → 特性 → 快速开始 → 结构 → 其它，每节简短？
-- [ ] 展示型项目有徽章；特性区 emoji + 加粗标题 + 一句说明？
-- [ ] 结构树为 `bash` 块，仅列项目专属内容；文件夹优先、各组字典序；`#` 前字符数严格等于 `max(w+1,36)`？
+- [ ] 居中标题、语言导航与真实徽章齐全；特性区 emoji + 加粗标题 + 一句说明？
+- [ ] 结构树为 `bash` 块，仅列项目专属内容；文件夹优先、各组字典序；所有 `#` 均位于索引 $32$？
 - [ ] 多语言以英文为基准，`README.md` / `README.zh-Hans.md` 中英对等？语言导航是否用 ` · ` 分隔，并仅加粗当前语言？有 UI 内容时，i18n 是否默认 en + zh-Hans、默认英语？
 - [ ] 有 `LICENSE`（开源默认 MIT）+ README 末尾 License 段，MIT 链接指向 `lailai0916/tools`；装了 Prettier（config + format 脚本）？
-- [ ] 无形容词轰炸、无求 star 收尾、技术正文 emoji 克制？
+- [ ] GitHub description、$3\sim8$ 个 topics 与 homepage 已核对；无形容词轰炸、无求 star 收尾、技术正文 emoji 克制？

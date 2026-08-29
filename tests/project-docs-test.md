@@ -6,20 +6,22 @@
 
 ## 输入任务
 
-虚构一个名为 `csv-diff` 的 TypeScript 命令行工具，用于对比两份 CSV 的差异。让被测 AI 编写英文 README 与对应的简体中文 README。另给三条示例提交信息。
+虚构一个名为 `csv-diff` 的 TypeScript 命令行工具，用于对比两份 CSV 的差异。让被测 AI 编写英文 README 与对应的简体中文 README，并给出 GitHub description、topics 与三条示例提交信息。
 
 ## 期望输出特征
 
 - 第一屏一句话定位，10 秒看懂「是什么」。
 - 两份 README 的语言导航使用 ` · ` 分隔；当前语言加粗且不加链接，另一语言保留链接。
+- 两份 README 均使用居中标题，并包含 last commit、top language、repo size 与 license 四个真实基础徽章。
 - README 标题使用正式项目名 `CSV Diff`，仓库名仍为 `csv-diff`；仅明确的品牌写法可以例外（如 `lailai-template`）；所有新增路径使用英文 ASCII 名称。
 - 结构：介绍 → 特性 → 快速开始 → 结构 → 其它 → 末尾 License 段。
 - 特性区 emoji + 加粗小标题 + 一句说明；技术正文不用 emoji。
 - 快速开始给可复制 `bash` 命令；结构树也使用 `bash` 块。
 - 结构树不列 README、LICENSE、`.gitignore`、`.agents` 等通用条目；每一级文件夹优先，再按名称字典序排列。
-- 设最长条目字符数为 $w$，每个 `#` 前严格为 $\max(w+1,36)$ 个字符。
+- 每个项目结构条目的 `#` 均位于索引 $32$。
 - 末尾 License 段使用 `lailai0916/tools` 的统一 MIT 链接。
 - 提交信息为 `type(scope): description`。
+- GitHub description 是一句克制的英文定位；topics 为 $3\sim8$ 个准确的小写 kebab-case 关键词。
 
 ## 评分标准（0～5）
 
@@ -42,13 +44,15 @@
 ## 客观检查项（可机械判定，全过才算通过）
 
 - [ ] 标题为 `CSV Diff`，新增路径均为英文 ASCII 名称；第一屏一句话说清项目定位；两份 README 的语言导航使用 ` · `，并分别加粗当前语言。
+- [ ] 居中头部与四个基础徽章齐全，徽章路径指向实际 owner / repo。
 - [ ] `## Features` 条目使用 emoji + 加粗标题 + 一句具体说明，无营销形容词或求 star 文案。
 - [ ] 有可复制的 `bash` 安装 / 运行命令块。
 - [ ] 项目结构为 `bash` 块，且不含通用仓库元数据。
 - [ ] 项目结构逐级「文件夹在前、文件在后」，各组按名称字典序排列。
-- [ ] 项目结构所有 `#` 前字符数均为 $\max(w+1,36)$。
+- [ ] 项目结构所有 `#` 均位于索引 $32$。
 - [ ] 有末尾 `## License` 段，链接统一的 MIT License URL。
 - [ ] 三条提交信息符合 Conventional Commits，无裸 `update` / `fix bug`。
+- [ ] 给出合规的 GitHub description 与 $3\sim8$ 个 topics。
 
 ## 通过条件
 
