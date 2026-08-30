@@ -45,6 +45,9 @@ python3 check.py --commit .git/COMMIT_EDITMSG
 | `math-delim`（`\(...\)` / `\[...\]`） | ERROR | [latex-math-style](../../references/latex-math-style.md) 规则 1 |
 | `math-dfrac` / `math-dots` / `math-emptyset` | ERROR | latex 规则 12、16、17 |
 | `math-manual-space`（`\,` `\quad` 等） | ERROR | latex 规则 4 |
+| `math-display-intro` / `math-display-terminal` | ERROR | latex 规则 2 |
+| `math-environment-line` / `math-environment-indent` / `math-environment-break` / `math-align-space` | ERROR | latex 规则 28 |
+| `math-structural-cjk` | ERROR | latex 规则 31 |
 | `math-unicode`（`×` `−` `°` `～` 等） | ERROR | latex 规则 31 |
 | `math-bare-cjk` / `math-frac-brace` | WARN | latex 规则 31、21 |
 | `aitone`（本文将 / 显然 / 不难发现 / 易得…） | ERROR/WARN | [ai-tone-blacklist](../../references/ai-tone-blacklist.md) |
@@ -55,7 +58,8 @@ python3 check.py --commit .git/COMMIT_EDITMSG
 | `cjk-latin-space` / `sentence-length` | WARN | markdown 规则 17；writing 规则 6 |
 | `trailing-space` / `blank-lines` | WARN | markdown 规则 3 |
 | `cpp-include` / `cpp-space-newline` / `cpp-static` | ERROR | [cpp-oi-style](../../references/cpp-oi-style.md) 规则 6、12、16 |
-| `cpp-endl` / `cpp-stdio` / `cpp-comment` / `cpp-bool` / `cpp-dp` / `cpp-std-prefix` / `cpp-indent` | WARN | cpp 规则 11、4、14、24、7、3 |
+| `cpp-blank-layout` / `cpp-const-line` / `cpp-declaration-order` | ERROR | cpp 规则 3、16、17 |
+| `cpp-endl` / `cpp-stdio` / `cpp-comment` / `cpp-bool` / `cpp-dp` / `cpp-std-prefix` / `cpp-indent` | ERROR/WARN | cpp 规则 11、4、14、24、7、3 |
 | `ascii-art` / `todo` | WARN | [engineering-code-style](../../references/engineering-code-style.md) |
 | `commit-conventional` | ERROR | [project-docs-style](../../references/project-docs-style.md) 规则 1 |
 | `project-title-case` / `path-filename-ascii` / `command-filename` | ERROR | project-docs-style 规则 8 |

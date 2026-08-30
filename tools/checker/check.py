@@ -169,9 +169,9 @@ MATH_ERROR_PATTERNS = [
     (re.compile(r"\\emptyset"), "math-emptyset", r"空集用 \varnothing，不用 \emptyset"),
     (re.compile(r"\\cdots|\\ldots"), "math-dots", r"横向省略号用 \dots，不用 \cdots / \ldots"),
     (
-        re.compile(r"\\(?:quad|qquad|,|;|:|!)(?![A-Za-z])"),
+        re.compile(r"\\(?:quad|qquad|,|;|:|!)(?![A-Za-z])|\\ "),
         "math-manual-space",
-        r"禁用手动间距 \, \; \: \! \quad \qquad，交给 KaTeX",
+        r"禁用手动间距 \, \; \: \! \quad \qquad 与反斜杠空格，交给 KaTeX",
     ),
 ]
 
@@ -189,6 +189,7 @@ MATH_UNICODE = {
 
 TEXT_WRAP_RE = re.compile(r"\\(?:text|texttt|textbf|textit|operatorname|mathrm|mbox)\s*\{[^{}]*\}")
 FRAC_BAD_RE = re.compile(r"\\frac\s*(?:[^{\s]|\{[^{}]*\}\s*[^{\s])")
+STRUCTURAL_CJK_RE = re.compile(r"\\text\{[^{}]*(?:且|或|其余|否则)[^{}]*\}")
 
 
 def check_math(path, math_spans, disabled_lines, issues):
@@ -216,6 +217,11 @@ def check_math(path, math_spans, disabled_lines, issues):
                 Issue(path, lineno, "WARN", "math-frac-brace",
                       r"\frac 分子分母都带花括号（\frac{a}{b}，非 \frac12 / \frac s2）")
             )
+        if STRUCTURAL_CJK_RE.search(text):
+            issues.append(
+                Issue(path, lineno, "ERROR", "math-structural-cjk",
+                      r"公式内结构标签用英文或逻辑符号，不写 \text{且/或/其余/否则}")
+            )
 
 
 # ---------------------------------------------------------------------------
@@ -236,6 +242,97 @@ def check_math_delims(path, lines, code_line_set, disabled_lines, issues):
                 Issue(path, lineno, "ERROR", "math-delim",
                       r"数学分隔符统一用 $...$ / $$...$$，不用 \(...\) / \[...\]")
             )
+
+
+MATH_TERMINAL_RE = re.compile(r"[.,，。;；:：]$")
+MATH_ENV_RE = re.compile(r"\\(?:begin|end)\{[A-Za-z*]+\}")
+MATH_ROW_BREAK_RE = re.compile(r" \\\\(?:\[[^]]+\])?$")
+
+
+def check_display_math(path, lines, code_line_set, disabled_lines, issues):
+    """检查行间公式及其上下文中完全由版面决定的硬规则。"""
+    in_fence = False
+    fence_mark = ""
+    start = None
+    for idx, raw in enumerate(lines):
+        stripped = raw.strip()
+        fence = re.match(r"^\s*(`{3,}|~{3,})", raw)
+        if fence:
+            mark = fence.group(1)[0]
+            if not in_fence:
+                in_fence = True
+                fence_mark = mark
+            elif mark == fence_mark:
+                in_fence = False
+                fence_mark = ""
+            continue
+        if in_fence or stripped != "$$":
+            continue
+        if start is None:
+            start = idx
+            prev = idx - 1
+            while prev >= 0 and not lines[prev].strip():
+                prev -= 1
+            if prev < 0 or not lines[prev].rstrip().endswith("："):
+                issues.append(
+                    Issue(path, idx + 1, "ERROR", "math-display-intro",
+                          "行间公式前一行散文必须以全角冒号结尾")
+                )
+            continue
+
+        body = [(line_idx, lines[line_idx]) for line_idx in range(start + 1, idx)]
+        env_depth = 0
+        env_rows = []
+        for line_idx, line in body:
+            if line_idx + 1 in disabled_lines or not line.strip():
+                continue
+            clean = line.strip()
+            envs = MATH_ENV_RE.findall(clean)
+            if envs and not (len(envs) == 1 and clean == envs[0]):
+                issues.append(
+                    Issue(path, line_idx + 1, "ERROR", "math-environment-line",
+                          r"\begin / \end 必须各自单独成行")
+                )
+            if re.search(r"(?<!\s)&|&(?!\s)", line):
+                issues.append(
+                    Issue(path, line_idx + 1, "ERROR", "math-align-space",
+                          "对齐符 & 两侧各留一个空格")
+                )
+            terminal = MATH_ROW_BREAK_RE.sub("", clean)
+            if MATH_TERMINAL_RE.search(terminal) and not terminal.endswith(r"\right."):
+                issues.append(
+                    Issue(path, line_idx + 1, "ERROR", "math-display-terminal",
+                          "行间公式内容与各分支末尾不加句读")
+                )
+            if clean.startswith(r"\begin{"):
+                env_depth += 1
+                env_rows = []
+                continue
+            if clean.startswith(r"\end{"):
+                if env_rows:
+                    for row_idx, (row_line_idx, row) in enumerate(env_rows):
+                        has_break = bool(MATH_ROW_BREAK_RE.search(row.rstrip()))
+                        if row_idx + 1 < len(env_rows) and not has_break:
+                            issues.append(
+                                Issue(path, row_line_idx + 1, "ERROR",
+                                      "math-environment-break", r"多行公式的非末分支以空格加 \\ 结尾")
+                            )
+                        if row_idx + 1 == len(env_rows) and has_break:
+                            issues.append(
+                                Issue(path, row_line_idx + 1, "ERROR",
+                                      "math-environment-break", "多行公式的末分支不写 \\")
+                            )
+                env_depth = max(0, env_depth - 1)
+                env_rows = []
+                continue
+            if env_depth:
+                if not line.startswith("  ") or line.startswith("   "):
+                    issues.append(
+                        Issue(path, line_idx + 1, "ERROR", "math-environment-indent",
+                              "多行公式的每个分支严格缩进 2 个空格")
+                    )
+                env_rows.append((line_idx, line))
+        start = None
 
 
 # ---------------------------------------------------------------------------
@@ -743,8 +840,36 @@ def strip_cpp_comments(line, in_block):
     return "".join(out), in_block
 
 
+def has_top_level_comma(text):
+    """忽略括号、数组初值与模板实参后，判断声明是否并列多个常量。"""
+    depth = {"(": 0, "[": 0, "{": 0, "<": 0}
+    close = {")": "(", "]": "[", "}": "{", ">": "<"}
+    for char in text:
+        if char in depth:
+            depth[char] += 1
+        elif char in close and depth[close[char]]:
+            depth[close[char]] -= 1
+        elif char == "," and not any(depth.values()):
+            return True
+    return False
+
+
 def check_cpp(path, blocks, disabled_lines, issues):
     for start, buf in blocks:
+        complete = any("#include <bits/stdc++.h>" in raw for _, raw in buf)
+        namespaces = [
+            idx for idx, (_, raw) in enumerate(buf)
+            if re.match(r"^using namespace \w+;$", raw)
+        ]
+        if complete and namespaces:
+            expected = namespaces[-1] + 1
+            blanks = [idx for idx, (_, raw) in enumerate(buf) if not raw.strip()]
+            if blanks != [expected]:
+                lineno = buf[expected][0] if expected < len(buf) else buf[-1][0]
+                issues.append(
+                    Issue(path, lineno, "ERROR", "cpp-blank-layout",
+                          "整份 OI 代码只能有 1 个空行，且只能紧跟 using namespace")
+                )
         in_block_comment = False
         for offset, (lineno, raw) in enumerate(buf):
             code = strip_cpp_literals(raw)
@@ -758,21 +883,57 @@ def check_cpp(path, blocks, disabled_lines, issues):
             if re.search(r"\bstatic\b", code_without_comments):
                 issues.append(Issue(path, lineno, "ERROR", "cpp-static", "OI 代码不使用 static 修饰符"))
             if re.search(r'"[^"]*\\n', raw):
-                issues.append(Issue(path, lineno, "WARN", "cpp-newline-in-str", "换行独立 <<'\\n'，字符串里不夹 \\n"))
+                issues.append(Issue(path, lineno, "ERROR", "cpp-newline-in-str", "换行独立 <<'\\n'，字符串里不夹 \\n"))
             if re.search(r"\bendl\b", code):
                 issues.append(Issue(path, lineno, "WARN", "cpp-endl", "换行用 '\\n' 不用 endl（交互题刷新除外）"))
             if re.search(r"\b(scanf|printf)\s*\(", code):
                 issues.append(Issue(path, lineno, "WARN", "cpp-stdio", "读写用 cin/cout（固定格式分隔符除外）"))
             if re.search(r"\bstd::", code):
-                issues.append(Issue(path, lineno, "WARN", "cpp-std-prefix", "用 using namespace std;，不逐处 std::"))
+                issues.append(Issue(path, lineno, "ERROR", "cpp-std-prefix", "用 using namespace std;，不逐处 std::"))
             if re.search(r"//", code) or re.search(r"/\*", code):
-                issues.append(Issue(path, lineno, "WARN", "cpp-comment", "OI 代码不写注释"))
+                issues.append(Issue(path, lineno, "ERROR", "cpp-comment", "OI 代码不写注释"))
             if re.search(r"\b(true|false)\b", code) and "sync_with_stdio(false)" not in raw:
-                issues.append(Issue(path, lineno, "WARN", "cpp-bool", "bool 用 0/1，不用 true/false（sync_with_stdio 除外）"))
+                issues.append(Issue(path, lineno, "ERROR", "cpp-bool", "bool 用 0/1，不用 true/false（sync_with_stdio 除外）"))
             if re.search(r"\bdp\b\s*\[", code):
-                issues.append(Issue(path, lineno, "WARN", "cpp-dp", "DP 数组用 f，不用 dp"))
+                issues.append(Issue(path, lineno, "ERROR", "cpp-dp", "DP 数组用 f，不用 dp"))
             if re.match(r"^ {2,}\S", raw) and not raw.lstrip().startswith(("*", "//")):
-                issues.append(Issue(path, lineno, "WARN", "cpp-indent", "用 1 个 Tab 缩进，不用空格"))
+                issues.append(Issue(path, lineno, "ERROR", "cpp-indent", "用 1 个 Tab 缩进，不用空格"))
+            if re.search(r"\b(register|inline)\b", code_without_comments):
+                issues.append(Issue(path, lineno, "ERROR", "cpp-storage", "OI 代码不使用 register / inline"))
+            declaration = code_without_comments.strip()
+            if re.match(r"^const\b", declaration) and declaration.endswith(";"):
+                if has_top_level_comma(declaration[:-1]):
+                    issues.append(
+                        Issue(path, lineno, "ERROR", "cpp-const-line",
+                              "每个常量单独使用一行 const 声明")
+                    )
+            if re.search(r"\b[A-Za-z_]\w*\s*=\s*[^,;]+", declaration):
+                nxt = offset + 1
+                while nxt < len(buf) and not buf[nxt][1].strip():
+                    nxt += 1
+                if nxt < len(buf) and "cin>>" in buf[nxt][1]:
+                    names = re.findall(r"\b([A-Za-z_]\w*)\s*=", declaration)
+                    if names and not any(
+                        re.search(r"\b{}\b".format(re.escape(name)), buf[nxt][1])
+                        for name in names
+                    ):
+                        issues.append(
+                            Issue(path, lineno, "ERROR", "cpp-declaration-order",
+                                  "局部变量在完成前置输入后、首次使用前再定义")
+                        )
+            if re.search(r"\([ \t]*int[ \t]*\)[ \t]*[A-Za-z_]\w*(?:\[[^]]+\])?\.size\(\)", code):
+                issues.append(Issue(path, lineno, "ERROR", "cpp-size-cast", ".size() 不就地强转 int；需要有符号运算时先存入 int"))
+            if re.search(r"\b(?:auto|const[ \t]+[A-Za-z_]\w*|[A-Za-z_]\w*(?:<[^>]+>)?)&[ \t]*[A-Za-z_]\w*", code):
+                issues.append(Issue(path, lineno, "ERROR", "cpp-reference-space", "引用符号贴变量名并留前空格：Type &x"))
+            loop = re.search(r"\bfor\s*\(\s*int\s+([A-Za-z_]\w*)\s*=", code)
+            if loop and loop.group(1) not in ("i", "j", "k"):
+                issues.append(Issue(path, lineno, "ERROR", "cpp-loop-name", "经典 for 循环计数器只用 i / j / k"))
+            if re.search(r"\b(if|for|while|switch)\s+\(", code):
+                issues.append(Issue(path, lineno, "ERROR", "cpp-keyword-space", "控制关键字与左括号之间不加空格"))
+            if re.search(r",[ \t]+", code_without_comments):
+                issues.append(Issue(path, lineno, "ERROR", "cpp-comma-space", "逗号后不加多余空格"))
+            if re.search(r"[ \t](?:==|!=|<=|>=|&&|\|\||[=+*/%<>-])[ \t]", code_without_comments):
+                issues.append(Issue(path, lineno, "ERROR", "cpp-operator-space", "运算符两侧不加多余空格"))
 
 
 # ---------------------------------------------------------------------------
@@ -861,6 +1022,7 @@ def check_file(path, opts):
         code_line_set |= fenced_line_set(lines)
         check_math(path, math, disabled, issues)
         check_math_delims(path, lines, code_line_set, disabled, issues)
+        check_display_math(path, lines, code_line_set, disabled, issues)
         if opts["aitone"]:
             check_aitone(path, prose, disabled, issues)
         check_typography(path, prose, disabled, opts, issues)

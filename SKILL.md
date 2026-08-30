@@ -67,10 +67,11 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 | 目标项目 | 自身 frontmatter、组件、内容模型、存放位置与工程约束 |
 
 1. **目标项目内部规则优先**：先读目标仓库的 `AGENTS.md`、内部 Agent Skill 与路径规则。它们在各自项目范围内优先；本 Skill 只补充个人风格。
-2. **洛谷题解**：调用 `github.com/lailai0916/luogu-solution`。完成其流程校验后，再用本 Skill 的 [OI C++ 规范](references/cpp-oi-style.md) 与 [checker](tools/checker/README.md) 检查个人代码风格；目标仓库只补站点外壳。
-3. **新建 GitHub 仓库**：从 `github.com/lailai0916/lailai-template` 创建，再按 [README 与项目规范](references/project-docs-style.md) 替换内容。模板是成品实例，不是第二份规则手册。
-4. **禁止镜像规则**：下游只保留依赖入口和本地差异，不复制上游正文。测试可以验证跨仓库接口，但不逐字保存另一仓库的规则。
-5. **能力不可用**：若专用 Skill 或模板未安装，读取其 GitHub 权威源；需要落地安装、创建远程仓库或其它外部写入时，先取得当前任务授权。
+2. **洛谷题解**：调用 `github.com/lailai0916/luogu-solution`。本 Skill 的 [中文写作](references/writing-style.md)、[用词](references/wording.md)、[Markdown](references/markdown-style.md)、[LaTeX](references/latex-math-style.md) 与 [OI C++](references/cpp-oi-style.md) 规范都是从起草和实现第一行起生效的硬性命令，完整覆盖专用 Skill 或平台的默认排版与代码风格，不得降级为参考或事后美化；专用 Skill 只提供题解流程、结构与发布能力。完成专用流程后，再用 [checker](tools/checker/README.md) 与语义审查逐条验收。目标仓库只补站点外壳。
+3. **AI 题解的个人网站收录（显式选择加入）**：自动或批量生成的 AI 题解默认不进入个人网站：不创建或同步逐题页面，不主动建立汇总，也不改动既有站点内容。仅当 lailai 在当前任务明确要求「合并 AI 题解」时，才把当前指定批次收拢为一篇仅含洛谷题解链接的站内博客；若该批次已有逐题副本，只删除这些副本，不触碰批次外内容。该授权仅限当前指定批次，不延续到后续任务。
+4. **新建 GitHub 仓库**：从 `github.com/lailai0916/lailai-template` 创建，再按 [README 与项目规范](references/project-docs-style.md) 替换内容。模板是成品实例，不是第二份规则手册。
+5. **禁止镜像规则**：下游只保留依赖入口和本地差异，不复制上游正文。测试可以验证跨仓库接口，但不逐字保存另一仓库的规则。
+6. **能力不可用**：若专用 Skill 或模板未安装，读取其 GitHub 权威源；需要落地安装、创建远程仓库或其它外部写入时，先取得当前任务授权。
 
 ## 安全边界
 
