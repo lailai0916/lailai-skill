@@ -2,6 +2,7 @@
   <h1>lailai.skill</h1>
   <p><a href="README.md">English</a> · <strong>简体中文</strong></p>
   <p>
+    <img src="https://img.shields.io/github/actions/workflow/status/lailai0916/lailai-skill/ci.yml?branch=main&style=flat-square" />
     <img src="https://img.shields.io/github/last-commit/lailai0916/lailai-skill?style=flat-square" />
     <img src="https://img.shields.io/github/languages/top/lailai0916/lailai-skill?style=flat-square" />
     <img src="https://img.shields.io/github/repo-size/lailai0916/lailai-skill?style=flat-square" />
@@ -84,6 +85,12 @@ GitHub 权威源作文本引用；不要再用 submodule、内嵌副本或逐项
 mkdir -p ~/.agents/skills
 git clone https://github.com/lailai0916/lailai-skill ~/.agents/skills/lailai-skill
 # 更新：cd ~/.agents/skills/lailai-skill && git pull
+```
+
+若要让洛谷专用流程无需临时抓取即可被发现，将它安装在同一用户级目录：
+
+```bash
+git clone https://github.com/lailai0916/luogu-solution ~/.agents/skills/luogu-solution
 ```
 
 ### 装好之后

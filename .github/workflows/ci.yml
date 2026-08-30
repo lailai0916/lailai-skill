@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Validate architecture
+        run: python3 tools/checker/check_architecture.py
+      - name: Run checker tests
+        run: python3 tools/checker/test_checker.py
+      - name: Validate positive fixtures
+        run: |
+          python3 tools/checker/check.py tools/checker/tests/good.mdx
+          python3 tools/checker/check.py README.md
+          python3 tools/checker/check.py README.zh-Hans.md
+      - name: Validate negative fixture
+        run: |
+          if python3 tools/checker/check.py tools/checker/tests/bad.mdx; then
+            echo "Negative fixture unexpectedly passed."
+            exit 1
+          fi
+      - name: Compile Python tools
+        run: python3 -m py_compile tools/checker/*.py

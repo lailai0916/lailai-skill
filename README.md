@@ -2,6 +2,7 @@
   <h1>lailai.skill</h1>
   <p><strong>English</strong> · <a href="README.zh-Hans.md">简体中文</a></p>
   <p>
+    <img src="https://img.shields.io/github/actions/workflow/status/lailai0916/lailai-skill/ci.yml?branch=main&style=flat-square" />
     <img src="https://img.shields.io/github/last-commit/lailai0916/lailai-skill?style=flat-square" />
     <img src="https://img.shields.io/github/languages/top/lailai0916/lailai-skill?style=flat-square" />
     <img src="https://img.shields.io/github/repo-size/lailai0916/lailai-skill?style=flat-square" />
@@ -85,6 +86,12 @@ not discover `~/.agents/skills` natively, add one constant-size directory adapte
 mkdir -p ~/.agents/skills
 git clone https://github.com/lailai0916/lailai-skill ~/.agents/skills/lailai-skill
 # Update: cd ~/.agents/skills/lailai-skill && git pull
+```
+
+For zero-fetch discovery of the specialized Luogu route, install it beside this Skill:
+
+```bash
+git clone https://github.com/lailai0916/luogu-solution ~/.agents/skills/luogu-solution
 ```
 
 ### After installing

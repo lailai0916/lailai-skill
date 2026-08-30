@@ -131,7 +131,7 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 2. **选规则**（场景标签 → 待读文件清单）。按上面两张索引表列出本次要读的 profile 与 reference；跨多个场景就全列，不只挑一个。
 3. **读规则**（文件清单 → 本次硬约束）。逐个读，提取可检查的硬约束（如句长 ≤ 40、`$...$`、snake_case），不凭印象套用。
 4. **产出**（硬约束 → 草稿）。先结论后依据，能分点不抒情，达到 lailai 的信息密度。
-5. **自检**（草稿 → 通过 / 退回）。对照下方自检流程与对应 reference 的 Self-review Checklist；任一项不过 → 回第 4 步重做。可机械判定的项（数学分隔符、AI 腔黑名单、OI 代码 tell、格式）交给 `tools/checker/check.py` 跑，别只靠人眼；语义 / 审美 / 密度类靠人工或 reviewer。
+5. **自检**（草稿 → 通过 / 退回）。对照下方自检流程与对应 reference 的 Self-review Checklist；任一项不过 → 回第 4 步重做。可机械判定的项（数学分隔符、AI 腔黑名单、OI 代码 tell、格式）交给 `tools/checker/check.py` 跑，别只靠人眼；语义 / 审美 / 密度类使用 [语义 reviewer](prompts/review-style.md)。
 6. **标注并放行**（通过的草稿 → 交付物）。不确定的信息标注"待查"；命中"检查点"则停下等人工确认。**只交付成品本身**——把"读了哪些规则、如何自我校准、内部推理、过程旁白（尤其英文）"全部留在产出之外，绝不写进交付物。这些过程泄漏本身就是 AI-tell（见 [ai-tone-blacklist.md](references/ai-tone-blacklist.md)）。
 
 ## 失败模式与兜底

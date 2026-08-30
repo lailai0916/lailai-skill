@@ -6,6 +6,21 @@
 
 类型标签：`Added` 新增 / `Changed` 修改 / `Deprecated` 标记过时 / `Removed` 删除 / `Fixed` 修正 / `Test` 测试。
 
+## [1.0.1] - 2026-08-30
+
+补齐拆分后的依赖边界与自动回归保护。
+
+### Changed
+
+- `references/cpp-oi-style.md`：个人固定算法写法由本仓库直接维护，不再把网站文档作为运行时规则来源。
+- `prompts/review-style.md`：语义审稿逻辑改为外部唯一源；消费项目只保留路由与局部差异，不再复制 reviewer 正文。
+- `README.md` / `README.zh-Hans.md`：补充 `luogu-solution` 的同级用户目录安装方式，确保专用流程可直接发现。
+
+### Test
+
+- 新增架构回归检查，阻止网站实现路径和 reviewer 副本重新进入活动规范。
+- 新增 GitHub Actions CI，并在双语 README 展示真实状态徽章。
+
 ## [1.0.0] - 2026-08-30
 
 收紧为个人赛博分身核心，并建立明确的跨仓库职责图。

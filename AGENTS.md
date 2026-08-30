@@ -26,6 +26,7 @@ Read `SKILL.md` before changing behavior, then read the affected files under `pr
 python3 tools/checker/check.py tools/checker/tests/good.mdx
 python3 tools/checker/check.py tools/checker/tests/bad.mdx # expected to fail with ERROR findings
 python3 -m py_compile tools/checker/check.py
+python3 tools/checker/check_architecture.py
 ```
 
 `AGENTS.md` is the canonical repository instruction file. `CLAUDE.md` is only a compatibility

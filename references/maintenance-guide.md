@@ -33,7 +33,7 @@ prose 规则的天花板是「90% + 自觉」——模型总会漏几条。想�
 
 - **两级**：ERROR（确定性、近零误报，Claude Code hook 命中即退出 2 打回）/ WARN（启发式，仅提示）。宁可漏报不可错报——错报会训练人无视 checker。
 - **diff-aware**：hook 只校验本次改动的行，存量违规（旧笔记的 `\dfrac`、老题解的「显然」）不挡无关改动，契合「新规则对新产出生效」。
-- **共同进化**：改一条可判定规则时，同一轮同步改 checker 与 `tests/`——规则 ↔ 校验绑定，别让 checker 落后于 reference。判断类规则（语气、审美、密度）不进 checker，留给 reviewer / 人。
+- **共同进化**：改一条可判定规则时，同一轮同步改 checker 与 `tests/`——规则 ↔ 校验绑定，别让 checker 落后于 reference。判断类规则（语气、审美、密度）不进 checker，留给 [语义 reviewer](../prompts/review-style.md) / 人。
 
 细节与「规则 → reference」对照见 [../tools/checker/README.md](../tools/checker/README.md)。
 
