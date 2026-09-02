@@ -55,10 +55,12 @@ python3 check.py --commit .git/COMMIT_EDITMSG
 | `h1` / `heading-punct` | WARN | markdown 规则 5、7 |
 | `curly-quote` | WARN | markdown 规则 13 |
 | `emoji` / `date-format` / `time-format` | WARN | writing 规则 12、20、21 |
-| `cjk-latin-space` / `sentence-length` | WARN | markdown 规则 17；writing 规则 6 |
+| `cjk-latin-space` / `sentence-length` | WARN | markdown 规则 17；writing 规则 6（建议项） |
 | `trailing-space` / `blank-lines` | WARN | markdown 规则 3 |
 | `cpp-include` / `cpp-space-newline` / `cpp-static` | ERROR | [cpp-oi-style](../../references/cpp-oi-style.md) 规则 6、12、16 |
 | `cpp-blank-layout` / `cpp-const-line` / `cpp-declaration-order` | ERROR | cpp 规则 3、16、17 |
+| `cpp-constant-name` / `cpp-c-io` | ERROR | cpp 规则 11、21 |
+| `cpp-personal-idiom` | ERROR | [cpp-oi-idioms](../../references/cpp-oi-idioms.md) 的固定 `Pow` 与 `BIT` 接口 |
 | `cpp-endl` / `cpp-stdio` / `cpp-comment` / `cpp-bool` / `cpp-dp` / `cpp-std-prefix` / `cpp-indent` | ERROR/WARN | cpp 规则 11、4、14、24、7、3 |
 | `ascii-art` / `todo` | WARN | [engineering-code-style](../../references/engineering-code-style.md) |
 | `commit-conventional` | ERROR | [project-docs-style](../../references/project-docs-style.md) 规则 1 |

@@ -66,7 +66,7 @@
 - **同类型普通变量定义合并一行**：`string s,f[N][N];`、`int n,m,a[N];`。变量多则**标量一行、数组一行**分开（标量归标量、数组归数组），不混排。相邻、相同类型的多个普通变量也要合并（`vector<int> cv,mL,ms;`，不拆成三行）。`const` 是明确例外：无论类型是否相同，每个常量仍按规则 16 单独一行。
 - **引用 / 指针符号贴变量名、留前空格**：`Type &x`（`auto &f`、`const string &a`、`int &v=T[u][c]`），不写 `auto&f`；范围 for 取引用同理 `for(auto &v:G[u])`。
 - **`.size()` 不转 `int`**：一般直接用 `v.size()`（如 `for(int i=0;i<v.size();i++)`、`int n=s.size();`），不写 `(int)v.size()`；需要参与有符号运算时先存进 `int` 变量，别就地强转。
-- **常用算法沿用个人固定写法，不自创变体**：快速幂用 `ll Pow(ll x,ll y)`（先 `x%=mod;`）；线性逆元用 `inv[i]=i==1?1:(mod-mod/i)*inv[mod%i]%mod;`；存图用 `vector<int> G[N]`（大写 `G`，配规则 18）。并查集、线段树等未单列的模板仍按本文件的结构、命名与简洁原则统一；目标项目中的公开笔记可以作为内容参考，但不是本 Skill 的运行时规则来源。别另起 `qpow` / `e[]` 之类的命名或实现。
+- **常用算法沿用个人固定实现，不自创等价变体**：先查 [个人算法惯用实现](cpp-oi-idioms.md)。仅仅功能正确、排版合规仍不够；函数名、变量名、接口、语句顺序与拆分方式都应贴近既有实现。只有题目语义确实需要不同类型、边界、模数或扩展状态时才作最小改动，未受影响的核心保持不变。
 - **bool 值用 `0`/`1`**：不写 `false`/`true`（`return 0;` 不写 `return false;`）；唯一例外是固定惯用写法 `ios::sync_with_stdio(false)`。
 - **简单二选一 return 用三目**：`if(c)return a; return b;` 合并为 `return c?a:b;`（规则 4「再抠一层」的落地）；复杂逻辑别硬塞三目伤可读。
 - **操作分发用完整 `else if` 链**：按操作类型 `op` 分支时，每个分支都写明判定，**哪怕只剩最后一种也写 `else if(op==k)`，不收尾成裸 `else`**——`if(op==1)…else if(op==2)…`、`if(op==0)…else if(op==1)…else if(op==2)…else if(op==3)…`。让每条分支与它处理的 `op` 一一对应、可读可改。（裸 `else` 只用于真正的「其余一切」语义，不用于「就差这一种」。）
@@ -108,5 +108,5 @@ int main()
 - [ ] `cin` / `cout` + 快读，`'\n'` 换行，单引号字符？
 - [ ] 能 `int` 不 `long long`；`using` 别名；每个 `const` 常量单独一行；无 `static` / `register` / `inline`？
 - [ ] 普通数组 `int a[N]` 优先（`vector` 仅存图等，无"全是 vector"的 AI-tell）；`auto` 省冗长类型；大数组全局；局部变量紧贴首次使用处定义？
-- [ ] snake_case，小变量 ≤ 3 字符，按命名表（`N`+5、`inf=0x3f3f3f3f`、`ans` / `cnt` / `siz`…）？
+- [ ] snake_case、小变量与常量命名符合命名表；常见算法组件使用 `cpp-oi-idioms.md` 的个人固定实现？
 - [ ] 主函数在末尾，`return 0;`？

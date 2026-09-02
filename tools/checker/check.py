@@ -439,7 +439,7 @@ def check_typography(path, prose_spans, disabled_lines, opts, issues):
                 if cjk >= len(seg) * 0.5 and len(seg) > 40:
                     issues.append(
                         Issue(path, lineno, "WARN", "sentence-length",
-                              "句子 {} 字，超 40 字（硬上限 60），拆短".format(len(seg)))
+                              "句子 {} 字，超过 40 字建议值，可酌情拆短".format(len(seg)))
                     )
                     break
 
@@ -882,12 +882,14 @@ def check_cpp(path, blocks, disabled_lines, issues):
                 issues.append(Issue(path, lineno, "ERROR", "cpp-space-newline", '不用 <<" \\n"[i==n] 技巧：输出空格、末尾无换行'))
             if re.search(r"\bstatic\b", code_without_comments):
                 issues.append(Issue(path, lineno, "ERROR", "cpp-static", "OI 代码不使用 static 修饰符"))
-            if re.search(r'"[^"]*\\n', raw):
+            if any("\\n" in literal for literal in re.findall(r'"(?:\\.|[^"\\])*"', raw)):
                 issues.append(Issue(path, lineno, "ERROR", "cpp-newline-in-str", "换行独立 <<'\\n'，字符串里不夹 \\n"))
             if re.search(r"\bendl\b", code):
                 issues.append(Issue(path, lineno, "WARN", "cpp-endl", "换行用 '\\n' 不用 endl（交互题刷新除外）"))
             if re.search(r"\b(scanf|printf)\s*\(", code):
                 issues.append(Issue(path, lineno, "WARN", "cpp-stdio", "读写用 cin/cout（固定格式分隔符除外）"))
+            if re.search(r"\b(getchar|getchar_unlocked|putchar|putchar_unlocked|fread|fwrite)\s*\(", code):
+                issues.append(Issue(path, lineno, "ERROR", "cpp-c-io", "OI 代码读写统一用 cin/cout，不使用底层 C I/O"))
             if re.search(r"\bstd::", code):
                 issues.append(Issue(path, lineno, "ERROR", "cpp-std-prefix", "用 using namespace std;，不逐处 std::"))
             if re.search(r"//", code) or re.search(r"/\*", code):
@@ -896,6 +898,12 @@ def check_cpp(path, blocks, disabled_lines, issues):
                 issues.append(Issue(path, lineno, "ERROR", "cpp-bool", "bool 用 0/1，不用 true/false（sync_with_stdio 除外）"))
             if re.search(r"\bdp\b\s*\[", code):
                 issues.append(Issue(path, lineno, "ERROR", "cpp-dp", "DP 数组用 f，不用 dp"))
+            if re.search(r"\b(?:INF|MOD)\b", code_without_comments):
+                issues.append(Issue(path, lineno, "ERROR", "cpp-constant-name", "无穷大与模数常量分别命名为 inf 与 mod"))
+            if re.search(r"\b(?:qpow|quick_pow)\s*\(", code_without_comments):
+                issues.append(Issue(path, lineno, "ERROR", "cpp-personal-idiom", "快速幂使用个人固定接口 Pow"))
+            if re.search(r"\b(?:struct|class)\s+Fenwick\b", code_without_comments):
+                issues.append(Issue(path, lineno, "ERROR", "cpp-personal-idiom", "树状数组使用个人固定接口 struct BIT"))
             if re.match(r"^ {2,}\S", raw) and not raw.lstrip().startswith(("*", "//")):
                 issues.append(Issue(path, lineno, "ERROR", "cpp-indent", "用 1 个 Tab 缩进，不用空格"))
             if re.search(r"\b(register|inline)\b", code_without_comments):

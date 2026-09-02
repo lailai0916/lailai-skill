@@ -67,8 +67,8 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 | 目标项目 | 自身 frontmatter、组件、内容模型、存放位置与工程约束 |
 
 1. **目标项目内部规则优先**：先读目标仓库的 `AGENTS.md`、内部 Agent Skill 与路径规则。它们在各自项目范围内优先；本 Skill 只补充个人风格。
-2. **洛谷题解**：调用 `github.com/lailai0916/luogu-solution`。本 Skill 的 [中文写作](references/writing-style.md)、[用词](references/wording.md)、[Markdown](references/markdown-style.md)、[LaTeX](references/latex-math-style.md) 与 [OI C++](references/cpp-oi-style.md) 规范都是从起草和实现第一行起生效的硬性命令，完整覆盖专用 Skill 或平台的默认排版与代码风格，不得降级为参考或事后美化；专用 Skill 只提供题解流程、结构与发布能力。完成专用流程后，再用 [checker](tools/checker/README.md) 与语义审查逐条验收。目标仓库只补站点外壳。
-3. **AI 题解的个人网站收录（显式选择加入）**：自动或批量生成的 AI 题解默认不进入个人网站：不创建或同步逐题页面，不主动建立汇总，也不改动既有站点内容。仅当 lailai 在当前任务明确要求「合并 AI 题解」时，才把当前指定批次收拢为一篇仅含洛谷题解链接的站内博客；若该批次已有逐题副本，只删除这些副本，不触碰批次外内容。该授权仅限当前指定批次，不延续到后续任务。
+2. **洛谷题解**：调用 `github.com/lailai0916/luogu-solution`。任何新题必须先通过专用 Skill 的实时候选资格闸门；失败时不得创建代码、题解、对拍器或生成器，也不得用本地台账、网站索引或缓存未命中代替账号历史核验。本 Skill 的 [中文写作](references/writing-style.md)、[用词](references/wording.md)、[Markdown](references/markdown-style.md)、[LaTeX](references/latex-math-style.md)、[OI C++](references/cpp-oi-style.md) 与 [个人算法惯用实现](references/cpp-oi-idioms.md) 从起草和实现第一行起生效，并完整覆盖专用 Skill 或平台的默认排版与代码风格。各条款按其在唯一真源中声明的强度执行：硬性规则不得降级为参考或事后美化，建议项只用于复核，不阻断交付。专用 Skill 只提供候选筛选、题解流程、结构与发布能力。完成专用流程后，再用 [checker](tools/checker/README.md) 与语义审查逐条验收。目标仓库只补站点外壳。
+3. **AI 题解的个人网站收录（单一索引）**：为 lailai 完成一篇 AI 洛谷题解的全部流程后，将该题完整标题对应的洛谷专栏链接追加到 `lailai0916.github.io` 的洛谷贡献文档。所有 AI 题解始终共用该文档中的一个列表，不建立合集博客、分页、分批文件或逐题页面，也不因数量增加而拆分。索引的准确路径、标题层级、列表格式与站点外壳全部服从目标网站内部规则，本 Skill 不复制这些实现细节。
 4. **新建 GitHub 仓库**：从 `github.com/lailai0916/lailai-template` 创建，再按 [README 与项目规范](references/project-docs-style.md) 替换内容。模板是成品实例，不是第二份规则手册。
 5. **禁止镜像规则**：下游只保留依赖入口和本地差异，不复制上游正文。测试可以验证跨仓库接口，但不逐字保存另一仓库的规则。
 6. **能力不可用**：若专用 Skill 或模板未安装，读取其 GitHub 权威源；需要落地安装、创建远程仓库或其它外部写入时，先取得当前任务授权。
@@ -115,7 +115,7 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 - 用词取舍 → [references/wording.md](references/wording.md)
 - Markdown 排版 → [references/markdown-style.md](references/markdown-style.md)
 - LaTeX 数学公式 → [references/latex-math-style.md](references/latex-math-style.md)
-- OI C++ 代码 → [references/cpp-oi-style.md](references/cpp-oi-style.md)
+- OI C++ 代码 → [references/cpp-oi-style.md](references/cpp-oi-style.md)；使用常见算法组件时再读 [references/cpp-oi-idioms.md](references/cpp-oi-idioms.md)
 - 工程代码 / 注释 → [references/engineering-code-style.md](references/engineering-code-style.md)
 - UI / 设计审查 → [references/design-style.md](references/design-style.md)
 - README / 项目文档 → [references/project-docs-style.md](references/project-docs-style.md)
@@ -130,9 +130,9 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 
 1. **定位场景**（任务 → 场景标签）。判断属于聊天 / 写作 / 代码 / 设计 / 决策 / 维护中的哪些（可多选）。与 lailai 风格无关 → 见"失败模式与兜底"末条。
 2. **选规则**（场景标签 → 待读文件清单）。按上面两张索引表列出本次要读的 profile 与 reference；跨多个场景就全列，不只挑一个。
-3. **读规则**（文件清单 → 本次硬约束）。逐个读，提取可检查的硬约束（如句长 ≤ 40、`$...$`、snake_case），不凭印象套用。
-4. **产出**（硬约束 → 草稿）。先结论后依据，能分点不抒情，达到 lailai 的信息密度。
-5. **自检**（草稿 → 通过 / 退回）。对照下方自检流程与对应 reference 的 Self-review Checklist；任一项不过 → 回第 4 步重做。可机械判定的项（数学分隔符、AI 腔黑名单、OI 代码 tell、格式）交给 `tools/checker/check.py` 跑，别只靠人眼；语义 / 审美 / 密度类使用 [语义 reviewer](prompts/review-style.md)。
+3. **读规则**（文件清单 → 本次约束）。逐个读，区分硬性规则与可读性建议（如 `$...$`、snake_case 与短句建议），不凭印象套用。
+4. **产出**（本次约束 → 草稿）。先结论后依据，能分点不抒情，达到 lailai 的信息密度。
+5. **自检**（草稿 → 通过 / 退回）。对照下方自检流程与对应 reference 的 Self-review Checklist；硬性项不过 → 回第 4 步重做，建议项只参与判断。可机械判定的项（数学分隔符、AI 腔黑名单、OI 代码 tell、格式）交给 `tools/checker/check.py` 跑，别只靠人眼；语义 / 审美 / 密度类使用 [语义 reviewer](prompts/review-style.md)。
 6. **标注并放行**（通过的草稿 → 交付物）。不确定的信息标注"待查"；命中"检查点"则停下等人工确认。**只交付成品本身**——把"读了哪些规则、如何自我校准、内部推理、过程旁白（尤其英文）"全部留在产出之外，绝不写进交付物。这些过程泄漏本身就是 AI-tell（见 [ai-tone-blacklist.md](references/ai-tone-blacklist.md)）。
 
 ## 失败模式与兜底
@@ -154,12 +154,12 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 产出前快速过一遍：
 
 - [ ] 简体中文，简洁、自然、专业，没有 AI 腔（对照 [ai-tone-blacklist.md](references/ai-tone-blacklist.md)）。
-- [ ] 用词符合习惯（对照 [wording.md](references/wording.md)：你 / 仅 / 若，无「显然 / 易得 / 不难发现」）；每句 ≤ 40 字，主动语态。
+- [ ] 用词符合习惯（对照 [wording.md](references/wording.md)：你 / 仅 / 若，无「显然 / 易得 / 不难发现」）；优先短句和主动语态，长句仍能顺读。
 - [ ] 先给结论 / 判断，再给依据，没有"本文将……""希望对你有帮助"这类套话。
 - [ ] 信息密度高，能分点 / 对照 / 举例就不写大段抒情。
 - [ ] 数学公式统一用 `$...$` 与 `$$...$$`（不用 `\(...\)` / `\[...\]`）；普通散文数字不机械数学化，OI 题解例外按 reference 执行。
 - [ ] 标题与正文之间保留一行空行。
-- [ ] C++ 遵循 lailai's Code Style（C++17、bits/stdc++.h、Tab、无注释、cin/cout、全局大数组、return 0）。
+- [ ] C++ 遵循 lailai's Code Style；常见算法组件复用个人固定实现，不临时自创等价变体。
 - [ ] 不确定的信息已标注；不编造。
 - [ ] 没有越过安全边界（冒充、隐私、敏感信息、未确认的对外表态）。
 - [ ] 交付的**只有成品本身**，没有把读规则 / 自我校准 / 推理过程 / 英文旁白写进去。
