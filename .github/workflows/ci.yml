@@ -12,12 +12,26 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: project
     steps:
       - uses: actions/checkout@v7
+        with:
+          path: project
+      - name: Check out repository standards
+        uses: actions/checkout@v7
+        with:
+          repository: lailai0916/lailai-template
+          ref: fd1670f4c59576c22f8f0f69951777ab8c4c01ae
+          path: repository-standards
+          persist-credentials: false
       - uses: actions/setup-python@v7
         with:
           python-version: "3.13"
 
+      - name: Validate shared repository standards
+        run: python3 ../repository-standards/scripts/check_repository.py --root . --readme-only
       - name: Validate architecture
         run: python3 tools/checker/check_architecture.py
       - name: Run checker tests

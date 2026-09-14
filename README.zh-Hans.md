@@ -43,7 +43,7 @@
 - 写或审查 README、项目介绍、GitHub 文档。
 - 在目标仓库内部规范下写 Markdown / MDX 笔记、题解与数学文章。
 - 写或评审 OI 算法竞赛 C++17 代码。
-- 将洛谷工作流路由到 `luogu-solution`，新仓库路由到 `lailai-template`。
+- 将洛谷工作流路由到 `luogu-solution`，仓库标准路由到 `lailai-template`。
 - 个人行为模型保留在本仓库，思想立场与教义发展路由到 `laiism-skill`。
 - "统一·简约·现代"风格的 UI / 设计审查。
 - 模拟 lailai 的日常聊天与提问方式。
@@ -107,6 +107,8 @@ git clone https://github.com/lailai0916/laiism-skill ~/.agents/skills/laiism-ski
 3. 目标仓库内部 Agent 规则在该项目范围内优先。洛谷任务转到
    [`luogu-solution`](https://github.com/lailai0916/luogu-solution)；新建 GitHub 仓库从
    [`lailai-template`](https://github.com/lailai0916/lailai-template) 开始。
+   它的 [初始化指南](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md) 同时维护
+   后续 README 与仓库标准、示例和校验，本 Skill 只保留路由。
 4. 涉及 laiism 与思想立场时，读取独立安装的 [`laiism-skill`](https://github.com/lailai0916/laiism-skill)；未安装时读取其权威仓库。普通聊天与代码任务不要求加载它。
 
 ## 习惯记录

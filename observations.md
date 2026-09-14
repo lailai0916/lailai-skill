@@ -73,7 +73,7 @@
 - 场景：README 多语言导航的视觉设计、实际修改与跨项目规范化。
 - 推测：语言切换属于轻量导航，应与状态徽章分层。`·` 比 `|` 更克制，当前语言通过字重表达状态。
 - 稳定性：第 3 次确认——方案取舍、8 语言落地、跨项目规范化。
-- 处理：已沉淀 → `profile/preferences.md`、`references/project-docs-style.md`、checker 与测试。
+- 处理：已沉淀；2026-09-15 将仓库标准与通用校验迁至 `lailai-template/SETUP.md`，本仓库保留个人偏好摘要。
 - 隐私检查：否。
 
 ### 2026-06-26 任何时候语言都要简洁自然专业、不要太 AI
@@ -145,7 +145,7 @@
 - 场景：统一多个 GitHub 仓库的双语 README。反馈用于纠正机械套用模板造成的结构偏差。
 - 推测：README 不只求信息齐全。个人网站的成熟写法应向 skill、模板与普通项目逐层传播。跨仓库统一章节语法、双语镜像与许可边界，具体内容仍按项目类型调整。
 - 稳定性：第 $2$ 次明确确认。2026-07-29，lailai 因 `wordcloud` 仓库再次逐项纠正项目名大小写、中文文件名、结构树语言 / 排序 / 对齐公式、通用条目与 License 链接，并要求同步修正 skill 与模板；随后确认 `lailai-template` 是品牌显示名特例，仍保留小写连字符。
-- 处理：已沉淀 → `references/project-docs-style.md`、`references/markdown-style.md`、`examples/readme-demo.md`、`tests/project-docs-test.md` 与 `tools/checker/`；checker 仅精确豁免 `lailai-template`。
+- 处理：已沉淀；2026-09-15 将仓库命名、结构树、License、示例与通用校验迁至 `lailai-template/SETUP.md`。个人 Markdown 规范保留在本仓库。
 - 隐私检查：否。
 
 ### 2026-07-18 GitHub 社区文件按 Owner 维护单一真源
@@ -154,7 +154,7 @@
 - 场景：多个 GitHub 仓库共享 issue 模板、PR 清单、贡献指南与安全策略。
 - 推测：每个 Owner 使用公开 `.github` 仓库作为通用社区文件单一真源；普通仓库仅保留项目专属覆盖。`lailai-template` 为了跨账号可移植可保留一份常数级模板副本。Profile README 与默认社区文件不应混在同一仓库职责中；`LICENSE` 仍须逐仓库保留。
 - 稳定性：首次系统说明，与既有「单一真源 + 常数级兼容层」偏好一致。
-- 处理：已用于本轮仓库治理，继续观察后再决定是否沉淀到 `references/project-docs-style.md`。
+- 处理：已用于本轮仓库治理，继续观察；后续若需沉淀仓库标准，归 `lailai-template`。
 - 隐私检查：否。
 
 下列候选由历轮语料挖矿浮现，但属**人格 / 价值 / 身份级**，按 🔴 检查点须 lailai 本人定夺后才能写入 `profile/`——确认或否决前一律不进硬规则。已稳定的条目均已并入对应 `references/` / `profile/` 并从本文件清除，使其保持缓冲而非仓库（历轮原始候选见 `tasks/w1xizrsxz.output`、`tasks/wk72y200u.output` 与 `CHANGELOG.md` v0.6.9–v0.8.0；语料为 ChatGPT 两年导出 2541 段 / 24830 条 user 消息）。

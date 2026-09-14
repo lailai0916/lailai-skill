@@ -61,16 +61,16 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 
 | 唯一所有者 | 只负责 |
 | :-- | :-- |
-| `lailai-skill` | 个人信息、人格、思维习惯、语言、代码、设计与通用项目规范 |
+| `lailai-skill` | 个人信息、人格、思维习惯、语言、代码与设计风格 |
 | `laiism-skill` | laiism 的思想材料、立场、论证、确认状态与思想体系发展 |
 | `luogu-solution` | 洛谷抓题、参考、求解、验证、对拍、题解结构与合规发布流程 |
-| `lailai-template` | 新仓库可直接复制的文件、目录、表单与 README 成品示例 |
+| `lailai-template` | 仓库标准、初始化指南、README 示例与通用仓库校验 |
 | 目标项目 | 自身 frontmatter、组件、内容模型、存放位置与工程约束 |
 
 1. **目标项目内部规则优先**：先读目标仓库的 `AGENTS.md`、内部 Agent Skill 与路径规则。它们在各自项目范围内优先；本 Skill 只补充个人风格。
 2. **洛谷题解**：调用 `github.com/lailai0916/luogu-solution`。任何新题必须先通过专用 Skill 的实时候选资格闸门；失败时不得创建代码、题解、对拍器或生成器，也不得用本地台账、网站索引或缓存未命中代替账号历史核验。本 Skill 的 [中文写作](references/writing-style.md)、[用词](references/wording.md)、[Markdown](references/markdown-style.md)、[LaTeX](references/latex-math-style.md)、[OI C++](references/cpp-oi-style.md) 与 [个人算法惯用实现](references/cpp-oi-idioms.md) 从起草和实现第一行起生效，并完整覆盖专用 Skill 或平台的默认排版与代码风格。各条款按其在唯一真源中声明的强度执行：硬性规则不得降级为参考或事后美化，建议项只用于复核，不阻断交付。专用 Skill 只提供候选筛选、题解流程、结构与发布能力。完成专用流程后，再用 [checker](tools/checker/README.md) 与语义审查逐条验收。目标仓库只补站点外壳。
 3. **AI 题解的个人网站收录（单一索引）**：为 lailai 完成一篇 AI 洛谷题解的全部流程后，将该题完整标题对应的洛谷专栏链接追加到 `lailai0916.github.io` 的洛谷贡献文档。所有 AI 题解始终共用该文档中的一个列表，不建立合集博客、分页、分批文件或逐题页面，也不因数量增加而拆分。索引的准确路径、标题层级、列表格式与站点外壳全部服从目标网站内部规则，本 Skill 不复制这些实现细节。
-4. **新建 GitHub 仓库**：从 `github.com/lailai0916/lailai-template` 创建，再按 [README 与项目规范](references/project-docs-style.md) 替换内容。模板是成品实例，不是第二份规则手册。
+4. **GitHub 仓库与 README**：新建仓库必须使用 `github.com/lailai0916/lailai-template`，完整读取其 [SETUP.md](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md) 并执行初始化与验收；维护已有仓库的 README、元数据和通用工程规范时，同样查阅该标准。项目内部明确约定优先。本 Skill 只补充个人表达与代码风格。
 5. **禁止镜像规则**：下游只保留依赖入口和本地差异，不复制上游正文。测试可以验证跨仓库接口，但不逐字保存另一仓库的规则。
 6. **能力不可用**：若专用 Skill 或模板未安装，读取其 GitHub 权威源；需要落地安装、创建远程仓库或其它外部写入时，先取得当前任务授权。
 7. **思想体系**：涉及 laiism、世界观、价值立场及其论证时，读取已安装的 `laiism-skill/SKILL.md`；未安装时读取权威仓库 `github.com/lailai0916/laiism-skill`。先读其入口，再按 ID 读 `positions.json`。本 Skill 保留行为与表达特征，不复制思想正文或教义状态；普通聊天、代码与排版不强制加载思想体系。个人立场获确认不等于成为正式教义。来源不可用时明确缺失，不凭人格摘要补写主张。名称 `laiism` 始终小写。
@@ -122,7 +122,7 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 - OI C++ 代码 → [references/cpp-oi-style.md](references/cpp-oi-style.md)；使用常见算法组件时再读 [references/cpp-oi-idioms.md](references/cpp-oi-idioms.md)
 - 工程代码 / 注释 → [references/engineering-code-style.md](references/engineering-code-style.md)
 - UI / 设计审查 → [references/design-style.md](references/design-style.md)
-- README / 项目文档 → [references/project-docs-style.md](references/project-docs-style.md)
+- README / 仓库规范 → 按上方路由读取 `lailai-template/SETUP.md`
 - 学习 / 知识整理 → [references/learning-style.md](references/learning-style.md)
 - AI 腔识别与改写 → [references/ai-tone-blacklist.md](references/ai-tone-blacklist.md)
 - 维护与进化 → [references/maintenance-guide.md](references/maintenance-guide.md)

@@ -13,6 +13,7 @@ def main() -> int:
         "SKILL.md": (
             "github.com/lailai0916/luogu-solution",
             "github.com/lailai0916/lailai-template",
+            "lailai-template/blob/main/SETUP.md",
             "github.com/lailai0916/laiism-skill",
             "目标项目内部规则优先",
             "prompts/review-style.md",
@@ -29,6 +30,7 @@ def main() -> int:
                 errors.append(f"{rel}: missing required architecture marker: {needle}")
 
     forbidden = {
+        "tools/checker/check.py": ("def check_project_tree(", "def check_commit(", "def check_readme_project_docs("),
         "references/cpp-oi-style.md": ("docs/contest/personal/common-templates.mdx",),
         "prompts/review-style.md": (".agents/skills/lailai-reviewer",),
     }
@@ -37,6 +39,10 @@ def main() -> int:
         for needle in needles:
             if needle in text:
                 errors.append(f"{rel}: forbidden downstream implementation path: {needle}")
+
+    for rel in ("references/project-docs-style.md", "examples/readme-demo.md", "tests/project-docs-test.md"):
+        if (ROOT / rel).exists():
+            errors.append(f"{rel}: repository standards belong in lailai-template")
 
     if errors:
         for error in errors:

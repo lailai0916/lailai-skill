@@ -7,7 +7,7 @@
 ## 适用场景
 
 - 写或审查工程代码（前端 / 脚本 / 工具）。
-- 与竞赛 C++ 区分：OI 代码见 [cpp-oi-style.md](cpp-oi-style.md)；提交 / Prettier / 项目规范见 [project-docs-style.md](project-docs-style.md)；CSS / 设计见 [design-style.md](design-style.md)。
+- 与竞赛 C++ 区分：OI 代码见 [cpp-oi-style.md](cpp-oi-style.md)；仓库配置与提交规范见 [lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md)；CSS / 设计见 [design-style.md](design-style.md)。
 
 ## 注释规则
 
@@ -37,7 +37,7 @@
 
 ## 其它约定
 
-- 格式遵循 Prettier（`printWidth: 100`、`singleQuote: true`、`trailingComma: "es5"`），TypeScript `strict`（详见 [project-docs-style.md](project-docs-style.md)）。
+- 格式与类型检查遵循项目实际配置；通用默认值由上方模板规范维护。
 - 编辑而非重写：最小、精准改动，一次一个连贯改动，不重排无关代码。
 - 复用优先于新造；现代 CSS、CSS Modules 同目录（详见 [design-style.md](design-style.md)）。
 - **先懂原理再改**（语料）：改一段不熟的代码，先弄清它为什么这么写、两段看似重复的逻辑是否真等价、删掉某行会坏在哪。讲不清原因就别改，不接受"只是能跑"。

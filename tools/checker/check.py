@@ -7,7 +7,6 @@
 用法：
     python3 check.py <file>...                # CLI，逐条打印，含 ERROR 则退出 1
     python3 check.py --hook                   # PostToolUse-compatible hook（读 stdin JSON）
-    python3 check.py --commit <msgfile>       # 校验一条 commit message
     开关：--no-aitone --no-cjk-space --no-sentence --errors-only --quiet
 
 忽略：文件内任一行含 `lailai-checker: disable` → 跳过整个文件；
@@ -479,334 +478,6 @@ def check_md_structure(path, lines, has_frontmatter, code_line_set, disabled_lin
 
 
 # ---------------------------------------------------------------------------
-# README 项目规范：语言导航 / 正式项目名 / 结构树 / License
-# ---------------------------------------------------------------------------
-
-PROJECT_STRUCTURE_HEADINGS = {"## Project Structure", "## 项目结构"}
-TREE_ENTRY_RE = re.compile(r"^(?P<prefix>(?:│   |    )*)(?:├── |└── )(?P<name>.+)$")
-PROJECT_TITLE_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-PROJECT_TITLE_EXCEPTIONS = {"lailai-template", "laiism"}
-MIT_LICENSE_URL = "https://github.com/lailai0916/tools/blob/main/LICENSE"
-MIT_LICENSE_SENTENCE = (
-    "This project's code is licensed under "
-    "[MIT License]({}).".format(MIT_LICENSE_URL)
-)
-MIT_LICENSE_SENTENCE_ZH = "本项目代码采用 [MIT 许可协议]({})。".format(MIT_LICENSE_URL)
-README_LANGUAGE_LINK_RE = re.compile(
-    r'^<a href="README(?:\.[A-Za-z][A-Za-z0-9-]*)?\.md">[^<>]+</a>$'
-)
-README_LANGUAGE_CURRENT_RE = re.compile(r"^<strong>[^<>]+</strong>$")
-README_CURRENT_LANGUAGES = {
-    "README.md": "English",
-    "README.zh-Hans.md": "简体中文",
-    "README.zh-Hant.md": "繁體中文",
-    "README.ja.md": "日本語",
-    "README.ko.md": "한국어",
-    "README.es.md": "Español",
-    "README.fr.md": "Français",
-    "README.ru.md": "русский",
-}
-
-
-def is_common_tree_entry(name):
-    clean = name.split(" -> ", 1)[0].rstrip("/")
-    base = clean.rsplit("/", 1)[-1]
-    return (
-        clean in (".agents", ".claude")
-        or clean.startswith((".agents/", ".claude/"))
-        or base.startswith(("README", "LICENSE"))
-        or base in (
-            ".gitignore",
-            ".gitattributes",
-            ".gitmodules",
-            "AGENTS.md",
-            "CLAUDE.md",
-        )
-    )
-
-
-def check_project_tree(path, block, disabled_lines, issues):
-    entries = []
-    for lineno, raw in block:
-        if not raw.strip():
-            continue
-        left = raw.split("#", 1)[0].rstrip()
-        m = TREE_ENTRY_RE.match(left)
-        if not m:
-            continue
-        name = m.group("name").strip()
-        level = len(m.group("prefix")) // 4
-        is_dir = name.split(" -> ", 1)[0].endswith("/")
-        entries.append(
-            {"line": lineno, "raw": raw, "name": name, "level": level, "is_dir": is_dir}
-        )
-        if "#" not in raw and lineno not in disabled_lines:
-            issues.append(
-                Issue(path, lineno, "ERROR", "project-tree-comment", "项目结构每个条目都要有行末注释")
-            )
-        if is_common_tree_entry(name) and lineno not in disabled_lines:
-            issues.append(
-                Issue(
-                    path,
-                    lineno,
-                    "ERROR",
-                    "project-tree-common",
-                    "项目结构不列 README、LICENSE、.git*、.agents、.claude 等通用条目",
-                )
-            )
-        entry_path = name.split(" -> ", 1)[0].rstrip("/")
-        if any(ord(ch) > 127 for ch in entry_path) and lineno not in disabled_lines:
-            issues.append(
-                Issue(path, lineno, "ERROR", "project-tree-filename", "项目路径使用英文 ASCII 名称")
-            )
-
-    if entries:
-        width = max(
-            max(len(entry["raw"].split("#", 1)[0].rstrip()) for entry in entries) + 1,
-            36,
-        )
-        for entry in entries:
-            if "#" not in entry["raw"] or entry["line"] in disabled_lines:
-                continue
-            actual = entry["raw"].index("#")
-            if actual != width:
-                issues.append(
-                    Issue(
-                        path,
-                        entry["line"],
-                        "ERROR",
-                        "project-tree-align",
-                        "# 必须位于索引 max(w+1,36)={}，当前索引 {}".format(width, actual),
-                    )
-                )
-
-    groups = {}
-    stack = []
-    for entry in entries:
-        level = entry["level"]
-        if level > len(stack):
-            continue
-        stack = stack[:level]
-        parent = tuple(stack)
-        groups.setdefault(parent, []).append(entry)
-        if entry["is_dir"]:
-            stack.append(entry["name"].split(" -> ", 1)[0].rstrip("/"))
-    for group in groups.values():
-        expected = sorted(
-            group,
-            key=lambda item: (0 if item["is_dir"] else 1, item["name"].casefold()),
-        )
-        if [item["name"] for item in group] != [item["name"] for item in expected]:
-            issues.append(
-                Issue(
-                    path,
-                    group[0]["line"],
-                    "ERROR",
-                    "project-tree-order",
-                    "项目结构每一级先列文件夹、再列文件，同组按名称字典序排列",
-                )
-            )
-
-
-def check_readme_language_nav(path, basename, lines, code_line_set, disabled_lines, issues):
-    for idx, raw in enumerate(lines[:30]):
-        lineno = idx + 1
-        if lineno in code_line_set or lineno in disabled_lines:
-            continue
-        paragraph = re.search(r"<p>(.*?)</p>", raw)
-        if not paragraph:
-            continue
-        content = paragraph.group(1)
-        if "English" not in content or "简体中文" not in content:
-            continue
-
-        parts = content.split(" · ")
-        separator_ok = len(parts) >= 2 and " | " not in content
-        if not separator_ok:
-            issues.append(
-                Issue(
-                    path,
-                    lineno,
-                    "ERROR",
-                    "readme-language-separator",
-                    "README 语言导航使用 ` · ` 分隔",
-                )
-            )
-
-        current = [part for part in parts if README_LANGUAGE_CURRENT_RE.fullmatch(part)]
-        expected = README_CURRENT_LANGUAGES.get(basename)
-        if len(current) != 1 or (
-            expected is not None and current[0] != "<strong>{}</strong>".format(expected)
-        ):
-            issues.append(
-                Issue(
-                    path,
-                    lineno,
-                    "ERROR",
-                    "readme-language-current",
-                    "README 仅加粗当前语言，且当前语言不加链接",
-                )
-            )
-
-        if separator_ok and any(
-            not README_LANGUAGE_CURRENT_RE.fullmatch(part)
-            and not README_LANGUAGE_LINK_RE.fullmatch(part)
-            for part in parts
-        ):
-            issues.append(
-                Issue(
-                    path,
-                    lineno,
-                    "ERROR",
-                    "readme-language-links",
-                    "README 除当前语言外的语言均保留链接",
-                )
-            )
-        return
-
-
-def check_readme_project_docs(path, lines, code_line_set, disabled_lines, issues):
-    basename = os.path.basename(path)
-    if not basename.lower().startswith("readme"):
-        return
-
-    check_readme_language_nav(path, basename, lines, code_line_set, disabled_lines, issues)
-
-    head = "\n".join(lines[:40])
-    if '<div align="center">' not in head:
-        issues.append(
-            Issue(path, 1, "ERROR", "readme-centered-header", "README 标题必须使用居中头部")
-        )
-    required_badges = {
-        "last-commit": "last commit",
-        "languages/top": "top language",
-        "repo-size": "repo size",
-        "license": "license",
-    }
-    missing_badges = [label for marker, label in required_badges.items() if marker not in head]
-    if missing_badges:
-        issues.append(
-            Issue(
-                path,
-                1,
-                "ERROR",
-                "readme-required-badges",
-                "README 缺少真实基础徽章：{}".format(", ".join(missing_badges)),
-            )
-        )
-
-    for idx, raw in enumerate(lines[:30]):
-        if idx + 1 in code_line_set:
-            continue
-        title_match = re.search(r"<h1>([^<]+)</h1>", raw)
-        if not title_match:
-            title_match = re.match(r"^#\s+(.+)$", raw)
-        if not title_match:
-            continue
-        title = title_match.group(1).strip()
-        if (
-            PROJECT_TITLE_RE.fullmatch(title)
-            and title not in PROJECT_TITLE_EXCEPTIONS
-            and idx + 1 not in disabled_lines
-        ):
-            issues.append(
-                Issue(
-                    path,
-                    idx + 1,
-                    "ERROR",
-                    "project-title-case",
-                    "README 标题写正式项目名，不直接使用小写仓库名：{}".format(title),
-                )
-            )
-        break
-
-    for idx, raw in enumerate(lines):
-        if idx + 1 in code_line_set:
-            continue
-        if raw.strip() not in PROJECT_STRUCTURE_HEADINGS:
-            continue
-        cursor = idx + 1
-        while cursor < len(lines) and not lines[cursor].strip():
-            cursor += 1
-        if cursor >= len(lines):
-            issues.append(
-                Issue(path, idx + 1, "ERROR", "project-tree-missing", "项目结构标题后缺少 bash 代码块")
-            )
-            continue
-        fence = re.match(r"^\s*```([A-Za-z0-9+#.-]*)\s*$", lines[cursor])
-        if not fence:
-            issues.append(
-                Issue(path, cursor + 1, "ERROR", "project-tree-missing", "项目结构标题后直接使用 bash 代码块")
-            )
-            continue
-        if fence.group(1).lower() != "bash":
-            issues.append(
-                Issue(path, cursor + 1, "ERROR", "project-tree-language", "项目结构代码块语言必须是 bash")
-            )
-        end = cursor + 1
-        while end < len(lines) and not re.match(r"^\s*```\s*$", lines[end]):
-            end += 1
-        check_project_tree(
-            path,
-            [(line_idx + 1, lines[line_idx]) for line_idx in range(cursor + 1, end)],
-            disabled_lines,
-            issues,
-        )
-
-    license_starts = [
-        idx
-        for idx, raw in enumerate(lines)
-        if idx + 1 not in code_line_set and raw.strip() in ("## License", "## 许可协议")
-    ]
-    for start in license_starts:
-        end = start + 1
-        while end < len(lines) and not lines[end].startswith("## "):
-            end += 1
-        section = "\n".join(lines[start + 1 : end])
-        if "MIT" not in section:
-            continue
-        if MIT_LICENSE_URL not in section:
-            issues.append(
-                Issue(
-                    path,
-                    start + 1,
-                    "ERROR",
-                    "license-link",
-                    "MIT License 统一链接到 {}".format(MIT_LICENSE_URL),
-                )
-            )
-        exact = MIT_LICENSE_SENTENCE_ZH if "zh-Hans" in basename else MIT_LICENSE_SENTENCE
-        if exact not in section:
-            issues.append(
-                Issue(path, start + 1, "ERROR", "license-wording", "README 使用统一的 MIT License 文案")
-            )
-
-
-COMMAND_FILENAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*\.command$")
-
-
-def check_path_name(path, issues):
-    absolute = os.path.abspath(path)
-    cursor = os.path.dirname(absolute)
-    root = None
-    while cursor != os.path.dirname(cursor):
-        if os.path.exists(os.path.join(cursor, ".git")):
-            root = cursor
-            break
-        cursor = os.path.dirname(cursor)
-    relative = os.path.relpath(absolute, root) if root else os.path.basename(path)
-    basename = os.path.basename(relative)
-    if any(not part.isascii() for part in relative.split(os.sep)):
-        issues.append(
-            Issue(path, 1, "ERROR", "path-filename-ascii", "项目文件与目录使用英文 ASCII 名称")
-        )
-    if basename.endswith(".command") and not COMMAND_FILENAME_RE.fullmatch(basename):
-        issues.append(
-            Issue(path, 1, "ERROR", "command-filename", "Finder 启动脚本使用英文 kebab-case 文件名")
-        )
-
-
-# ---------------------------------------------------------------------------
 # C++ OI 风格（.cpp 文件 与 ```cpp fence）
 # ---------------------------------------------------------------------------
 
@@ -971,24 +642,6 @@ def check_eng(path, lines, code_line_set, disabled_lines, issues):
 
 
 # ---------------------------------------------------------------------------
-# Conventional Commits
-# ---------------------------------------------------------------------------
-
-COMMIT_RE = re.compile(r"^(feat|fix|docs|style|refactor|perf|test|chore|build|ci|revert)(\([^)]+\))?!?: .+")
-
-
-def check_commit(path, text, issues):
-    first = text.strip().splitlines()[0] if text.strip() else ""
-    if first.startswith("Merge ") or first.startswith("Revert "):
-        return
-    if not COMMIT_RE.match(first):
-        issues.append(
-            Issue(path, 1, "ERROR", "commit-conventional",
-                  "提交信息用 type(scope): description（如 feat(blog): …），当前：{!r}".format(first[:60]))
-        )
-
-
-# ---------------------------------------------------------------------------
 # 单文件调度
 # ---------------------------------------------------------------------------
 
@@ -1011,7 +664,6 @@ def collect_disabled(lines):
 
 def check_file(path, opts):
     issues = []
-    check_path_name(path, issues)
     try:
         with open(path, "r", encoding="utf-8") as fh:
             content = fh.read()
@@ -1046,7 +698,6 @@ def check_file(path, opts):
             check_aitone(path, prose, disabled, issues)
         check_typography(path, prose, disabled, opts, issues)
         check_md_structure(path, lines, has_fm, code_line_set, disabled, issues)
-        check_readme_project_docs(path, lines, code_line_set, disabled, issues)
         check_cpp(path, cpp_blocks, disabled, issues)
         check_eng(path, lines, code_line_set, disabled, issues)
     elif ext in CPP_EXT:
@@ -1180,14 +831,10 @@ def main(argv):
         return 0
 
     if argv and argv[0] == "--commit":
-        path = argv[1]
-        with open(path, "r", encoding="utf-8") as fh:
-            text = fh.read()
-        issues = []
-        check_commit(path, text, issues)
-        for i in issues:
-            sys.stderr.write(i.format() + "\n")
-        return 1 if issues else 0
+        sys.stderr.write(
+            "Commit validation moved to lailai-template/scripts/check_repository.py --commit.\n"
+        )
+        return 2
 
     opts, paths = parse_opts(argv)
     if not paths:

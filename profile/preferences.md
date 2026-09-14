@@ -21,7 +21,7 @@ lailai 的长期偏好与反感。稳定、可迁移的写这里；一次性的�
 ## 代码
 
 - OI / 算法竞赛：C++17，`#include <bits/stdc++.h>`，`using namespace std;`，Tab 缩进，不写注释，不写防御性输入，优先 `cin` / `cout`，全局静态大数组，短变量名，`main` 结尾 `return 0;`，Allman 大括号。详见 [../references/cpp-oi-style.md](../references/cpp-oi-style.md)。
-- 工程代码（站点）：严格 TypeScript，Prettier（`printWidth: 100`、`singleQuote: true`、`trailingComma: 'es5'`），CSS Modules，注释少而统一、只解释"为什么"。
+- 工程代码：重视类型清晰、格式统一与 CSS Modules；注释少而统一、只解释"为什么"。具体工具配置遵循目标项目与模板标准。
 - 编辑而非重写；一次一个连贯改动；不重排无关代码。
 
 ## 数学公式
@@ -32,7 +32,7 @@ lailai 的长期偏好与反感。稳定、可迁移的写这里；一次性的�
 
 - Markdown 标题与正文之间保留一行空行。
 - 中文 prose 用全角标点；引号用「」，书名用《》。
-- README / 项目文档：语言间用 `·`。当前语言加粗，其他语言保留链接。居中标题、双语、徽章、emoji 功能清单、树形结构与仓库 About 元数据均按交付项严格核对。
+- README / 项目文档：重视一致性与完整交付；具体标准统一查阅 [lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md)。
 
 ## 品味取向（语料校准）
 

@@ -20,9 +20,6 @@ python3 check.py --errors-only --quiet blog/**/*.mdx   # 只看 ERROR
 # 兼容 Claude Code PostToolUse JSON 的 hook 模式（diff-aware，只查本次改动行）
 python3 check.py --hook
 
-# 一条 commit message
-python3 check.py --commit .git/COMMIT_EDITMSG
-
 # 开关
 --no-aitone --no-cjk-space --no-sentence   # 关某类
 --errors-only                              # 只报 ERROR
@@ -63,12 +60,11 @@ python3 check.py --commit .git/COMMIT_EDITMSG
 | `cpp-personal-idiom` | ERROR | [cpp-oi-idioms](../../references/cpp-oi-idioms.md) 的固定 `Pow` 与 `BIT` 接口 |
 | `cpp-endl` / `cpp-stdio` / `cpp-comment` / `cpp-bool` / `cpp-dp` / `cpp-std-prefix` / `cpp-indent` | ERROR/WARN | cpp 规则 11、4、14、24、7、3 |
 | `ascii-art` / `todo` | WARN | [engineering-code-style](../../references/engineering-code-style.md) |
-| `commit-conventional` | ERROR | [project-docs-style](../../references/project-docs-style.md) 规则 1 |
-| `project-title-case` / `project-brand-case` / `path-filename-ascii` / `command-filename` | ERROR | project-docs-style 规则 8；品牌大小写同时检查正文 |
-| `readme-language-*` | ERROR | project-docs-style 规则 11 |
-| `project-tree-*` | ERROR | project-docs-style 规则 14 |
-| `readme-centered-header` / `readme-required-badges` | ERROR | project-docs-style 规则 12 |
-| `license-link` / `license-wording` | ERROR | project-docs-style 规则 5 |
+
+README、仓库结构、路径命名与提交信息的通用校验已迁至
+[lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md)。
+本 checker 只检查个人表达、Markdown、LaTeX、代码风格与品牌写法。
+旧 `--commit` 入口会明确提示迁移，不会误报通过。
 
 ## 故意不查什么（判断类，留给 reviewer / 人）
 
@@ -84,12 +80,10 @@ checker 只碰能确定判定的。下列**不进 checker**，靠 reviewer agent
 
 ## 自测
 
-`tests/` 下的通用与 README 回归夹具覆盖各类 ERROR。`good` 必须零 ERROR 零 WARN，`bad` 必须命中预期规则。改 checker 后跑：
+`tests/` 下的个人风格回归夹具覆盖各类 ERROR。`good` 必须零 ERROR 零 WARN，`bad` 必须命中预期规则。改 checker 后跑：
 
 ```bash
 python3 check.py tests/good.mdx   # 期望：0 ERROR，0 WARN
 python3 check.py tests/bad.mdx    # 期望：各类 ERROR 齐全
-python3 check.py tests/readme-good.md
-python3 check.py tests/readme-bad.md
 python3 -m unittest test_checker.py
 ```

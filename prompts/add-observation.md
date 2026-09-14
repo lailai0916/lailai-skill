@@ -4,7 +4,7 @@
 
 ---
 
-先按 `SKILL.md` 的跨仓库路由确认归属；思想材料转交 `laiism-skill`，不在这里复制。请把属于本仓库的行为或风格观察追加到 `observations.md` 的 Pending Observations，**不要**改 `profile/` 或 `references/`。
+先按 `SKILL.md` 的跨仓库路由确认归属；思想材料转交 `laiism-skill`，仓库标准转交 `lailai-template`，不在这里复制。请把属于本仓库的行为或风格观察追加到 `observations.md` 的 Pending Observations，**不要**改 `profile/` 或 `references/`。
 
 观察：
 

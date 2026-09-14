@@ -51,7 +51,7 @@
 
 20. 链接 `[描述性文本](url)`，相对路径省略 `./`；不用裸 URL（裸 URL 只在代码块里）。
 21. 图片加替代文本 `![alt](url)`；存储位置、组件与图床由目标仓库内部规则决定。
-22. 行内代码块标语言标签（`cpp`，纯文本标 `text`）；C++ 遵循 [cpp-oi-style.md](cpp-oi-style.md)。**代码块只放代码 / 数据 / 命令，绝不用「代码块 + 字符画」拼示意图或图表**（ASCII 时间轴 / 流程图 / 箭头连线等）——要图用 Mermaid 或图片，要结构用表格，否则纯文字描述。唯一例外是 README 的 `Project Structure` / `项目结构` 文件树，严格按 [project-docs-style.md](project-docs-style.md) 使用 `bash` 代码块。
+22. 行内代码块标语言标签（`cpp`，纯文本标 `text`）；C++ 遵循 [cpp-oi-style.md](cpp-oi-style.md)。**代码块只放代码 / 数据 / 命令，绝不用「代码块 + 字符画」拼示意图或图表**（ASCII 时间轴 / 流程图 / 箭头连线等）——要图用 Mermaid 或图片，要结构用表格，否则纯文字描述。README 文件树例外，格式由 [lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md) 维护。
 23. 表格**默认居中对齐** `:-:`（大多数表格如此，无特殊理由就居中）；分隔线用 3 个连字符 `---`。
 24. 键盘按键用 `<kbd>`（`<kbd>⌘</kbd> + <kbd>C</kbd>`）；界面元素用方括号 `[]`。
 

@@ -9,7 +9,7 @@
 - 写 OI / 算法竞赛题解代码。
 - 审查竞赛 C++ 是否符合 lailai 风格。
 
-> 仅适用于**算法竞赛中的 C++**，不是工程代码风格。工程 TS / React 走 Prettier（见 [project-docs-style.md](project-docs-style.md)）。
+> 仅适用于**算法竞赛中的 C++**。工程代码见 [engineering-code-style.md](engineering-code-style.md)，仓库配置由 [lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md) 维护。
 
 ## 通用
 

@@ -43,7 +43,7 @@ See [profile/boundaries.md](profile/boundaries.md) for the full boundaries.
 - Writing or reviewing READMEs, project intros, and GitHub docs.
 - Writing Markdown / MDX notes, problem solutions, and math articles under the target repo's local rules.
 - Writing or reviewing OI competitive-programming C++17 code.
-- Routing Luogu workflows to `luogu-solution` and new repositories to `lailai-template`.
+- Routing Luogu workflows to `luogu-solution` and repository standards to `lailai-template`.
 - Keeping personal behavior here while routing philosophical positions and doctrine development to `laiism-skill`.
 - "Unity · Simplicity · Modernity" UI / design review.
 - Simulating lailai's everyday chat and questioning style.
@@ -108,6 +108,8 @@ git clone https://github.com/lailai0916/laiism-skill ~/.agents/skills/laiism-ski
 3. Target-repo Agent rules take priority within that project. Luogu work routes to
    [`luogu-solution`](https://github.com/lailai0916/luogu-solution); new GitHub repositories
    start from [`lailai-template`](https://github.com/lailai0916/lailai-template).
+   Its [setup guide](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md) also owns
+   ongoing README and repository standards, examples, and checks. This Skill keeps only the route.
 4. For laiism and philosophical positions, read the separately installed
    [`laiism-skill`](https://github.com/lailai0916/laiism-skill), or its canonical repository if absent.
    Ordinary chat and code do not require it.

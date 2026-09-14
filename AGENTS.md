@@ -18,6 +18,9 @@ Read `SKILL.md` before changing behavior, then read the affected files under `pr
   `profile/boundaries.md`.
 - Keep cross-repository guidance single-source: this repository owns personal and reusable
   style; downstream repositories keep only a route plus their local deltas, never mirrored rules.
+- Repository standards and their checker belong to
+  [lailai-template](https://github.com/lailai0916/lailai-template/blob/main/SETUP.md).
+  Use its checker for README and repository maintenance; this repository's checker covers style.
 - Keep English and Simplified-Chinese README installation guidance aligned.
 
 ## Validation
