@@ -55,16 +55,16 @@ See [SKILL.md](SKILL.md) for out-of-scope cases and triggers.
 
 ```bash
 lailai-skill/
-├── evolution/                  # Evaluation rubric and evolution log
-├── examples/                   # Representative input and output pairs
-├── profile/                    # Long-term identity, preferences, and boundaries
-├── prompts/                    # Maintenance prompts
-├── references/                 # Executable style and workflow rules
-├── tests/                      # Verifiable behavior tests
-├── tools/                      # Checkers and supporting utilities
-├── observations.md             # Pending observations
-├── SKILL.md                    # Skill entry point
-└── test-prompts.json           # Prompt-level regression cases
+├── evolution/                      # Evaluation rubric and evolution log
+├── examples/                       # Representative input and output pairs
+├── profile/                        # Long-term identity, preferences, and boundaries
+├── prompts/                        # Maintenance prompts
+├── references/                     # Executable style and workflow rules
+├── tests/                          # Verifiable behavior tests
+├── tools/                          # Checkers and supporting utilities
+├── observations.md                 # Pending observations
+├── SKILL.md                        # Skill entry point
+└── test-prompts.json               # Prompt-level regression cases
 ```
 
 ## Getting Started

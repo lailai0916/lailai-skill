@@ -55,16 +55,16 @@
 
 ```bash
 lailai-skill/
-├── evolution/                  # 评分标准与进化日志
-├── examples/                   # 代表性输入与输出对照
-├── profile/                    # 长期身份、偏好与边界
-├── prompts/                    # 维护提示词
-├── references/                 # 可执行风格与工作流规则
-├── tests/                      # 可验证行为测试
-├── tools/                      # Checker 与辅助工具
-├── observations.md             # 尚未沉淀的观察
-├── SKILL.md                    # Skill 入口
-└── test-prompts.json           # Prompt 回归样例
+├── evolution/                      # 评分标准与进化日志
+├── examples/                       # 代表性输入与输出对照
+├── profile/                        # 长期身份、偏好与边界
+├── prompts/                        # 维护提示词
+├── references/                     # 可执行风格与工作流规则
+├── tests/                          # 可验证行为测试
+├── tools/                          # Checker 与辅助工具
+├── observations.md                 # 尚未沉淀的观察
+├── SKILL.md                        # Skill 入口
+└── test-prompts.json               # Prompt 回归样例
 ```
 
 ## 快速开始

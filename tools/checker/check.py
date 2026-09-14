@@ -561,7 +561,10 @@ def check_project_tree(path, block, disabled_lines, issues):
             )
 
     if entries:
-        width = 32
+        width = max(
+            max(len(entry["raw"].split("#", 1)[0].rstrip()) for entry in entries) + 1,
+            36,
+        )
         for entry in entries:
             if "#" not in entry["raw"] or entry["line"] in disabled_lines:
                 continue
@@ -573,7 +576,7 @@ def check_project_tree(path, block, disabled_lines, issues):
                         entry["line"],
                         "ERROR",
                         "project-tree-align",
-                        "# 必须位于索引 32，当前索引 {}".format(actual),
+                        "# 必须位于索引 max(w+1,36)={}，当前索引 {}".format(width, actual),
                     )
                 )
 

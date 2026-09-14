@@ -13,9 +13,9 @@
 
 ```bash
 csv-diff/
-├── src/                        # Comparison logic
-├── package.json                # Node package manifest
-└── tsconfig.json               # TypeScript configuration
+├── src/                            # Comparison logic
+├── package.json                    # Node package manifest
+└── tsconfig.json                   # TypeScript configuration
 ```
 
 ## License

@@ -18,7 +18,7 @@
 - 特性区 emoji + 加粗小标题 + 一句说明；技术正文不用 emoji。
 - 快速开始给可复制 `bash` 命令；结构树也使用 `bash` 块。
 - 结构树不列 README、LICENSE、`.gitignore`、`.agents` 等通用条目；每一级文件夹优先，再按名称字典序排列。
-- 每个项目结构条目的 `#` 均位于索引 $32$。
+- 每个项目结构条目的 `#` 均位于 `max(w+1,36)`；无更长条目时默认索引 $36$。
 - 末尾 License 段使用 `lailai0916/tools` 的统一 MIT 链接。
 - 提交信息为 `type(scope): description`。
 - GitHub description 是一句克制的英文定位；topics 为 $3\sim8$ 个准确的小写 kebab-case 关键词。
@@ -49,7 +49,7 @@
 - [ ] 有可复制的 `bash` 安装 / 运行命令块。
 - [ ] 项目结构为 `bash` 块，且不含通用仓库元数据。
 - [ ] 项目结构逐级「文件夹在前、文件在后」，各组按名称字典序排列。
-- [ ] 项目结构所有 `#` 均位于索引 $32$。
+- [ ] 项目结构所有 `#` 均位于 `max(w+1,36)`；无更长条目时为索引 $36$。
 - [ ] 有末尾 `## License` 段，链接统一的 MIT License URL。
 - [ ] 三条提交信息符合 Conventional Commits，无裸 `update` / `fix bug`。
 - [ ] 给出合规的 GitHub description 与 $3\sim8$ 个 topics。

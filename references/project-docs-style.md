@@ -36,7 +36,7 @@
     语言间用 ` · ` 分隔。当前语言用 `<strong>` 加粗且不加链接。其他语言保留链接。
     徽章至少包括 last commit、top language、repo size 与 license；存在 CI、code style、coverage、release 等真实能力时必须同步展示，不放失效或虚构徽章。
 13. **特性清单**：emoji + 加粗小标题 + 一句说明（`🎨 **Bespoke Home** — 一句话。`）。emoji 仅在 README 特性区用，技术正文不用。
-14. **项目结构树严格统一**：只用 `bash` 代码块，根节点写 GitHub 仓库名。仅列帮助理解项目的专属核心目录与文件；不列 `README*`、`LICENSE*`、`.gitignore`、`.gitattributes`、`.gitmodules`、`.agents/`、`.claude/`、`AGENTS.md`、`CLAUDE.md` 等通用仓库元数据。每一级都先列文件夹、再列文件；同组按名称字典序排列。每个条目行末写一句必要注释；所有 `#` 必须位于索引 $32$（即前面恰有 $32$ 个字符）。**快速开始给可复制 `bash` 命令**。
+14. **项目结构树严格统一**：只用 `bash` 代码块，根节点写 GitHub 仓库名。仅列帮助理解项目的专属核心目录与文件；不列 `README*`、`LICENSE*`、`.gitignore`、`.gitattributes`、`.gitmodules`、`.agents/`、`.claude/`、`AGENTS.md`、`CLAUDE.md` 等通用仓库元数据。每一级都先列文件夹、再列文件；同组按名称字典序排列。每个条目行末写一句必要注释；所有 `#` 必须位于索引 `max(w+1,36)`，其中 `w` 是结构树中最长条目左侧的字符数，默认索引为 $36$。**快速开始给可复制 `bash` 命令**。
 15. **双语对等**：英文与中文各一份完整 README，互为镜像，不是翻译残桩。
 16. **专业克制**：不堆形容词，不写"最强 / 革命性 / 颠覆"，不写"求 star"式收尾。
 
@@ -132,7 +132,7 @@ This project's code is licensed under [MIT License](https://github.com/lailai091
 - [ ] 从 `lailai-template` 起步；README 使用正式项目名；第一屏一句话定位，10 秒看懂；新增路径无中文文件名？
 - [ ] 结构：介绍 → 特性 → 快速开始 → 结构 → 其它，每节简短？
 - [ ] 居中标题、语言导航与真实徽章齐全；特性区 emoji + 加粗标题 + 一句说明？
-- [ ] 结构树为 `bash` 块，仅列项目专属内容；文件夹优先、各组字典序；所有 `#` 均位于索引 $32$？
+- [ ] 结构树为 `bash` 块，仅列项目专属内容；文件夹优先、各组字典序；所有 `#` 均位于 `max(w+1,36)`？
 - [ ] 多语言以英文为基准，`README.md` / `README.zh-Hans.md` 中英对等？语言导航是否用 ` · ` 分隔，并仅加粗当前语言？有 UI 内容时，i18n 是否默认 en + zh-Hans、默认英语？
 - [ ] 有 `LICENSE`（开源默认 MIT）+ README 末尾 License 段，MIT 链接指向 `lailai0916/tools`；装了 Prettier（config + format 脚本）？
 - [ ] GitHub description、$3\sim8$ 个 topics 与 homepage 已核对；无形容词轰炸、无求 star 收尾、技术正文 emoji 克制？

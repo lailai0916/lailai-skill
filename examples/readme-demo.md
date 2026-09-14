@@ -71,6 +71,6 @@ This project's code is licensed under [MIT License](https://github.com/lailai091
 - 特性用 emoji + 加粗标题 + 一句说明，具体不空泛。
 - 项目名使用正式大小写，仓库名仍为小写 kebab-case。
 - 快速开始给可复制命令，结构树用 `bash` 代码块。
-- 结构树仅列项目专属目录，文件夹按字典序排列，所有 `#` 均位于索引 $32$。
+- 结构树仅列项目专属目录，文件夹按字典序排列，所有 `#` 均位于 `max(w+1,36)`；无更长条目时为索引 $36$。
 - License 使用统一的 `lailai0916/tools` MIT 链接。
 - GitHub About 另设一句英文 description 与 $3\sim8$ 个准确 topics，不留默认空白。
