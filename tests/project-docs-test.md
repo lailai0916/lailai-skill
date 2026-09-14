@@ -13,7 +13,7 @@
 - 第一屏一句话定位，10 秒看懂「是什么」。
 - 两份 README 的语言导航使用 ` · ` 分隔；当前语言加粗且不加链接，另一语言保留链接。
 - 两份 README 均使用居中标题，并包含 last commit、top language、repo size 与 license 四个真实基础徽章。
-- README 标题使用正式项目名 `CSV Diff`，仓库名仍为 `csv-diff`；仅明确的品牌写法可以例外（如 `lailai-template`）；所有新增路径使用英文 ASCII 名称。
+- README 标题使用正式项目名 `CSV Diff`，仓库名仍为 `csv-diff`；仅明确的品牌写法可以例外（如 `lailai-template`、始终小写的 `laiism`）；所有新增路径使用英文 ASCII 名称。
 - 结构：介绍 → 特性 → 快速开始 → 结构 → 其它 → 末尾 License 段。
 - 特性区 emoji + 加粗小标题 + 一句说明；技术正文不用 emoji。
 - 快速开始给可复制 `bash` 命令；结构树也使用 `bash` 块。

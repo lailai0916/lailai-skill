@@ -18,7 +18,7 @@ skill 的进化是一个固定闭环，每个新习惯都走完这条链，不�
 observation → rule → example → test → evolution log →（回到）→ observation
 ```
 
-1. **observation**：新发现先进 [../observations.md](../observations.md)（带证据、标稳定性）。观察 ≠ 规则。
+1. **observation**：先按 [入口路由](../SKILL.md#跨仓库路由与优先级) 分流思想材料，再将行为与风格观察写入 [../observations.md](../observations.md)（带证据、标稳定性）。观察 ≠ 规则。
 2. **rule**：多次重现且稳定后（判定标准见下方"观察 → 规则的判定"），沉淀进 `../profile/` 或某 reference 的"核心规则"。
 3. **example**：在 `../examples/` 加一个 before/after，展示新规则下"像 / 不像"的对照。
 4. **test**：在 `../tests/` 加可判定的检查项，让规则能被验证。
@@ -75,7 +75,7 @@ prose 规则的天花板是「90% + 自觉」——模型总会漏几条。想�
 
 ## 局部规则 vs 长期规则
 
-- **长期 / 可迁移规则**：写入 `profile/` 或通用 `references/`（如 writing-style、ai-tone-blacklist）。
+- **长期 / 可迁移规则**：个人行为与风格写入 `profile/` 或通用 `references/`（如 writing-style、ai-tone-blacklist）；思想正文与确认状态归 `laiism-skill`。例如「先用 AI 做事」是行为，「哪些技能值得投入」是思想材料；相关时按 ID 引用，不互相复制。
 - **局部 / 项目规则**：留在目标仓库并标明适用范围；冲突时目标仓库内部规则在其范围内优先，不把项目专属 frontmatter、组件或发布流程复制回本 Skill。
 
 ## 定期复查清单（建议每次较大更新或定期跑一次）

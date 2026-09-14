@@ -485,7 +485,7 @@ def check_md_structure(path, lines, has_frontmatter, code_line_set, disabled_lin
 PROJECT_STRUCTURE_HEADINGS = {"## Project Structure", "## 项目结构"}
 TREE_ENTRY_RE = re.compile(r"^(?P<prefix>(?:│   |    )*)(?:├── |└── )(?P<name>.+)$")
 PROJECT_TITLE_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-PROJECT_TITLE_EXCEPTIONS = {"lailai-template"}
+PROJECT_TITLE_EXCEPTIONS = {"lailai-template", "laiism"}
 MIT_LICENSE_URL = "https://github.com/lailai0916/tools/blob/main/LICENSE"
 MIT_LICENSE_SENTENCE = (
     "This project's code is licensed under "
@@ -1018,6 +1018,14 @@ def check_file(path, opts):
     whole_disabled, disabled = collect_disabled(lines)
     if whole_disabled:
         return issues
+
+    for lineno, line in enumerate(lines, 1):
+        if lineno not in disabled and any(
+            match.group() != "laiism" for match in re.finditer("laiism", line, re.IGNORECASE)
+        ):
+            issues.append(
+                Issue(path, lineno, "ERROR", "project-brand-case", "品牌 laiism 始终使用小写")
+            )
 
     ext = os.path.splitext(path)[1].lower()
     if ext in MD_EXT:

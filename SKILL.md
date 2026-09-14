@@ -61,7 +61,8 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 
 | 唯一所有者 | 只负责 |
 | :-- | :-- |
-| `lailai-skill` | 个人信息、人格、思维、语言、代码、设计与通用项目规范 |
+| `lailai-skill` | 个人信息、人格、思维习惯、语言、代码、设计与通用项目规范 |
+| `laiism-skill` | laiism 的思想材料、立场、论证、确认状态与思想体系发展 |
 | `luogu-solution` | 洛谷抓题、参考、求解、验证、对拍、题解结构与合规发布流程 |
 | `lailai-template` | 新仓库可直接复制的文件、目录、表单与 README 成品示例 |
 | 目标项目 | 自身 frontmatter、组件、内容模型、存放位置与工程约束 |
@@ -72,6 +73,7 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 4. **新建 GitHub 仓库**：从 `github.com/lailai0916/lailai-template` 创建，再按 [README 与项目规范](references/project-docs-style.md) 替换内容。模板是成品实例，不是第二份规则手册。
 5. **禁止镜像规则**：下游只保留依赖入口和本地差异，不复制上游正文。测试可以验证跨仓库接口，但不逐字保存另一仓库的规则。
 6. **能力不可用**：若专用 Skill 或模板未安装，读取其 GitHub 权威源；需要落地安装、创建远程仓库或其它外部写入时，先取得当前任务授权。
+7. **思想体系**：涉及 laiism、世界观、价值立场及其论证时，读取已安装的 `laiism-skill/SKILL.md`；未安装时读取权威仓库 `github.com/lailai0916/laiism-skill`。先读其入口，再按 ID 读 `positions.json`。本 Skill 保留行为与表达特征，不复制思想正文或教义状态；普通聊天、代码与排版不强制加载思想体系。个人立场获确认不等于成为正式教义。来源不可用时明确缺失，不凭人格摘要补写主张。名称 `laiism` 始终小写。
 
 ## 安全边界
 
@@ -170,7 +172,7 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 
 本 skill 是长期项目，需要持续记录与迭代。核心闭环：**observation → rule → example → test → evolution log →（回到）→ observation**（详见 [maintenance-guide.md](references/maintenance-guide.md) 的"核心闭环"）。
 
-1. 发现新习惯 → 先写进 [observations.md](observations.md)（观察 ≠ 规则）。
+1. 先按跨仓库路由确定归属；思想材料进入 `laiism-skill`，新习惯进入 [observations.md](observations.md)（观察 ≠ 规则）。混合输入拆成思想正文与行为观察，互相引用，不保存两份正文。
 2. 多次验证、稳定、可迁移 → 沉淀进 `profile/` 或 `references/`。
 3. 规则变化影响输出 → 更新 `examples/` 与 `tests/`。
 4. 用达尔文式流程优化：评估 → 改进 → 测试 → 保留或回滚（见 [prompts/evolve-skill.md](prompts/evolve-skill.md)）。
@@ -182,7 +184,7 @@ lailai 的持续进化型个人赛博分身系统，用于尽可能复刻 lailai
 
 唯一源头是 GitHub 仓库 `github.com/lailai0916/lailai-skill`——不是任何本地路径，也不是某项目内嵌的副本。当 lailai 说"这不像我""记一笔""记进 lailai-skill"（或指出值得留存的风格 / 语气不符）时：
 
-1. 取源仓库工作副本：本机已有 clone 就复用，否则 `git clone https://github.com/lailai0916/lailai-skill` 到临时目录；动手前先 `git pull`。
+1. 先按跨仓库路由分流思想材料；以下仅适用于本仓库的行为与风格观察。取源仓库工作副本：本机已有 clone 就复用，否则 `git clone https://github.com/lailai0916/lailai-skill` 到临时目录；动手前先 `git pull`。
 2. 作为**一条 observation 追加进 `observations.md`**（按文件格式），然后 `git commit` + `git push origin main`。
 3. **只改 `observations.md`**，不直接动 `profile/` 与 `references/`——规则留到专门一轮维护时经稳定性验证再沉淀。
 4. 涉及人格 / 价值 / 隐私 / 公开表达级别的，先与 lailai 确认（🔴），不自行写入。

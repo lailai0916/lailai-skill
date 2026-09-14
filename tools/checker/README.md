@@ -64,7 +64,7 @@ python3 check.py --commit .git/COMMIT_EDITMSG
 | `cpp-endl` / `cpp-stdio` / `cpp-comment` / `cpp-bool` / `cpp-dp` / `cpp-std-prefix` / `cpp-indent` | ERROR/WARN | cpp 规则 11、4、14、24、7、3 |
 | `ascii-art` / `todo` | WARN | [engineering-code-style](../../references/engineering-code-style.md) |
 | `commit-conventional` | ERROR | [project-docs-style](../../references/project-docs-style.md) 规则 1 |
-| `project-title-case` / `path-filename-ascii` / `command-filename` | ERROR | project-docs-style 规则 8 |
+| `project-title-case` / `project-brand-case` / `path-filename-ascii` / `command-filename` | ERROR | project-docs-style 规则 8；品牌大小写同时检查正文 |
 | `readme-language-*` | ERROR | project-docs-style 规则 11 |
 | `project-tree-*` | ERROR | project-docs-style 规则 14 |
 | `readme-centered-header` / `readme-required-badges` | ERROR | project-docs-style 规则 12 |

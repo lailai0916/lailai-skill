@@ -13,12 +13,14 @@ def main() -> int:
         "SKILL.md": (
             "github.com/lailai0916/luogu-solution",
             "github.com/lailai0916/lailai-template",
+            "github.com/lailai0916/laiism-skill",
             "目标项目内部规则优先",
             "prompts/review-style.md",
         ),
         "README.md": ("~/.agents/skills/luogu-solution",),
         "README.zh-Hans.md": ("~/.agents/skills/luogu-solution",),
         "prompts/review-style.md": ("不复制、改写或封装本文件正文",),
+        "profile/personality.md": ("ai-and-skills", "rules-and-risk", "interests-and-ethics"),
     }
     for rel, needles in required.items():
         text = (ROOT / rel).read_text(encoding="utf-8")

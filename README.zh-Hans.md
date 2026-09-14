@@ -44,6 +44,7 @@
 - 在目标仓库内部规范下写 Markdown / MDX 笔记、题解与数学文章。
 - 写或评审 OI 算法竞赛 C++17 代码。
 - 将洛谷工作流路由到 `luogu-solution`，新仓库路由到 `lailai-template`。
+- 个人行为模型保留在本仓库，思想立场与教义发展路由到 `laiism-skill`。
 - "统一·简约·现代"风格的 UI / 设计审查。
 - 模拟 lailai 的日常聊天与提问方式。
 - 决策辅助、学习陪伴、长期自我建模与持续更新。
@@ -93,6 +94,12 @@ git clone https://github.com/lailai0916/lailai-skill ~/.agents/skills/lailai-ski
 git clone https://github.com/lailai0916/luogu-solution ~/.agents/skills/luogu-solution
 ```
 
+涉及 laiism 与思想材料时，将独立 Skill 安装在同一目录：
+
+```bash
+git clone https://github.com/lailai0916/laiism-skill ~/.agents/skills/laiism-skill
+```
+
 ### 装好之后
 
 1. 入口是其中的 `SKILL.md`；Agent 先读它，再按任务类型读对应 `profile/` 与 `references/`（链接都是相对路径，整体搬动后仍有效）。
@@ -100,10 +107,11 @@ git clone https://github.com/lailai0916/luogu-solution ~/.agents/skills/luogu-so
 3. 目标仓库内部 Agent 规则在该项目范围内优先。洛谷任务转到
    [`luogu-solution`](https://github.com/lailai0916/luogu-solution)；新建 GitHub 仓库从
    [`lailai-template`](https://github.com/lailai0916/lailai-template) 开始。
+4. 涉及 laiism 与思想立场时，读取独立安装的 [`laiism-skill`](https://github.com/lailai0916/laiism-skill)；未安装时读取其权威仓库。普通聊天与代码任务不要求加载它。
 
 ## 习惯记录
 
-发现一个新的表达、偏好、反感项或习惯时，**先记到 [observations.md](observations.md)**，不要直接改规则。
+发现一个新的表达、偏好、反感项或习惯时，**先记到 [observations.md](observations.md)**，不要直接改规则。思想材料归 `laiism-skill`；本仓库只保留行为观察和引用，不维护第二份立场正文。
 
 > 观察不等于规则。只有长期、稳定、可迁移、可执行的观察，才能进入 `profile/` 或 `references/`。
 

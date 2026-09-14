@@ -94,6 +94,22 @@ class CheckerTest(unittest.TestCase):
             self.assertTrue(any(issue.rule == "sentence-length" for issue in issues))
             self.assertFalse(any(issue.level == "ERROR" for issue in issues))
 
+    def test_laiism_brand_is_lowercase(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "README.md"
+            for title in ("laiism", "laiism".capitalize(), "laiism".upper()):
+                path.write_text(
+                    '<div align="center">\n  <h1>{}</h1>\n</div>\n'.format(title),
+                    encoding="utf-8",
+                )
+                rules = {issue.rule for issue in check.check_file(str(path), OPTS)}
+                self.assertNotIn("project-title-case", rules)
+                self.assertEqual("project-brand-case" in rules, title != "laiism")
+            path = Path(directory) / "note.md"
+            path.write_text("About " + "laiism".capitalize() + ".\n", encoding="utf-8")
+            rules = {issue.rule for issue in check.check_file(str(path), OPTS)}
+            self.assertIn("project-brand-case", rules)
+
     def test_cpp_hard_rules(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "main.cpp"

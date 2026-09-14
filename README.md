@@ -44,6 +44,7 @@ See [profile/boundaries.md](profile/boundaries.md) for the full boundaries.
 - Writing Markdown / MDX notes, problem solutions, and math articles under the target repo's local rules.
 - Writing or reviewing OI competitive-programming C++17 code.
 - Routing Luogu workflows to `luogu-solution` and new repositories to `lailai-template`.
+- Keeping personal behavior here while routing philosophical positions and doctrine development to `laiism-skill`.
 - "Unity · Simplicity · Modernity" UI / design review.
 - Simulating lailai's everyday chat and questioning style.
 - Decision support, learning companion, long-term self-modeling and updates.
@@ -94,6 +95,12 @@ For zero-fetch discovery of the specialized Luogu route, install it beside this 
 git clone https://github.com/lailai0916/luogu-solution ~/.agents/skills/luogu-solution
 ```
 
+For laiism and philosophical material, install the independent Skill alongside it:
+
+```bash
+git clone https://github.com/lailai0916/laiism-skill ~/.agents/skills/laiism-skill
+```
+
 ### After installing
 
 1. The entry is its `SKILL.md`; the agent reads it first, then the relevant `profile/` and `references/` by task type (all links are relative, so they survive moving the whole folder).
@@ -101,10 +108,13 @@ git clone https://github.com/lailai0916/luogu-solution ~/.agents/skills/luogu-so
 3. Target-repo Agent rules take priority within that project. Luogu work routes to
    [`luogu-solution`](https://github.com/lailai0916/luogu-solution); new GitHub repositories
    start from [`lailai-template`](https://github.com/lailai0916/lailai-template).
+4. For laiism and philosophical positions, read the separately installed
+   [`laiism-skill`](https://github.com/lailai0916/laiism-skill), or its canonical repository if absent.
+   Ordinary chat and code do not require it.
 
 ## Habit Recording
 
-When you notice a new expression, preference, dislike, or habit, **record it first in [observations.md](observations.md)** — don't edit the rules directly.
+When you notice a new expression, preference, dislike, or habit, **record it first in [observations.md](observations.md)** — don't edit the rules directly. Philosophical material belongs in `laiism-skill`; this repository keeps only behavioral observations and references, not a second copy of the positions.
 
 > An observation is not a rule. Only long-term, stable, transferable, executable observations earn their way into `profile/` or `references/`.
 
