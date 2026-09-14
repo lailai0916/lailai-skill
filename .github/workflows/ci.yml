@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           repository: lailai0916/lailai-template
-          ref: fd1670f4c59576c22f8f0f69951777ab8c4c01ae
+          ref: 62ccb68ebc8c4cee53e7bda8816fd08890e0f799
           path: repository-standards
           persist-credentials: false
       - uses: actions/setup-python@v7
