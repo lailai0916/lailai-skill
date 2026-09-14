@@ -54,8 +54,8 @@ task ls --tag work
 
 \`\`\`bash
 task-cli/
-├── bin/                        # Executable entry
-└── src/                        # Command and storage logic
+├── bin/                            # Executable entry
+└── src/                            # Command and storage logic
 \`\`\`
 
 ## License

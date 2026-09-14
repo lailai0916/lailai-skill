@@ -114,8 +114,8 @@ README 头部骨架（`<owner>` / `<repo>` 替换为实际值；preview 图可�
 
 ```bash
 task-cli/
-├── bin/                           # Executable entry
-└── src/                           # Command and storage logic
+├── bin/                            # Executable entry
+└── src/                            # Command and storage logic
 ```
 
 末尾 License 段：
